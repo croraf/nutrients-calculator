@@ -1,0 +1,28 @@
+
+.att-panel {
+  background: lightgray;
+  position: absolute;
+  height: 600px;
+  width: 95%;
+  left: 10px;
+  /*padding-left: 0px;*/
+  transition: all 1s;
+}
+
+.expanded {
+  left: -50%;
+  width: 150%;
+}
+
+.testsHierarchyItem {
+  cursor: default;
+}
+
+.testsHierarchyItemFile {
+  color: yellow;
+  cursor: pointer;
+}
+
+.testsHierarchyItemFolder {
+  color: gray;
+}
