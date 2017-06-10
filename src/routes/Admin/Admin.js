@@ -2,7 +2,7 @@ import React from 'react';
 
 import {SettingsForm} from './SettingsForm/SettingsForm';
 
-class Settings extends React.Component {
+class Admin extends React.Component {
     render () {
         return (
             <div style={{padding: '20px'}}>
@@ -12,4 +12,4 @@ class Settings extends React.Component {
     }
 }
 
-export {Settings};
+export {Admin};

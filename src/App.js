@@ -15,21 +15,21 @@ const App = () => {
             <Router history={enhancedHistory}>
                 <div>
                     <Route 
-                        path="tests"
+                        path="main"
                         getComponent={(nextState, cb) => {
                             import('./routes/Main/Main').then((Main) => { cb(null, Main.Main); });
                         }}/>
 
-                    <Route 
-                        path="playground"
+                    <Route
+                        path="calculator"
                         getComponent={(nextState, cb) => {
-                            import('./routes/Playground/Playground').then((Playground) => { cb(null, Playground.Playground); });
+                            import('./routes/Calculator/Calculator').then((Calculator) => { cb(null, Calculator.Calculator); });
                         }}/>
 
                     <Route
-                        path="settings"
+                        path="admin"
                         getComponent={(nextState, cb) => {
-                            import('./routes/Settings/Settings').then((Settings) => { cb(null, Settings.Settings); });
+                            import('./routes/Admin/Admin').then((Admin) => { cb(null, Admin.Admin); });
                         }}/>
                 </div>
             </Router>

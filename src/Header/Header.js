@@ -11,7 +11,7 @@ class Header extends React.Component {
                 <Grid>
                     <Row>
                         <Col xs={6}>
-                            Auto Testing Tool 
+                            Whole protein calculator 
                         </Col>
                     
                         <Col xs={6} style={{fontSize: '40%'}}>

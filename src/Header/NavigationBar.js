@@ -6,9 +6,9 @@ class NavigationBar extends React.Component {
     render () {
         return (
             <Nav bsStyle="pills" activeKey={this.props.activeLink} onSelect={this.props.navigate} style={{position: 'absolute', right: '10%'}}>
-                <NavItem eventKey='/tests'>Tests</NavItem>
-                <NavItem eventKey='/playground' title='Reports'>playground</NavItem>
-                <NavItem eventKey='/settings'>Settings</NavItem>
+                {/*<NavItem eventKey='/main'>Calculator</NavItem>*/}
+                <NavItem eventKey='/calculator' title='Calculator'>Calculator</NavItem>
+                <NavItem eventKey='/admin' title='Reports'>Admin</NavItem>
             </Nav>
         );
     }
