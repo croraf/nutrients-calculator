@@ -18,7 +18,7 @@ class NutrientForm extends React.Component {
                     <Row>
                         <Col xs={12} xsOffset={0}>
                             <FieldComponent
-                                controlId='Nutrient'
+                                controlId='name'
                                 type='text'
                                 label='Nutrient name'
                                 placeholder='Enter text' />
