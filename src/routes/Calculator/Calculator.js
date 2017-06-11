@@ -10,7 +10,7 @@ class Calculator extends React.Component {
             {name: 'corn', quantity: 200}
         ];
         return (
-            <div style={{padding: '20px'}}>
+            <div style={{padding: '10px'}}>
                 <CalculatorForm 
                     onSubmit={(values) => {console.log('submitting: ' + JSON.stringify(values));}}
                     selectedNutrientsList={selectedNutrientsList} />

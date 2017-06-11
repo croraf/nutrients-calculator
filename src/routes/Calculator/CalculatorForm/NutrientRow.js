@@ -9,7 +9,7 @@ class NutrientRow extends React.Component {
         const {item, fields, index} = this.props;
 
         return (
-            <Row>
+            <Row style={{display: 'flex'}}>
                 <Col xs={8}>
                     <FieldComponent
                         controlId={`${item}.name`}
@@ -20,12 +20,17 @@ class NutrientRow extends React.Component {
                 <Col xs={3}>
                     <FieldComponent
                         controlId={`${item}.quantity`}
-                        type='text'
+                        type='number'
                         label='Serving size [g]'
                         placeholder='Enter serving size' />
                 </Col>
-                <Col xs={1} style={{display: 'flex'}}>
-                    <button type='button' onClick={()=>{fields.remove(index);}}>Delete</button>
+                <Col xs={1} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                    <i
+                        className='material-icons'
+                        onClick={()=>{fields.remove(index);}}
+                        style={{cursor: 'pointer'}}>
+                        delete_forever
+                    </i>
                 </Col>
             </Row>
         );

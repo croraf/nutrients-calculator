@@ -19,8 +19,8 @@ class NutrientsListComponent extends React.Component {
                 ))}
 
                 <Row>
-                    <Col xs={12}>
-                        <Button type='button' onClick={() => fields.push({})}>+ Add</Button>
+                    <Col xs={12} style={{display: 'flex', justifyContent: 'center'}}>
+                        <Button type='button' onClick={() => fields.push({})}>+ Add nutrient</Button>
                     </Col>
                 </Row>
             </div>
@@ -46,7 +46,7 @@ class CalculatorForm extends React.Component {
 }
 
 const initialValues = {
-    nutrients: [{name: 'rafa', quantity: 10}]
+    nutrients: [{name: 'rafa', quantity: 10}, {}, {}]
 };
 
 const CalculatorFormReduxWrapper = reduxForm({
