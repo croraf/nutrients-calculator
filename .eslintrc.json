@@ -26,10 +26,10 @@
         }
     },
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
+        "strict": "error",
+        "indent": ["error",4],
+        "react/jsx-indent": ["error", 4],
+        "react/prop-types": 1,
         "linebreak-style": [
             "error",
             "windows"

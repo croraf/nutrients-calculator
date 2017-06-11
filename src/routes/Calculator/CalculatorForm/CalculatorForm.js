@@ -3,8 +3,6 @@ import React from 'react';
 import {reduxForm, FieldArray} from 'redux-form';
 import {/*Checkbox, Radio, */Button, Grid, Row, Col} from 'react-bootstrap';
 
-import {FieldComponent} from './FieldComponent';
-
 import {NutrientRow} from './NutrientRow';
 
 class NutrientsListComponent extends React.Component {
@@ -32,7 +30,7 @@ class CalculatorForm extends React.Component {
 
     render () {
 
-        const {addNutrientHandler, handleSubmit} = this.props;
+        const {handleSubmit} = this.props;
         return (
             <form onSubmit={handleSubmit}>
                 <Grid>

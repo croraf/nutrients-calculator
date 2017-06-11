@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Nav, NavItem, Col} from 'react-bootstrap';
+import {Nav, NavItem} from 'react-bootstrap';
 
 class NavigationBar extends React.Component {
     render () {
