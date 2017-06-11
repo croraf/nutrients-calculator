@@ -1,19 +1,18 @@
 import React from 'react';
 
 import {CalculatorForm} from './CalculatorForm/CalculatorForm';
+import {NutritionResultsTable} from './NutritionResultsTable';
 
 class Calculator extends React.Component {
     render () {
 
-        const selectedNutrientsList = [
-            {name: 'oat', quantity: 100},
-            {name: 'corn', quantity: 200}
-        ];
         return (
-            <div style={{padding: '10px'}}>
+            <div style={{padding: '0px'}}>
                 <CalculatorForm 
-                    onSubmit={(values) => {console.log('submitting: ' + JSON.stringify(values));}}
-                    selectedNutrientsList={selectedNutrientsList} />
+                    onSubmit={(values) => {console.log('submitting: ' + JSON.stringify(values));}} />
+                
+                <NutritionResultsTable />
+                
             </div>
         );
     }

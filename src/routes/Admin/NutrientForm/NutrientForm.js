@@ -101,8 +101,6 @@ class NutrientForm extends React.Component {
 }
 
 const initialValues = {
-    formControlsText: 'vedraf',
-    formControlsPassword: 'abc'
 };
 
 const NutrientFormReduxWrapper = reduxForm({
