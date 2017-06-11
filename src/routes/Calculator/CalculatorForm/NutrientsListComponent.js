@@ -16,7 +16,8 @@ class NutrientsListComponent extends React.Component {
 
                 <Row>
                     <Col xs={12} style={{display: 'flex', justifyContent: 'center'}}>
-                        <Button type='button' onClick={() => fields.push({})}>+ Add nutrient</Button>
+                        <Button type='button' onClick={() => fields.push({name: '', quantity: 0})}>+ Add nutrient</Button>
+                        <Button type='submit'>Calculate</Button>
                     </Col>
                 </Row>
             </div>

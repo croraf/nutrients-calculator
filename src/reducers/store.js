@@ -10,11 +10,11 @@ import {saveReducer} from './reducers';
 import {testCaseActive} from 'modules/testCase';
 import {debounceReducer} from 'modules/debounceField';
 import {draggableListsReducer} from 'modules/draggableList';
+import {ingredientsReducer} from 'modules/ingredients';
 
 const createReducer = (asyncReducers) => (
     combineReducers({
-        draggableList: draggableListsReducer,
-        debounce: debounceReducer,
+        ingredients: ingredientsReducer,
         testCaseActive: testCaseActive,
         save: saveReducer,
         form: formReducer,

@@ -19,7 +19,9 @@ const App = () => {
                     <Route
                         path="calculator"
                         getComponent={(nextState, cb) => {
-                            import('./routes/Calculator/Calculator').then((Calculator) => { cb(null, Calculator.Calculator); });
+                            import('./routes/Calculator/CalculatorContainer').then(
+                                (CalculatorContainer) => { cb(null, CalculatorContainer.CalculatorContainer); }
+                            );
                         }}/>
 
                     <Route
