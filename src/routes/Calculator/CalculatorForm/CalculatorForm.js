@@ -7,13 +7,26 @@ import {FieldComponent} from './FieldComponent';
 
 import {NutrientRow} from './NutrientRow';
 
-const renderNutrients = ({ fields, meta: { error, submitFailed } }) => (
-  <ul>
-    {fields.map((item, index) => (
-        <NutrientRow key={index} item={item} nutrientName={item.nutrientName} quantity={item.quantity} />
-    ))}
-  </ul>
-);
+class NutrientsListComponent extends React.Component {
+    
+    render() {
+
+        const {fields, meta: {error, submitFailed}} = this.props;
+        return (
+            <div>
+                {fields.map((item, index) => (
+                    <NutrientRow key={index} item={item} index={index} fields={fields} />
+                ))}
+
+                <Row>
+                    <Col xs={12}>
+                        <Button type='button' onClick={() => fields.push({})}>+ Add</Button>
+                    </Col>
+                </Row>
+            </div>
+        );
+    }
+}
 
 class CalculatorForm extends React.Component {
 
@@ -23,13 +36,7 @@ class CalculatorForm extends React.Component {
         return (
             <form onSubmit={handleSubmit}>
                 <Grid>
-
-                    <FieldArray name='nutrients' component={renderNutrients} />
-
-                    <Row>
-                        <Button onClick={addNutrientHandler}>+ Add</Button>
-                    </Row>
-
+                    <FieldArray name='nutrients' component={NutrientsListComponent} />
                 </Grid>
                 
             </form>
@@ -39,7 +46,7 @@ class CalculatorForm extends React.Component {
 }
 
 const initialValues = {
-    nutrients: [{nutrientName: 'oat', quantity: 10}, {nutrientName: 'corn', quantity: 20}]
+    nutrients: [{name: 'rafa', quantity: 10}]
 };
 
 const CalculatorFormReduxWrapper = reduxForm({

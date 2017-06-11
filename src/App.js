@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Router, Route } from 'react-router';
+import { Router, Route, IndexRedirect } from 'react-router';
 
 import {enhancedHistory} from './reducers/store';
 
@@ -13,12 +13,8 @@ const App = () => {
             <Header />
             
             <Router history={enhancedHistory}>
-                <div>
-                    <Route 
-                        path="main"
-                        getComponent={(nextState, cb) => {
-                            import('./routes/Main/Main').then((Main) => { cb(null, Main.Main); });
-                        }}/>
+                <Route path='/'>
+                    <IndexRedirect to='/calculator' />
 
                     <Route
                         path="calculator"
@@ -31,7 +27,7 @@ const App = () => {
                         getComponent={(nextState, cb) => {
                             import('./routes/Admin/Admin').then((Admin) => { cb(null, Admin.Admin); });
                         }}/>
-                </div>
+                </Route>
             </Router>
         </div>
     );

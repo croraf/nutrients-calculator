@@ -6,23 +6,26 @@ import {FieldComponent} from './FieldComponent';
 class NutrientRow extends React.Component {
     render () {
 
-        const {item} = this.props;
+        const {item, fields, index} = this.props;
 
         return (
             <Row>
                 <Col xs={8}>
                     <FieldComponent
-                        controlId={`${item}.nutrientName`}
+                        controlId={`${item}.name`}
                         type='text'
                         label='Nutrient name'
-                        placeholder='Enter text'/>
+                        placeholder='Enter nutrient name'/>
                 </Col>
-                <Col xs={4}>
+                <Col xs={3}>
                     <FieldComponent
                         controlId={`${item}.quantity`}
                         type='text'
-                        label='Serving size'
-                        placeholder='Enter text' />
+                        label='Serving size [g]'
+                        placeholder='Enter serving size' />
+                </Col>
+                <Col xs={1} style={{display: 'flex'}}>
+                    <button type='button' onClick={()=>{fields.remove(index);}}>Delete</button>
                 </Col>
             </Row>
         );
