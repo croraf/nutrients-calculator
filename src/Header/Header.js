@@ -7,14 +7,14 @@ class Header extends React.Component {
     render () {
         return (
             
-            <PageHeader style={{marginTop: '0px', paddingTop: '20px', paddingBottom: '20px', backgroundColor: 'lightblue'}}>
+            <PageHeader style={{marginTop: '0px', paddingTop: '10px', paddingBottom: '00px', backgroundColor: 'lightblue'}}>
                 <Grid>
                     <Row>
-                        <Col xs={6}>
+                        <Col xs={8}>
                             Whole protein calculator 
                         </Col>
                     
-                        <Col xs={6} style={{fontSize: '40%'}}>
+                        <Col xs={4} style={{fontSize: '40%'}}>
                             <NavigationBarContainer />
                         </Col>
                     </Row>
