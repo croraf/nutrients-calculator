@@ -7,7 +7,7 @@ class Header extends React.Component {
     render () {
         return (
             
-            <PageHeader style={{marginTop: '0px', paddingTop: '10px', paddingBottom: '00px', backgroundColor: 'lightblue'}}>
+            <PageHeader style={{marginTop: '0px', paddingTop: '10px', paddingBottom: '0px', backgroundColor: 'lightblue'}}>
                 <Grid>
                     <Row>
                         <Col xs={8}>
