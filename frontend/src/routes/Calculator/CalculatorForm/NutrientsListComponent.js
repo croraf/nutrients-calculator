@@ -13,7 +13,6 @@ class NutrientsListComponent extends React.Component {
                 {fields.map((item, index) => (
                     <NutrientRow key={index} item={item} index={index} fields={fields} />
                 ))}
-
                 <Row>
                     <Col xs={12} style={{display: 'flex', justifyContent: 'center'}}>
                         <Button type='button' onClick={() => fields.push({name: '', quantity: 0})}>+ Add nutrient</Button>

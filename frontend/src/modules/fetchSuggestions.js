@@ -1,7 +1,7 @@
 
-const fetchSkillsList = (text) => (dispatch) => {
+const fetchIngredientSuggestions = (text) => (dispatch) => {
     
-    dispatch({type: 'FETCHING_SKILLS_LIST'});
+    dispatch({type: 'FETCHING_INGREDIENTS_SUGGESTIONS'});
 
     /*const fetchSkillsList = new Promise((resolve, reject) => {
 
@@ -27,13 +27,13 @@ const fetchSkillsList = (text) => (dispatch) => {
     
 };
 
-const debounceReducer = (state={fetching: false, results: []}, action) => {
+const fetchSuggestionsReducer = (state={fetching: false, results: []}, action) => {
     switch (action.type) {
-    case 'FETCHING_SKILLS_LIST':
-        console.log('FETCHING_SKILLS_LIST');
+    case 'FETCHING_INGREDIENTS_SUGGESTIONS':
+        console.log('FETCHING_INGREDIENTS_SUGGESTIONS');
         return {fetching: true, results: state.results};
-    case 'SKILLS_LIST_RETRIEVED':
-        console.log('SKILLS_LIST_RETRIEVED: ' + action.results);
+    case 'SUGGESTIONS_RETRIEVED':
+        console.log('SUGGESTIONS_RETRIEVED: ' + action.results);
         return {fetching: false, results: action.results};
     default:
         return state;
@@ -41,4 +41,4 @@ const debounceReducer = (state={fetching: false, results: []}, action) => {
 };
 
 
-export {debounceReducer, fetchSkillsList};
+export {fetchSuggestionsReducer, fetchIngredientSuggestions};
