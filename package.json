@@ -1,0 +1,16 @@
+{
+  "name": "boilerplate-react-nodejs-project",
+  "version": "1.0.0",
+  "description": "Boilerplate: react-nodejs-project",
+  "main": "",
+  "scripts": {
+    "start": "node mockserver/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
