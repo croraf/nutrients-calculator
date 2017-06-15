@@ -1,6 +1,6 @@
 import "babel-polyfill";
 
-const path = require('path');
+import path from 'path';
 
 import {getNutritiveInfo} from './controllers/nutritiveInfo';
 import {getSuggestions} from './controllers/suggestions';
@@ -23,7 +23,10 @@ app.use(router.routes());
 
 app.use(async (ctx) => {
     console.log('serving static resource');
-    await send(ctx, ctx.path, { root: path.resolve(__dirname, '../../frontend') });
+    console.log(ctx.path);
+    let urlPath = ctx.path;
+    if (ctx.path === '/') urlPath = '/index.html';
+    await send(ctx, urlPath, { root: path.resolve(__dirname, '../../frontend') });
 });
 
 const port = process.env.PORT || 3000;
