@@ -55,9 +55,10 @@ server.listen(port, (err) => {
     console.log(`server is listening on ${port}`);
 });*/
 
+const path = require('path');
 const 
     Koa = require('koa'),
-    static = require('koa-static'),
+    /*static = require('koa-static'),*/
     send = require('koa-send'),
     router = require('koa-router')();
 
@@ -67,13 +68,15 @@ const app = new Koa();
 /*app.use(static(__dirname + '../dist/frontend'));*/
 
 router.get('/api/a', async (ctx, next) => {
-    console.log('tu sam');
+    console.log('serving api resource');
     ctx.body = 'hello rafa';
 })
+
 app.use(router.routes());
 
-app.use((ctx, next) => {
-    send(this, __dirname + '/../frontend/index.html');
+app.use(async (ctx) => {
+    console.log('serving static resource');
+    await send(ctx, ctx.path, { root: path.resolve(__dirname, '../frontend') });
 });
 
 const port = process.env.PORT || 3000;
