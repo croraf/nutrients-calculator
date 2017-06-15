@@ -1,5 +1,5 @@
 
-const http = require('http');
+/*const http = require('http');
 var url = require('url');
 var fs = require('fs');
 
@@ -13,11 +13,19 @@ const requestHandler = (request, response) => {
         
         let resource;
         if (requestUrl.pathname === '/') {
-            resource = './index.html';
-        } else {
+
+            resource = '../frontend/index.html';
+        } else if (requestUrl.pathname.match(/\/dist\//)) {
+
+            resource = '../frontend' + requestUrl.pathname;
+        } else if (requestUrl.pathname.match(/\/api\//)){
+
             resource = '.' + requestUrl.pathname;
+        } else {
+            console.log('no root, no dist, no api request');
+            resource = './wrongpath';
         }
-        
+
         console.log(resource);
     
         var fileStream = fs.createReadStream(resource);
@@ -45,4 +53,29 @@ server.listen(port, (err) => {
     }
 
     console.log(`server is listening on ${port}`);
+});*/
+
+const 
+    Koa = require('koa'),
+    static = require('koa-static'),
+    send = require('koa-send'),
+    router = require('koa-router')();
+
+const app = new Koa();
+
+// serve static files in public folder (css, js etc)
+/*app.use(static(__dirname + '../dist/frontend'));*/
+
+router.get('/api/a', async (ctx, next) => {
+    console.log('tu sam');
+    ctx.body = 'hello rafa';
+})
+app.use(router.routes());
+
+app.use((ctx, next) => {
+    send(this, __dirname + '/../frontend/index.html');
 });
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {console.log('listening on port:', port)});

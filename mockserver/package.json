@@ -1,0 +1,23 @@
+{
+  "name": "boilerplate-mockserver",
+  "version": "1.0.0",
+  "description": "Boilerplate: nodejs server",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha \"app/**/*-test.js\"",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.2.0",
+    "koa-router": "^7.2.0",
+    "koa-send": "^4.1.0",
+    "koa-static": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.1",
+    "mocha": "^3.2.0"
+  }
+}
