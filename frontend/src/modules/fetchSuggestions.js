@@ -1,4 +1,6 @@
 
+
+
 const fetchIngredientSuggestions = (text) => (dispatch) => {
     
     dispatch({type: 'FETCHING_INGREDIENTS_SUGGESTIONS'});
@@ -14,7 +16,7 @@ const fetchIngredientSuggestions = (text) => (dispatch) => {
         .then((response) => response.json())
         .then(responseList => {
             const resultsList = responseList.map((item) => item.name);
-            dispatch({type: 'SKILLS_LIST_RETRIEVED', results: resultsList});
+            dispatch({type: 'SUGGESTIONS_RETRIEVED', list: resultsList});
         });
 
     
@@ -23,18 +25,18 @@ const fetchIngredientSuggestions = (text) => (dispatch) => {
         dispatch({type: 'SKILLS_LIST_RETRIEVED', results: resultsList});
     });*/
 
-    console.log('fetchSkillsList method ended');
+    //console.log('fetchIngredientSuggestions method ended');
     
 };
 
-const fetchSuggestionsReducer = (state={fetching: false, results: []}, action) => {
+const fetchSuggestionsReducer = (state={fetching: false, list: []}, action) => {
     switch (action.type) {
     case 'FETCHING_INGREDIENTS_SUGGESTIONS':
         console.log('FETCHING_INGREDIENTS_SUGGESTIONS');
-        return {fetching: true, results: state.results};
+        return {fetching: true, list: state.list};
     case 'SUGGESTIONS_RETRIEVED':
-        console.log('SUGGESTIONS_RETRIEVED: ' + action.results);
-        return {fetching: false, results: action.results};
+        console.log('SUGGESTIONS_RETRIEVED: ' + action.list);
+        return {fetching: false, list: action.list};
     default:
         return state;
     }

@@ -7,7 +7,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    suggestions: ['ab', 'nc', 'asd']
+    suggestions: state.suggestions.list
 });
 
 const NutrientRowContainer = connect(mapStateToProps, mapDispatchToProps)(NutrientRow);

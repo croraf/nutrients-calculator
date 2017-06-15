@@ -6,10 +6,10 @@ import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-rou
 
 import { hashHistory } from 'react-router';
 
-import {testCaseActive} from 'modules/testCase';
-import {fetchSuggestionsReducer} from 'modules/fetchSuggestions';
-//import {draggableListsReducer} from 'modules/draggableList';
-import {ingredientsReducer} from 'modules/ingredients';
+import {testCaseActive} from './testCase';
+import {fetchSuggestionsReducer} from './fetchSuggestions';
+//import {draggableListsReducer} from './draggableList';
+import {ingredientsReducer} from './ingredients';
 
 const createReducer = (asyncReducers) => (
     combineReducers({

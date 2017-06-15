@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Router, Route, IndexRedirect } from 'react-router';
 
-import {enhancedHistory} from './reducers/store';
+import {enhancedHistory} from './modules/store';
 
 import {Header} from './Header/Header';
 
