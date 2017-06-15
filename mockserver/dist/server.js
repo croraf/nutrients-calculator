@@ -1,3 +1,4 @@
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 /*const http = require('http');
 var url = require('url');
@@ -56,29 +57,43 @@ server.listen(port, (err) => {
 });*/
 
 const path = require('path');
-const 
-    Koa = require('koa'),
-    /*static = require('koa-static'),*/
-    send = require('koa-send'),
-    router = require('koa-router')();
+const Koa = require('koa'),
+
+/*static = require('koa-static'),*/
+send = require('koa-send'),
+      router = require('koa-router')();
 
 const app = new Koa();
 
 // serve static files in public folder (css, js etc)
 /*app.use(static(__dirname + '../dist/frontend'));*/
 
-router.get('/api/a', async (ctx, next) => {
-    console.log('serving api resource');
-    ctx.body = 'hello rafa';
-})
+router.get('/api/a', (() => {
+    var _ref = _asyncToGenerator(function* (ctx, next) {
+        console.log('serving api resource');
+        ctx.body = 'hello rafa';
+    });
+
+    return function (_x, _x2) {
+        return _ref.apply(this, arguments);
+    };
+})());
 
 app.use(router.routes());
 
-app.use(async (ctx) => {
-    console.log('serving static resource');
-    await send(ctx, ctx.path, { root: path.resolve(__dirname, '../frontend') });
-});
+app.use((() => {
+    var _ref2 = _asyncToGenerator(function* (ctx) {
+        console.log('serving static resource');
+        yield send(ctx, ctx.path, { root: path.resolve(__dirname, '../../frontend') });
+    });
+
+    return function (_x3) {
+        return _ref2.apply(this, arguments);
+    };
+})());
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {console.log('listening on port:', port)});
+app.listen(port, () => {
+    console.log('listening on port:', port);
+});

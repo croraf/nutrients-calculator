@@ -4,7 +4,7 @@
   "description": "Boilerplate: react-nodejs-project",
   "main": "",
   "scripts": {
-    "start": "node mockserver/server.js"
+    "start": "node mockserver/dist/server.js"
   },
   "keywords": [],
   "author": "",
