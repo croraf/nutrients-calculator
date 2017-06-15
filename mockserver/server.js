@@ -11,12 +11,21 @@ const requestHandler = (request, response) => {
 
         console.log(requestUrl.pathname);
         
+        let resource;
+        if (requestUrl.pathname === '/') {
+            resource = './index.html';
+        } else {
+            resource = '.' + requestUrl.pathname;
+        }
+        
+        console.log(resource);
     
-        var fileStream = fs.createReadStream('.' + requestUrl.pathname);
+        var fileStream = fs.createReadStream(resource);
+
         fileStream.pipe(response);  // do NOT use fs's sync methods ANYWHERE on production (e.g readFileSync) 
         fileStream.on('error', (e) => {
-            response.writeHead(403);     // assume the file doesn't exist
-            response.write('ja sam rafo');
+            response.writeHead(404);     // assume the file doesn't exist
+            response.write('Rafa: resource does not exist\n\n', e);
             response.end();
         });
     } catch (e) {
