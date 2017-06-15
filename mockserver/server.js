@@ -3,8 +3,6 @@ const http = require('http');
 var url = require('url');
 var fs = require('fs');
 
-const port = 3000;
-
 const requestHandler = (request, response) => { 
 
     try {
@@ -30,7 +28,7 @@ const requestHandler = (request, response) => {
 
 const server = http.createServer(requestHandler);
 
-server.listen(port, (err) => {  
+server.listen(process.env.PORT || 3000, (err) => {  
     if (err) {
         return console.log('something bad happened', err);
     }
