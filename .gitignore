@@ -1,4 +1,8 @@
-node_modules
+mockserver/node_modules
+frontend/node_modules
+
+mockserver/dist
 
 npm-debug.log*
+
 assets
