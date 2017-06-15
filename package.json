@@ -4,13 +4,26 @@
   "description": "Boilerplate: react-nodejs-project",
   "main": "",
   "scripts": {
-    "start": "node mockserver/dist/server.js"
+    "start": "npm --prefix mockserver start",
+    "postinstall-deprecated": "npm --prefix mockserver run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "koa": "^2.2.0",
+    "koa-router": "^7.2.0",
+    "koa-send": "^4.1.0",
+    "koa-static": "^3.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "eslint": "^3.16.1",
+    "mocha": "^3.2.0"
+  },
+  "cacheDirectories": ["frontend/node_modules", "mockserver/node_modules"],
+  "engines": {
+    "node": "7.10.0"
   }
 }
