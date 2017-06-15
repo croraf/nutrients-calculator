@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server",
     "dev:no-server": "webpack --progress --watch",
     "compile": "webpack",
-    "start": "webpack"
+    "start": "node mockserver/server.js"
   },
   "keywords": [],
   "author": "",
