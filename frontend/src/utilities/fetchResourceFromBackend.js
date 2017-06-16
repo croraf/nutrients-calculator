@@ -1,8 +1,13 @@
 
-const port = process.env.PORT || 3000;
-const production = process.env.NODE_ENV === 'production';
+/*const port = process.env.PORT || 3000;
+const production = process.env.NODE_ENV === 'production';*/
 
-const backend = production ? 'https://wholeprotein.herokuapp.com:' + port : 'http://localhost:' + port;
+
+// const backend = true ? 'https://wholeprotein.herokuapp.com:' + port : 'http://localhost:' + port;
+
+let backend = '';
+
+if (window.location.hostname === 'localhost') backend = window.location.protocol + '//' + window.location.hostname + ':3000';
 
 const fetchResourceFromBackend = (resource) => {
 
