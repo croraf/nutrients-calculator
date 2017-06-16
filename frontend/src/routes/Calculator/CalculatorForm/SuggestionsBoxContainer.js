@@ -15,9 +15,9 @@ class SuggestionsBox extends React.Component {
     }
 }
 
-/*const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
 
-});*/
+});
 
 const mapStateToProps = (state) => ({
     suggestions:  state.suggestions.list

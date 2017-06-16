@@ -1,5 +1,4 @@
-
-
+import {fetchResourceFromBackend} from 'utilities/fetchResourceFromBackend';
 
 const fetchIngredientSuggestions = (text) => (dispatch) => {
     
@@ -12,13 +11,16 @@ const fetchIngredientSuggestions = (text) => (dispatch) => {
         }, 3000);
     });*/
 
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then((response) => response.json())
-        .then(responseList => {
-            const resultsList = responseList.map((item) => item.name);
-            dispatch({type: 'SUGGESTIONS_RETRIEVED', list: resultsList});
-        });
-
+    console.log(text);
+    if (text === '') {
+        dispatch({type: 'SUGGESTIONS_RETRIEVED', list: []});
+    } else {
+        fetchResourceFromBackend('/api/suggestions/' + text)
+            .then(resultsList => {
+                dispatch({type: 'SUGGESTIONS_RETRIEVED', list: resultsList});
+            });
+    }
+    
     
     /*fetchSkillsList.then((resultsList) => {
 

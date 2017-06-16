@@ -8,9 +8,15 @@ import {SuggestionsBoxContainer} from './SuggestionsBoxContainer';
 
 class FormControlWrapper extends React.Component {
 
-    onChangeHandler = (value) => {
-        this.props.input.onChange(value);
-        this.props.fetchIngredientSuggestions(value);
+    onChangeHandler = (event) => {
+
+        this.props.input.onChange(event);
+        this.props.fetchIngredientSuggestions(event.target.value);
+    }
+    onFocusHandler = (event) => {
+
+        this.props.input.onFocus(event);
+        this.props.fetchIngredientSuggestions(event.target.value);
     }
 
     render () {
@@ -19,7 +25,11 @@ class FormControlWrapper extends React.Component {
 
         return (
             <div>
-                <FormControl {...input} onChange={this.onChangeHandler} {...props} />
+                {/*Enhanced FormControl if it is the name of the ingredient, rather than quantity*/}
+                {input.name.match(/\.name$/) ?
+                    <FormControl {...input} onChange={this.onChangeHandler} onFocus={this.onFocusHandler} autoComplete="off" {...props} />
+                    : <FormControl {...input} {...props} />
+                }
                 
                 {meta.active && input.name.match(/\.name$/) && <SuggestionsBoxContainer />}
             </div>
