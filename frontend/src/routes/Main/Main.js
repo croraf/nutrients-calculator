@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
+import {Grid, Row, Col} from 'react-materialize';
 
 import {ScriptCodePanel} from './ScriptCode/ScriptCodePanel';
 import {TestHierarchyContainer} from './Hierarchy/TestHierarchyContainer';
@@ -10,8 +10,8 @@ class Main extends React.Component {
         return (
             <Grid>
                 <Row>
-                    <Col xs={4}><TestHierarchyContainer /></Col>
-                    <Col xs={8}><ScriptCodePanel /></Col>
+                    <Col s={4}><TestHierarchyContainer /></Col>
+                    <Col s={8}><ScriptCodePanel /></Col>
                 </Row>
             </Grid>
             

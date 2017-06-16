@@ -48,7 +48,7 @@ class NutritionResultsTable extends React.Component {
         );
 
         return (
-            <div style={{marginLeft: '40px', marginRight: '40px', marginTop: '40px'}}>
+            <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '30px'}}>
                 
                 <ReactTable 
                     data={data}

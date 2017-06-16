@@ -1,7 +1,8 @@
 import React from 'react';
 
 import {reduxForm, FieldArray} from 'redux-form';
-import {/*Checkbox, Radio, */Grid} from 'react-bootstrap';
+/*import {Checkbox, Radio, Grid} from 'react-bootstrap';*/
+
 
 import {NutrientsListComponent} from './NutrientsListComponent';
 
@@ -12,10 +13,7 @@ class CalculatorForm extends React.Component {
         const {handleSubmit} = this.props;
         return (
             <form onSubmit={handleSubmit}>
-                <Grid>
-                    <FieldArray name='nutrients' component={NutrientsListComponent} />
-                </Grid>
-                
+                <FieldArray name='nutrients' component={NutrientsListComponent} />
             </form>
         );
     }

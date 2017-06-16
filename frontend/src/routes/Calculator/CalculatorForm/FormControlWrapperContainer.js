@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {FormControl} from 'react-bootstrap';
+
+import TextField from 'material-ui/TextField';
 
 import {fetchIngredientSuggestions} from 'modules/fetchSuggestions';
 
@@ -21,15 +22,19 @@ class FormControlWrapper extends React.Component {
 
     render () {
 
-        const {input, meta, fetchIngredientSuggestions, ...props} = this.props;
+        const {input, meta, fetchIngredientSuggestions, label, ...props} = this.props;
 
         return (
             <div>
                 {/*Enhanced FormControl if it is the name of the ingredient, rather than quantity*/}
-                {input.name.match(/\.name$/) ?
+                {/*{input.name.match(/\.name$/) ?
                     <FormControl {...input} onChange={this.onChangeHandler} onFocus={this.onFocusHandler} autoComplete="off" {...props} />
                     : <FormControl {...input} {...props} />
-                }
+                }*/}
+                <TextField
+                    floatingLabelText={label}
+                    fullWidth={true}
+                    />
                 
                 {meta.active && input.name.match(/\.name$/) && <SuggestionsBoxContainer />}
             </div>

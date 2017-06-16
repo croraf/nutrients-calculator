@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {reduxForm} from 'redux-form';
-import {/*Checkbox, Radio, */Button, Grid, Row, Col} from 'react-bootstrap';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import {FieldComponent} from './FieldComponent';
 /*import {DebounceFieldComponent} from './DebounceFieldComponent';*/
@@ -9,14 +9,16 @@ import {ProteinsComponent} from './ProteinsComponent';
 import {FatsComponent} from './FatsComponent';
 import {CarbohidratesComponent} from './CarbohidratesComponent';
 
+import {Grid, Row, Col} from 'react-flexbox-grid';
+
 class NutrientForm extends React.Component {
 
     render () {
         return (
             <form onSubmit={this.props.handleSubmit}>
-                <Grid>
+                <Grid fluid={true}>
                     <Row>
-                        <Col xs={12} xsOffset={0}>
+                        <Col xs={12} offset={0}>
                             <FieldComponent
                                 controlId='name'
                                 type='text'
@@ -30,7 +32,7 @@ class NutrientForm extends React.Component {
                     <CarbohidratesComponent />
 
                     <Row>
-                        <Col xs={12} xsOffset={0}>
+                        <Col xs={12} offset={0}>
                             <FieldComponent
                                 controlId='Source'
                                 type='text'
@@ -39,61 +41,17 @@ class NutrientForm extends React.Component {
                         </Col>
                     </Row>
                         
-                            {/*<FieldComponent 
-                                controlId='formControlsSelect'
-                                label='Select'
-                                componentClass='select' >
-                                    <option value='select'>select</option>
-                                    <option value='other'>...</option>
-                            </FieldComponent>*/}
-
-                            {/*<FieldComponent 
-                                controlId='formControlsSelectMultiple'
-                                label='SelectMultiple'
-                                componentClass='select'
-                                multiple={true}>
-                                    <option value='select'>select-multiple</option>
-                                    <option value='other'>...</option>
-                            </FieldComponent>*/}
-
-                            {/*<FieldComponent 
-                                controlId='formControlsTextarea'
-                                label='Textarea'
-                                componentClass='textarea' 
-                                placeholder='textarea' />
-
-                            <DebounceFieldComponent 
-                                controlId='formControlsDebounceInput'
-                                label='Debounce Input'
-                                componentClass='input' 
-                                placeholder='input' />*/}
-
-                            {/*<FieldComponent 
-                                controlId='formControlsStatic'
-                                label='Static text'
-                                componentClass='static'
-                                static>
-                                email@example.com
-                            </FieldComponent>
-
-                            <FormGroup>
-                                <ControlLabel>Static text</ControlLabel>
-                                <FormControl.Static>
-                                    email@example.com
-                                </FormControl.Static>
-                            </FormGroup>*/}
                     <Row>
-                        <div style={{display: 'flex', justifyContent: 'center'}}>
-                            <Button type='submit' disabled={!this.props.dirty}>
+                        <Col xs={12}  style={{display: 'flex', justifyContent: 'center'}}>
+                            <RaisedButton type='submit' disabled={false && !this.props.dirty}  style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} >
                                 Save nutrient
-                            </Button>
-                            <Button type='button' disabled={!this.props.dirty} onClick={this.props.reset}>
+                            </RaisedButton>
+                            <RaisedButton type='button' disabled={false && !this.props.dirty} onClick={this.props.reset}  style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} >
                                 Cancel
-                            </Button>
-                        </div>
+                            </RaisedButton>
+                        </Col>
                     </Row>
                 </Grid>
-                
             </form>
         );
     }

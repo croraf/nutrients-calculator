@@ -9,7 +9,7 @@ class Calculator extends React.Component {
         const {calculateHandler} = this.props;
 
         return (
-            <div style={{padding: '0px'}}>
+            <div style={{padding: '20px'}}>
                 <CalculatorForm 
                     onSubmit={(values) => {calculateHandler(values.nutrients);}} />
                 

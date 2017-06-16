@@ -1,7 +1,9 @@
 import React from 'react';
-import {Row, Col, Button} from 'react-bootstrap';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import {NutrientRow} from './NutrientRow';
+
+import {Row, Col, Grid} from 'react-flexbox-grid';
 
 class NutrientsListComponent extends React.Component {
     
@@ -9,17 +11,17 @@ class NutrientsListComponent extends React.Component {
 
         const {fields, meta: {error, submitFailed}} = this.props;
         return (
-            <div>
+            <Grid>
                 {fields.map((item, index) => (
                     <NutrientRow key={index} item={item} index={index} fields={fields} />
                 ))}
-                <Row>
+                <Row style={{paddingTop: '10px'}}>
                     <Col xs={12} style={{display: 'flex', justifyContent: 'center'}}>
-                        <Button type='button' onClick={() => fields.push({name: '', quantity: 0})}>+ Add nutrient</Button>
-                        <Button type='submit'>Calculate</Button>
+                        <RaisedButton style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} type='button' onClick={() => fields.push({name: '', quantity: 0})}>+ Add nutrient</RaisedButton>
+                        <RaisedButton style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} type='submit'>Calculate</RaisedButton>
                     </Col>
                 </Row>
-            </div>
+            </Grid>
         );
     }
 }
