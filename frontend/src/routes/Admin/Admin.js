@@ -1,12 +1,15 @@
 import React from 'react';
 
-import {NutrientForm} from './NutrientForm/NutrientForm';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
 import { submit } from 'redux-form';
+
+
+import {NutrientForm} from './NutrientForm/NutrientForm';
+import {IngredientsList} from './IngredientsList';
 
 class Admin extends React.Component {
 
@@ -57,6 +60,8 @@ class Admin extends React.Component {
                     
                     <NutrientForm onSubmit={(values) => {console.log('submitting: ' + JSON.stringify(values));}}  />
                 </Dialog>
+
+                <IngredientsList />
             </div>
             
         );
