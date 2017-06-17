@@ -3,48 +3,23 @@ import {connect} from 'react-redux';
 
 import TextField from 'material-ui/TextField';
 
-import {fetchIngredientSuggestions} from 'modules/fetchSuggestions';
-
-import {SuggestionsBoxContainer} from './SuggestionsBoxContainer';
-
 import AutoComplete from 'material-ui/AutoComplete';
 
 class FormControlWrapper extends React.Component {
 
-    /*onChangeHandler = (event) => {
-
-        this.props.input.onChange(event);
-        this.props.fetchIngredientSuggestions(event.target.value);
-    }
-    onFocusHandler = (event) => {
-
-        this.props.input.onFocus(event);
-        this.props.fetchIngredientSuggestions(event.target.value);
-    }*/
-
     render () {
 
-        //have to catch fetchIngredientSuggestions not to pass it to inner components 
-        const {input, meta, /*fetchIngredientSuggestions,*/ placeholder, label, ...props} = this.props;
+        const {input, meta, dataSource, label, placeholder, ...props} = this.props;
 
         return (
             <div>
-                {/*Enhanced FormControl if it is the ingredient name control, rather than quantity*/}
-                {/*<TextField
-                        {...input}
-                        {...props}
-                        autoComplete="off"
-                        floatingLabelText={label}
-                        fullWidth={true}
-                        onChange={this.onChangeHandler}
-                        onFocus={this.onFocusHandler}
-                        />*/}
+                {/*AutoComplete if it is the ingredient name from control, rather than quantity*/}
                 {input.name.match(/\.name$/) ?
                     
                     <AutoComplete
                         {...input}
                         {...props}
-                        dataSource={['a', 'aab']}
+                        dataSource={dataSource}
                         
                         floatingLabelText={label}
                         fullWidth={true}
@@ -60,7 +35,6 @@ class FormControlWrapper extends React.Component {
                         />
                 }
                 
-                {/*{meta.active && input.name.match(/\.name$/) && <SuggestionsBoxContainer />}*/}
             </div>
         );
     }
@@ -72,7 +46,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-
+    dataSource: state.suggestions.list //['a', 'aab']
 });
 
 const FormControlWrapperContainer = connect(mapStateToProps, mapDispatchToProps)(FormControlWrapper);

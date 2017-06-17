@@ -1,5 +1,7 @@
 import {fetchResourceFromBackend} from 'utilities/fetchResourceFromBackend';
 
+import {store} from './store';
+
 const fetchIngredientSuggestions = (text) => (dispatch) => {
     
     dispatch({type: 'FETCHING_INGREDIENTS_SUGGESTIONS'});
@@ -30,6 +32,9 @@ const fetchIngredientSuggestions = (text) => (dispatch) => {
     //console.log('fetchIngredientSuggestions method ended');
     
 };
+
+//fake fetching of ingredient names
+setTimeout(() => {store.dispatch(fetchIngredientSuggestions('a'));}, 1000);
 
 const fetchSuggestionsReducer = (state={fetching: false, list: []}, action) => {
     switch (action.type) {
