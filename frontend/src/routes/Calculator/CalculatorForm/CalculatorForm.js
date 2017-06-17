@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {reduxForm, FieldArray} from 'redux-form';
-/*import {Checkbox, Radio, Grid} from 'react-bootstrap';*/
 
 
 import {NutrientsListComponent} from './NutrientsListComponent';

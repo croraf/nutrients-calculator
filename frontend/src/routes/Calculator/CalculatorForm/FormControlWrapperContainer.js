@@ -7,9 +7,11 @@ import {fetchIngredientSuggestions} from 'modules/fetchSuggestions';
 
 import {SuggestionsBoxContainer} from './SuggestionsBoxContainer';
 
+import AutoComplete from 'material-ui/AutoComplete';
+
 class FormControlWrapper extends React.Component {
 
-    onChangeHandler = (event) => {
+    /*onChangeHandler = (event) => {
 
         this.props.input.onChange(event);
         this.props.fetchIngredientSuggestions(event.target.value);
@@ -18,18 +20,17 @@ class FormControlWrapper extends React.Component {
 
         this.props.input.onFocus(event);
         this.props.fetchIngredientSuggestions(event.target.value);
-    }
+    }*/
 
     render () {
 
         //have to catch fetchIngredientSuggestions not to pass it to inner components 
-        const {input, meta, fetchIngredientSuggestions, placeholder, label, ...props} = this.props;
+        const {input, meta, /*fetchIngredientSuggestions,*/ placeholder, label, ...props} = this.props;
 
         return (
             <div>
                 {/*Enhanced FormControl if it is the ingredient name control, rather than quantity*/}
-                {input.name.match(/\.name$/) ?
-                    <TextField
+                {/*<TextField
                         {...input}
                         {...props}
                         autoComplete="off"
@@ -37,17 +38,29 @@ class FormControlWrapper extends React.Component {
                         fullWidth={true}
                         onChange={this.onChangeHandler}
                         onFocus={this.onFocusHandler}
-                        />
+                        />*/}
+                {input.name.match(/\.name$/) ?
+                    
+                    <AutoComplete
+                        {...input}
+                        {...props}
+                        dataSource={['a', 'aab']}
+                        
+                        floatingLabelText={label}
+                        fullWidth={true}
+                        autoComplete="off" /> 
+                    
                     : <TextField
                         {...input}
                         {...props}
-                        autoComplete="off"
+                        
                         floatingLabelText={label}
                         fullWidth={true}
+                        autoComplete="off"
                         />
                 }
                 
-                {meta.active && input.name.match(/\.name$/) && <SuggestionsBoxContainer />}
+                {/*{meta.active && input.name.match(/\.name$/) && <SuggestionsBoxContainer />}*/}
             </div>
         );
     }
@@ -55,7 +68,7 @@ class FormControlWrapper extends React.Component {
 
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchIngredientSuggestions: (value) => {dispatch(fetchIngredientSuggestions(value));}
+    /*fetchIngredientSuggestions: (value) => {dispatch(fetchIngredientSuggestions(value));}*/
 });
 
 const mapStateToProps = (state) => ({
