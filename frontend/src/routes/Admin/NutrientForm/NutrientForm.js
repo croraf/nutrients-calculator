@@ -16,7 +16,7 @@ class NutrientForm extends React.Component {
     render () {
         return (
             <form onSubmit={this.props.handleSubmit}>
-                <Grid fluid={true}>
+                <Grid fluid={true} style={{padding: '0px'}}>
                     <Row>
                         <Col xs={12} offset={0}>
                             <FieldComponent
