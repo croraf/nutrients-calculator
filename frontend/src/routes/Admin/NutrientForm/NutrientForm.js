@@ -41,7 +41,7 @@ class NutrientForm extends React.Component {
                         </Col>
                     </Row>
                         
-                    <Row>
+                    {/*<Row>
                         <Col xs={12}  style={{display: 'flex', justifyContent: 'center'}}>
                             <RaisedButton type='submit' disabled={false && !this.props.dirty}  style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} >
                                 Save nutrient
@@ -50,7 +50,7 @@ class NutrientForm extends React.Component {
                                 Cancel
                             </RaisedButton>
                         </Col>
-                    </Row>
+                    </Row>*/}
                 </Grid>
             </form>
         );

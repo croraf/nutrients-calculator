@@ -6,6 +6,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
+import { submit } from 'redux-form';
+
 class Admin extends React.Component {
 
     state = {
@@ -19,6 +21,10 @@ class Admin extends React.Component {
     handleClose = () => {
         this.setState({open: false});
     }
+    
+    handleSave = () => {
+        this.props.remoteSubmit();
+    }
 
     render () {
 
@@ -27,7 +33,7 @@ class Admin extends React.Component {
             label="Save ingredient"
             primary={true}
             keyboardFocused={true}
-            onTouchTap={this.handleClose}
+            onTouchTap={this.handleSave}
             />,
             <FlatButton
             label="Cancel"
@@ -43,13 +49,13 @@ class Admin extends React.Component {
                 <Dialog
                     title="Define ingredient"
                     actions={actions}
-                    modal={false}
+                    modal={true}
                     open={this.state.open}
                     onRequestClose={this.handleClose}
                     autoScrollBodyContent={true}
                     >
                     
-                    <NutrientForm onSubmit={(values) => {console.log('submitting: ' + JSON.stringify(values));}} />
+                    <NutrientForm onSubmit={(values) => {console.log('submitting: ' + JSON.stringify(values));}}  />
                 </Dialog>
             </div>
             
@@ -57,4 +63,16 @@ class Admin extends React.Component {
     }
 }
 
-export {Admin};
+import {connect} from 'react-redux';
+
+const mapDispatchToProps = (dispatch) => ({
+    remoteSubmit: () => {dispatch(submit('manageNutrients'));}
+});
+
+const mapStateToProps = (state) => ({
+
+});
+
+const AdminContainer = connect(mapStateToProps, mapDispatchToProps)(Admin);
+
+export {AdminContainer as Admin};
