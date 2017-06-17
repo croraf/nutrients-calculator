@@ -5,6 +5,8 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 
+import {white} from 'material-ui/styles/colors';
+
 class MyMenu extends React.Component {
     render () {
 
@@ -15,7 +17,7 @@ class MyMenu extends React.Component {
                 onItemTouchTap={navigate}
                 iconButtonElement={
                     <IconButton>
-                        <NavigationMenu key='3' style={{color: '#ffffff', fill: '#ffffff'}} />
+                        <NavigationMenu color={white} />
                     </IconButton>
                 }
                 targetOrigin={{horizontal: 'right', vertical: 'top'}}

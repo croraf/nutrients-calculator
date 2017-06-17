@@ -10,7 +10,7 @@ class Header extends React.Component {
                 <AppBar
                     title="Whole protein calculator"
                     iconElementRight={<MyMenuContainer />}
-                    iconElementLeft={null}
+                    iconElementLeft={<div />}
                 />
             </div>
         );
