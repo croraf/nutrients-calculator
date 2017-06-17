@@ -22,19 +22,28 @@ class FormControlWrapper extends React.Component {
 
     render () {
 
-        const {input, meta, fetchIngredientSuggestions, label, ...props} = this.props;
+        //have to catch fetchIngredientSuggestions not to pass it to inner components 
+        const {input, meta, fetchIngredientSuggestions, placeholder, label, ...props} = this.props;
 
         return (
             <div>
-                {/*Enhanced FormControl if it is the name of the ingredient, rather than quantity*/}
-                {/*{input.name.match(/\.name$/) ?
-                    <FormControl {...input} onChange={this.onChangeHandler} onFocus={this.onFocusHandler} autoComplete="off" {...props} />
-                    : <FormControl {...input} {...props} />
-                }*/}
-                <TextField
-                    floatingLabelText={label}
-                    fullWidth={true}
-                    />
+                {/*Enhanced FormControl if it is the ingredient name control, rather than quantity*/}
+                {input.name.match(/\.name$/) ?
+                    <TextField
+                        {...input}
+                        {...props}
+                        floatingLabelText={label}
+                        fullWidth={true}
+                        onChange={this.onChangeHandler}
+                        onFocus={this.onFocusHandler}
+                        />
+                    : <TextField
+                        {...input}
+                        {...props}
+                        floatingLabelText={label}
+                        fullWidth={true}
+                        />
+                }
                 
                 {meta.active && input.name.match(/\.name$/) && <SuggestionsBoxContainer />}
             </div>
