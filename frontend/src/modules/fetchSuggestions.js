@@ -50,4 +50,4 @@ const fetchSuggestionsReducer = (state={fetching: false, list: []}, action) => {
 };
 
 
-export {fetchSuggestionsReducer, fetchIngredientSuggestions};
+export {fetchSuggestionsReducer};
