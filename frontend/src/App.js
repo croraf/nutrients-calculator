@@ -21,6 +21,12 @@ const App = () => {
                         <IndexRedirect to='/calculator' />
 
                         <Route
+                            path="login"
+                            getComponent={(nextState, cb) => {
+                                import('./routes/Login/Login').then((Login) => { cb(null, Login.Login); });
+                            }}/>
+
+                        <Route
                             path="calculator"
                             getComponent={(nextState, cb) => {
                                 import('./routes/Calculator/CalculatorContainer').then(

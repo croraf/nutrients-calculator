@@ -25,7 +25,7 @@ class MyMenu extends React.Component {
             >
                 <MenuItem primaryText="Calculator" value='/calculator' checked={activeLink === '/calculator'}/>
                 <MenuItem primaryText="Admin" value='/admin' checked={activeLink === '/admin'}/>
-                <MenuItem primaryText="Sign out" value='/signOut' checked={activeLink === '/signOut'} />
+                <MenuItem primaryText="Sign out" value='/login' />
             </IconMenu>
         );
     }
