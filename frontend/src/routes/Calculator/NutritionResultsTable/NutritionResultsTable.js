@@ -9,12 +9,22 @@ class NutritionResultsTable extends React.Component {
 
         const {nutrientsList} = this.props;
 
-        const ingredientColumns = Object.keys(nutrientsList).map((key, index) => ({
-            Header: key + ' [' + nutrientsList[key].quantity + 'g]',
-            accessor: 'ingredients[' + index + ']',
-            /*width: 180,*/
-            minWidth: 150
-        }));
+        const ingredientColumns = nutrientsList.map((ingredient, index) => {
+            if (ingredient.name === undefined) {
+                return {
+                    Header: '---',
+                    accessor: 'ingredients[' + index + ']',
+                    width: 50
+                };
+            } else {
+                return {
+                    Header: ingredient.name + ' [' + (ingredient.quantity || '--- ') + 'g]',
+                    accessor: 'ingredients[' + index + ']',
+                    /*width: 180,*/
+                    minWidth: 150
+                };
+            }
+        });
 
         const columns = 
             [{Header: '', accessor: 'component'}]
@@ -24,18 +34,18 @@ class NutritionResultsTable extends React.Component {
 
         const dataRows = [{
             component: 'Proteins',
-            ingredients: Object.keys(nutrientsList).map((key) => (
-                nutrientsList[key].nutrientsProportion[0]
+            ingredients: nutrientsList.map((nutrient) => (
+                nutrient.nutrientsProportion[0] || '---'
             ))
         },{
             component: 'Fats',
-            ingredients: Object.keys(nutrientsList).map((key) => (
-                nutrientsList[key].nutrientsProportion[1]
+            ingredients: nutrientsList.map((nutrient) => (
+                nutrient.nutrientsProportion[1] || '---'
             ))
         },{
             component: 'Carbohydrates',
-            ingredients: Object.keys(nutrientsList).map((key) => (
-                nutrientsList[key].nutrientsProportion[2]
+            ingredients: nutrientsList.map((nutrient) => (
+                nutrient.nutrientsProportion[2] || '---'
             ))
         }];
 
@@ -43,7 +53,7 @@ class NutritionResultsTable extends React.Component {
             Object.assign(
                 {},
                 item, 
-                {total: item.ingredients.reduce((x, y) => (x + y), 0)}
+                {total: item.ingredients.reduce((x, y) => {return y === '---' ? x : (x + y);}, 0)}
             )
         );
 

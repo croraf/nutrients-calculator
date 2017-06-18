@@ -18,7 +18,6 @@ class FormControlWrapper extends React.Component {
                     
                     <AutoComplete
                         {...input}
-                        {...props}
                         dataSource={dataSource}
                         
                         floatingLabelText={label}
@@ -27,7 +26,6 @@ class FormControlWrapper extends React.Component {
                     
                     : <TextField
                         {...input}
-                        {...props}
                         
                         floatingLabelText={label}
                         fullWidth={true}

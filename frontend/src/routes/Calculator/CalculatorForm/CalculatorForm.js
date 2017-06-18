@@ -20,7 +20,7 @@ class CalculatorForm extends React.Component {
 }
 
 const initialValues = {
-    nutrients: [{name: 'oat leafs', quantity: 50}, {name: 'Cornflex', quantity: 100}, {name: 'chockolate, dark', quantity: 150}]
+    nutrients: [{/*name: 'oat leafs', quantity: 50*/}, {/*name: 'Cornflex', quantity: 100*/}, {/*name: 'chockolate, dark', quantity: 150*/}]
 };
 
 const CalculatorFormReduxWrapper = reduxForm({

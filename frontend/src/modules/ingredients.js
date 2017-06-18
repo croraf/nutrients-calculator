@@ -6,12 +6,14 @@ const fetchNutrients = (ingredients) => (dispatch) => {
 
     new Promise((resolve, reject) => {
 
-        const nutrientsList = {};
+        const nutrientsList = [];
 
         ingredientsNames.forEach((ingredientName, index) => {
-            nutrientsList[ingredientName] = {};
-            nutrientsList[ingredientName].nutrientsProportion = [parseInt(Math.random()*100), parseInt(Math.random()*100), parseInt(Math.random()*100)];
-            nutrientsList[ingredientName].quantity = ingredients[index].quantity;
+            nutrientsList[index] = {name: ingredientName};
+            nutrientsList[index].nutrientsProportion = 
+                (ingredientName === undefined || ingredients[index].quantity === undefined) ? [] 
+                    : [parseInt(Math.random()*100), parseInt(Math.random()*100), parseInt(Math.random()*100)];
+            nutrientsList[index].quantity = ingredients[index].quantity;
         }, this);
 
         setTimeout(()=>{
@@ -36,7 +38,7 @@ const fetchNutrients = (ingredients) => (dispatch) => {
     
 };
 
-const ingredientsReducer = (state={fetching: false, nutrientsList: {}}, action) => {
+const ingredientsReducer = (state={fetching: false, nutrientsList: []}, action) => {
     switch (action.type) {
     case 'FETCHING_NUTRIENTS':
         console.log('FETCHING_NUTRIENTS: ' + action.ingredientsNames);
