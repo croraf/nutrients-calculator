@@ -5,10 +5,11 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha \"app/**/*-test.js\"",
-    "build": "babel src -d dist",
-    "start": "npm install && npm run build && node dist/server.js",
     "startLocal": "npm run build && node dist/server.js",
-    "dev": "nodemon src/server.js --exec babel-node"
+    "dev": "nodemon src/server.js --exec babel-node",
+    "compile": "babel src -d dist",
+    "installAndCompile": "npm install && npm run compile",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",

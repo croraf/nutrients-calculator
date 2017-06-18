@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server",
     "dev:no-server": "webpack --progress --watch",
     "compile": "webpack",
-    "start": "npm install && npm run compile"
+    "installAndCompile": "npm install && npm run compile"
   },
   "keywords": [],
   "author": "",

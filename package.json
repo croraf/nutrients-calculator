@@ -4,9 +4,10 @@
   "description": "Boilerplate: react-nodejs-project",
   "main": "",
   "scripts": {
-    "start": "npm --prefix frontend start && npm --prefix mockserver start",
     "compileFrontend": "npm --prefix frontend run compile",
-    "startMockserver": "npm --prefix mockserver start"
+    "startMockserver": "npm --prefix mockserver start",
+    "heroku-postbuild": "npm --prefix frontend run installAndCompile && npm --prefix mockserver run installAndCompile",
+    "start": "npm --prefix mockserver start"
   },
   "keywords": [],
   "author": "",
