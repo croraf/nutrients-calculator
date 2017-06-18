@@ -26,6 +26,8 @@ class MyTextField extends React.Component {
                 floatingLabelFixed={true} 
                 floatingLabelText={floatingLabelText}
                 type={type}
+                autoComplete='off'
+                style={{margin: 'auto'}}
             />
         );
     }
@@ -38,7 +40,7 @@ class LoginBox extends React.Component {
 
         return (
             <Paper style={style} zDepth={4}>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                     <Field 
                         name='username' 
                         component={MyTextField} 
@@ -49,8 +51,10 @@ class LoginBox extends React.Component {
                         component={MyTextField} 
                         floatingLabelText="Password"
                         type="password"/>
-                        
-                    <RaisedButton type='submit' label="Log in" primary={true} style={{margin: 12}} />
+
+                    <div>
+                        <RaisedButton type='submit' label="Log in" primary={true} style={{margin: '30px 0px 5px 0px'}} />
+                    </div>
                 </form>
             </Paper>
         );

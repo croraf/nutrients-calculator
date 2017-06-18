@@ -4,6 +4,7 @@ import path from 'path';
 
 import {getNutritiveInfo} from './controllers/nutritiveInfo';
 import {getSuggestions} from './controllers/suggestions';
+import {loginRequestHandler} from './controllers/login';
 
 const 
     Koa = require('koa'),
@@ -19,6 +20,7 @@ app.use(cors());
 // serve static files in public folder (css, js etc)
 /*app.use(static(__dirname + '../dist/frontend'));*/
 
+router.get('/api/login/', loginRequestHandler);
 router.get('/api/nutritiveInfo', getNutritiveInfo);
 router.get('/api/suggestions/:ingredient', getSuggestions);
 router.get('/api/suggestions/', getSuggestions);

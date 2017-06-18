@@ -10,9 +10,11 @@ import {testCaseActive} from './testCase';
 import {fetchSuggestionsReducer} from './fetchSuggestions';
 //import {draggableListsReducer} from './draggableList';
 import {nutrientsReducer} from './nutrients';
+import {loginReducer} from './login';
 
 const createReducer = (asyncReducers) => (
     combineReducers({
+        login: loginReducer,
         ingredients: nutrientsReducer,
         suggestions: fetchSuggestionsReducer,
         testCaseActive: testCaseActive,

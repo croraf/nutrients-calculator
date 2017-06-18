@@ -33,9 +33,6 @@ const fetchIngredientSuggestions = (text) => (dispatch) => {
     
 };
 
-//fake fetching of ingredient names
-setTimeout(() => {store.dispatch(fetchIngredientSuggestions(''));}, 1000);
-
 const fetchSuggestionsReducer = (state={fetching: false, list: []}, action) => {
     switch (action.type) {
     case 'FETCHING_INGREDIENTS_SUGGESTIONS':
@@ -51,3 +48,8 @@ const fetchSuggestionsReducer = (state={fetching: false, list: []}, action) => {
 
 
 export {fetchSuggestionsReducer};
+
+
+
+//fake fetching of ingredient names
+setTimeout(() => {store.dispatch(fetchIngredientSuggestions(''));}, 1000);
