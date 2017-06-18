@@ -17,7 +17,7 @@ class NutrientsListComponent extends React.Component {
                 ))}
                 <Row style={{paddingTop: '10px'}}>
                     <Col xs={12} style={{display: 'flex', justifyContent: 'center'}}>
-                        <RaisedButton style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} type='button' onClick={() => fields.push({name: '', quantity: 0})}>+ Add nutrient</RaisedButton>
+                        <RaisedButton style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} type='button' onClick={() => fields.push({name: '', quantity: 0})}>+ Add ingredient</RaisedButton>
                         <RaisedButton style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} type='submit'>Calculate</RaisedButton>
                     </Col>
                 </Row>

@@ -16,8 +16,8 @@ class NutrientRow extends React.Component {
                         <FieldComponent
                             controlId={`${item}.name`}
                             type='text'
-                            label='Nutrient name'
-                            placeholder='Enter nutrient name'/>
+                            label='Ingredient name'
+                            placeholder='Enter ingredient name'/>
                     </Col>
                     <Col xs={3}>
                         <FieldComponent
