@@ -11,7 +11,7 @@ class CarbohidratesComponent extends React.Component {
                 <Col xs={3}>
                     <FieldComponent
                         controlId='Carbohidrates'
-                        type='text'
+                        type='number'
                         label='Carbohidrates'
                         placeholder='Enter text' />
                 </Col>
@@ -21,14 +21,14 @@ class CarbohidratesComponent extends React.Component {
 
                             <FieldComponent
                                 controlId='AA1'
-                                type='text'
+                                type='number'
                                 label='AA1'
                                 placeholder='Enter text' />
                         </Col>
                         <Col xs={4}>
                             <FieldComponent
                                 controlId='AA1'
-                                type='text'
+                                type='number'
                                 label='AA1'
                                 placeholder='Enter text' />
                         </Col>
@@ -37,7 +37,7 @@ class CarbohidratesComponent extends React.Component {
 
                             <FieldComponent
                                 controlId='AA1'
-                                type='text'
+                                type='number'
                                 label='AA1'
                                 placeholder='Enter text' />
                         </Col>

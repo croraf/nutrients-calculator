@@ -8,7 +8,8 @@ class FormControlWrapper extends React.Component {
 
     render () {
 
-        const {label} = this.props;
+        // catching placeholder not to forward it to TextField
+        const {label, placeholder, input, meta, ...props} = this.props;
         
         return (
             <div>
@@ -20,6 +21,8 @@ class FormControlWrapper extends React.Component {
                 <TextField
                     floatingLabelText={label}
                     fullWidth={true}
+                    {...input}
+                    {...props}
                     />
                 
             </div>
