@@ -3,12 +3,6 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-/*const style = {
-    height: 100,
-    width: 100,
-    padding: '10% 2%',
-    textAlign: 'center'
-};*/
 
 const style = {
     maxWidth: '400px',

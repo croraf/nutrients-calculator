@@ -38,7 +38,7 @@ const fetchNutrients = (ingredients) => (dispatch) => {
     
 };
 
-const ingredientsReducer = (state={fetching: false, nutrientsList: []}, action) => {
+const nutrientsReducer = (state={fetching: false, nutrientsList: []}, action) => {
     switch (action.type) {
     case 'FETCHING_NUTRIENTS':
         console.log('FETCHING_NUTRIENTS: ' + action.ingredientsNames);
@@ -52,4 +52,4 @@ const ingredientsReducer = (state={fetching: false, nutrientsList: []}, action) 
 };
 
 
-export {ingredientsReducer, fetchNutrients};
+export {nutrientsReducer, fetchNutrients};

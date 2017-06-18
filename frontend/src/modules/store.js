@@ -9,11 +9,11 @@ import { hashHistory } from 'react-router';
 import {testCaseActive} from './testCase';
 import {fetchSuggestionsReducer} from './fetchSuggestions';
 //import {draggableListsReducer} from './draggableList';
-import {ingredientsReducer} from './ingredients';
+import {nutrientsReducer} from './nutrients';
 
 const createReducer = (asyncReducers) => (
     combineReducers({
-        ingredients: ingredientsReducer,
+        ingredients: nutrientsReducer,
         suggestions: fetchSuggestionsReducer,
         testCaseActive: testCaseActive,
         form: formReducer,

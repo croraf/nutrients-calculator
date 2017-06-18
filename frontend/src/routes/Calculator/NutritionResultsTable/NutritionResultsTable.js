@@ -20,16 +20,16 @@ class NutritionResultsTable extends React.Component {
                 return {
                     Header: ingredient.name + ' [' + (ingredient.quantity || '--- ') + 'g]',
                     accessor: 'ingredients[' + index + ']',
-                    /*width: 180,*/
+                    width: 150,
                     minWidth: 150
                 };
             }
         });
 
         const columns = 
-            [{Header: '', accessor: 'component'}]
+            [{Header: '', accessor: 'component', width: 150}]
                 .concat(ingredientColumns)
-                .concat([{Header: 'Total [g]', accessor: 'total'}]);
+                .concat([{Header: 'Total [g]', accessor: 'total', width: 100}]);
 
 
         const dataRows = [{
