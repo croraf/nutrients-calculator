@@ -9,7 +9,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
 
-    activeLink: state.routing.locationBeforeTransitions.pathname
+    activeLink: state.routing.locationBeforeTransitions.pathname,
+    username: state.login.token.payload ? state.login.token.payload.name : undefined
 });
 
 const MyMenuContainer = connect(mapStateToProps, mapDispatchToProps)(MyMenu);

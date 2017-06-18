@@ -10,23 +10,28 @@ import {white} from 'material-ui/styles/colors';
 class MyMenu extends React.Component {
     render () {
 
-        const {navigate, activeLink, ...props} = this.props;
+        const {navigate, activeLink, username, ...props} = this.props;
         return (
-            <IconMenu
-                {...props}
-                onItemTouchTap={navigate}
-                iconButtonElement={
-                    <IconButton>
-                        <NavigationMenu color={white} />
-                    </IconButton>
-                }
-                targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-            >
-                <MenuItem primaryText="Calculator" value='/calculator' checked={activeLink === '/calculator'}/>
-                <MenuItem primaryText="Admin" value='/admin' checked={activeLink === '/admin'}/>
-                <MenuItem primaryText="Sign out" value='/login' />
-            </IconMenu>
+            <div>
+                {/* TODO verticalAlign hack!*/}
+                {username ? <span style={{verticalAlign: 'super', color: 'white'}}>Hi {username}!</span> : undefined}
+
+                <IconMenu
+                    {...props}
+                    onItemTouchTap={navigate}
+                    iconButtonElement={
+                        <IconButton>
+                            <NavigationMenu color={white} />
+                        </IconButton>
+                    }
+                    targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+                >
+                    <MenuItem primaryText="Calculator" value='/calculator' checked={activeLink === '/calculator'}/>
+                    <MenuItem primaryText="Admin" value='/admin' checked={activeLink === '/admin'}/>
+                    <MenuItem primaryText="Sign out" value='/login' />
+                </IconMenu>
+            </div>
         );
     }
 }
