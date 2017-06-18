@@ -1,6 +1,7 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 /*const style = {
     height: 100,
@@ -10,9 +11,11 @@ import TextField from 'material-ui/TextField';
 };*/
 
 const style = {
-    width: '60%',
-    padding: '5% 2% 8% 2%',
-    textAlign: 'center'
+    maxWidth: '400px',
+    width: '100%',
+    padding: '3% 2% 2% 2%',
+    textAlign: 'center',
+    borderRadius: '3%'
 };
 
 class LoginBox extends React.Component {
@@ -31,6 +34,7 @@ class LoginBox extends React.Component {
                     type="password"
                     floatingLabelFixed={true}
                     /><br />
+                <RaisedButton label="Log in" primary={true} style={{margin: 12}} />
             </Paper>
         );
     }
