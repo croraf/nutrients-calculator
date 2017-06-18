@@ -21,6 +21,7 @@ app.use(cors());
 
 router.get('/api/nutritiveInfo', getNutritiveInfo);
 router.get('/api/suggestions/:ingredient', getSuggestions);
+router.get('/api/suggestions/', getSuggestions);
 
 app.use(router.routes());
 

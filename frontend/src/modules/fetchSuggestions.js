@@ -14,9 +14,9 @@ const fetchIngredientSuggestions = (text) => (dispatch) => {
     });*/
 
     console.log(text);
-    if (text === '') {
+    /*if (text === '') {
         dispatch({type: 'SUGGESTIONS_RETRIEVED', list: []});
-    } else {
+    } else */{
         fetchResourceFromBackend('/api/suggestions/' + text)
             .then(resultsList => {
                 dispatch({type: 'SUGGESTIONS_RETRIEVED', list: resultsList});
@@ -34,7 +34,7 @@ const fetchIngredientSuggestions = (text) => (dispatch) => {
 };
 
 //fake fetching of ingredient names
-setTimeout(() => {store.dispatch(fetchIngredientSuggestions('a'));}, 1000);
+setTimeout(() => {store.dispatch(fetchIngredientSuggestions(''));}, 1000);
 
 const fetchSuggestionsReducer = (state={fetching: false, list: []}, action) => {
     switch (action.type) {
