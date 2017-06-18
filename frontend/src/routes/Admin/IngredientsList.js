@@ -34,10 +34,16 @@ const rightIconMenu = (
 
 class IngredientsList extends React.Component {
     render () {
+
+        const {ingredientsList=[]} = this.props;
+
         return (
             
             <List style={{border: '1px solid black', marginTop: '10px', height: '400px', overflowY: 'auto'}}>
-                <ListItem primaryText="chockolate, milk" leftIcon={<ContentInbox />} rightIconButton={rightIconMenu}/>
+                {ingredientsList.map((item) => 
+                    <ListItem key={item} primaryText={item} leftIcon={<ContentInbox />} rightIconButton={rightIconMenu}/>
+                )}
+                {/*<ListItem primaryText="chockolate, milk" leftIcon={<ContentInbox />} rightIconButton={rightIconMenu}/>
                 <ListItem primaryText="chockolate, dark" leftIcon={<ContentInbox />} rightIconButton={rightIconMenu}/>
                 <ListItem primaryText="chockolate, white" leftIcon={<ActionGrade />} rightIconButton={rightIconMenu}/>
                 <ListItem primaryText="chockolate milk, 1% fat" leftIcon={<ContentSend />} rightIconButton={rightIconMenu}/>
@@ -48,7 +54,7 @@ class IngredientsList extends React.Component {
                 <ListItem primaryText="chockolate milk, 3% fat" leftIcon={<ContentDrafts />} rightIconButton={rightIconMenu}/>
                 <ListItem primaryText="chockolate, white" leftIcon={<ActionGrade />} rightIconButton={rightIconMenu}/>
                 <ListItem primaryText="chockolate milk, 1% fat" leftIcon={<ContentSend />} rightIconButton={rightIconMenu}/>
-                <ListItem primaryText="chockolate milk, 3% fat" leftIcon={<ContentDrafts />} rightIconButton={rightIconMenu}/>
+                <ListItem primaryText="chockolate milk, 3% fat" leftIcon={<ContentDrafts />} rightIconButton={rightIconMenu}/>*/}
             </List>
         );
     }

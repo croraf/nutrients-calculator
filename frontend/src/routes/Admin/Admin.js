@@ -9,7 +9,7 @@ import { submit } from 'redux-form';
 
 
 import {NutrientForm} from './NutrientForm/NutrientForm';
-import {IngredientsList} from './IngredientsList';
+import {IngredientsListContainer} from './IngredientsListContainer';
 
 class Admin extends React.Component {
 
@@ -61,7 +61,7 @@ class Admin extends React.Component {
                     <NutrientForm onSubmit={(values) => {console.log('submitting: ' + JSON.stringify(values));}}  />
                 </Dialog>
 
-                <IngredientsList />
+                <IngredientsListContainer />
             </div>
             
         );
