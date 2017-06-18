@@ -1,6 +1,10 @@
 
 const loginRequestHandler = async (ctx, next) => {
 
+    const body = ctx.request.body;
+
+    console.log(body);
+
     const JwtHeader = {
         "alg": "HS256",
         "typ": "JWT"
@@ -8,7 +12,7 @@ const loginRequestHandler = async (ctx, next) => {
 
     const JwtPayload = {
         "sub": "1234567890",
-        "name": "John Doe",
+        "name": body.username,
         "admin": true
     };
 

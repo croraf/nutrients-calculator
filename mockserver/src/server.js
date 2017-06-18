@@ -11,16 +11,21 @@ const
     /*static = require('koa-static'),*/
     send = require('koa-send'),
     router = require('koa-router')(),
-    cors = require('koa-cors');
+    cors = require('koa-cors'),
+    koaBody = require('koa-body');
 
 const app = new Koa();
 
 app.use(cors());
 
+app.use(koaBody({
+  jsonLimit: '1kb'
+}));
+
 // serve static files in public folder (css, js etc)
 /*app.use(static(__dirname + '../dist/frontend'));*/
 
-router.get('/api/login/', loginRequestHandler);
+router.post('/api/login/', loginRequestHandler);
 router.get('/api/nutritiveInfo', getNutritiveInfo);
 router.get('/api/suggestions/:ingredient', getSuggestions);
 router.get('/api/suggestions/', getSuggestions);

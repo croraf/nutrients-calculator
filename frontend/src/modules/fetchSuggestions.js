@@ -1,4 +1,4 @@
-import {fetchResourceFromBackend} from 'utilities/fetchResourceFromBackend';
+import {fetchResourceFromBackend} from './utilities/fetchResourceFromBackend';
 
 import {store} from './store';
 

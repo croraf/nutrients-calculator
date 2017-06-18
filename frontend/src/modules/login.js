@@ -1,14 +1,16 @@
-import {fetchResourceFromBackend} from 'utilities/fetchResourceFromBackend';
+import {sendLoginRequestAPI} from './utilities/fetchResourceFromBackend';
 
-import {store} from './store';
+import {push} from 'react-router-redux';
 
 const sendLoginRequest = (credentials) => (dispatch) => {
     
     dispatch({type: 'LOGIN_REQUEST_STARTED', credentials: credentials});
 
-    fetchResourceFromBackend('/api/login')
+    sendLoginRequestAPI(credentials)
         .then(token => {
             dispatch({type: 'TOKEN_RECEIVED', token: token});
+
+            dispatch(push('/calculator'));
         });
     
 };
