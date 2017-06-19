@@ -4,6 +4,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
+/*import ActionLabel from 'material-ui/svg-icons/action/label';*/
 
 import {white} from 'material-ui/styles/colors';
 
@@ -26,10 +27,11 @@ class MyMenu extends React.Component {
                     }
                     targetOrigin={{horizontal: 'right', vertical: 'top'}}
                     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+                    touchTapCloseDelay={300}
                 >
-                    <MenuItem primaryText="Calculator" value='/calculator' checked={activeLink === '/calculator'}/>
-                    <MenuItem primaryText="Admin" value='/admin' checked={activeLink === '/admin'}/>
-                    <MenuItem primaryText="Sign out" value='/login' />
+                    <MenuItem primaryText="Calculator" value='/calculator' style={activeLink === '/calculator' ? {border: '1px solid lightseagreen'} : undefined}/>
+                    <MenuItem primaryText="Admin" value='/admin' style={activeLink === '/admin' ? {border: '1px solid lightseagreen'} : undefined}/>
+                    <MenuItem primaryText="Sign out" value='/login' style={activeLink === '/login' ? {border: '1px solid lightseagreen'} : undefined}/>
                 </IconMenu>
             </div>
         );
