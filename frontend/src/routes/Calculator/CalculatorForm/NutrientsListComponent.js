@@ -5,6 +5,13 @@ import {NutrientRow} from './NutrientRow';
 
 import {Row, Col, Grid} from 'react-flexbox-grid';
 
+const calculateButtonStyle = {
+    marginLeft: '5px',
+    marginRight: '5px',/*
+    paddingLeft: '10px',
+    paddingRight: '10px'*/
+};
+
 class NutrientsListComponent extends React.Component {
     
     render() {
@@ -17,8 +24,8 @@ class NutrientsListComponent extends React.Component {
                 ))}
                 <Row style={{paddingTop: '10px'}}>
                     <Col xs={12} style={{display: 'flex', justifyContent: 'center'}}>
-                        <RaisedButton style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} type='button' onClick={() => fields.push({name: '', quantity: 0})}>+ Add ingredient</RaisedButton>
-                        <RaisedButton style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} type='submit'>Calculate</RaisedButton>
+                        <RaisedButton label='+ Add ingredient'  labelColor='white' primary={true} style={calculateButtonStyle} type='button' onTouchTap={() => fields.push({name: '', quantity: 0})} />
+                        <RaisedButton label='Calculate' labelColor='white' secondary={true} style={calculateButtonStyle} type='submit' />
                     </Col>
                 </Row>
             </Grid>

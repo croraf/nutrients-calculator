@@ -9,7 +9,7 @@ class FormControlWrapper extends React.Component {
 
     render () {
 
-        const {input, meta, dataSource, label, placeholder, ...props} = this.props;
+        const {input, meta, dataSource, label, placeholder, type, ...props} = this.props;
 
         return (
             <div>
@@ -19,14 +19,13 @@ class FormControlWrapper extends React.Component {
                     <AutoComplete
                         {...input}
                         dataSource={dataSource}
-                        
                         floatingLabelText={label}
                         fullWidth={true}
                         autoComplete="off" /> 
                     
                     : <TextField
                         {...input}
-                        
+                        type={type}
                         floatingLabelText={label}
                         fullWidth={true}
                         autoComplete="off"

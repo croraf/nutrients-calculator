@@ -14,14 +14,16 @@ class NutritionResultsTable extends React.Component {
                 return {
                     Header: '---',
                     accessor: 'ingredients[' + index + ']',
-                    width: 50
+                    width: 50,
+                    style: {textAlign: 'center'}
                 };
             } else {
                 return {
                     Header: ingredient.name + ' [' + (ingredient.quantity || '--- ') + 'g]',
                     accessor: 'ingredients[' + index + ']',
                     width: 150,
-                    minWidth: 150
+                    minWidth: 150,
+                    style: {textAlign: 'center'}
                 };
             }
         });
@@ -29,7 +31,7 @@ class NutritionResultsTable extends React.Component {
         const columns = 
             [{Header: '', accessor: 'component', width: 150}]
                 .concat(ingredientColumns)
-                .concat([{Header: 'Total [g]', accessor: 'total', width: 100}]);
+                .concat([{Header: 'Total [g]', accessor: 'total', width: 100, style: {textAlign: 'center'}}]);
 
 
         const dataRows = [{
@@ -58,11 +60,12 @@ class NutritionResultsTable extends React.Component {
         );
 
         return (
-            <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '30px'}}>
+            <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '30px', border: '2px solid rgb(0, 188, 212)'}}>
                 
                 <ReactTable 
                     data={data}
                     columns={columns}
+                    showPagination={false}
                     pageSizeOptions={[10, 15, 25, 50, 100]}
                     defaultPageSize={15} />
             </div>
