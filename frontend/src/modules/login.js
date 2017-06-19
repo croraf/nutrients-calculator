@@ -15,6 +15,10 @@ const sendLoginRequest = (credentials) => (dispatch) => {
     
 };
 
+const logOut = () => ({
+    type: 'LOG_OUT'
+});
+
 const loginReducer = (state={loginInProgress: false, token: {}}, action) => {
 
     switch (action.type) {
@@ -24,10 +28,13 @@ const loginReducer = (state={loginInProgress: false, token: {}}, action) => {
     case 'TOKEN_RECEIVED':
         console.log('TOKEN_RECEIVED: ', action.token);
         return {loginInProgress: false, token: action.token};
+    case 'LOG_OUT':
+        console.log('LOG_OUT');
+        return {loginInProgress: false, token: {}};
     default:
         return state;
     }
 };
 
 
-export {loginReducer, sendLoginRequest};
+export {loginReducer, sendLoginRequest, logOut};

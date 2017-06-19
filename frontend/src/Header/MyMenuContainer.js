@@ -3,8 +3,15 @@ import {push} from 'react-router-redux';
 
 import {MyMenu} from './MyMenu';
 
+import {logOut} from 'modules/login';
+
 const mapDispatchToProps = (dispatch) => ({
-    navigate: (event, child) => {console.log('dispatching:', child.props.value); dispatch(push(child.props.value));}
+    navigate: 
+        (event, child) => {
+            const targetLink = child.props.value;
+            if (targetLink === '/login') dispatch(logOut());
+            console.log('dispatching:', targetLink); dispatch(push(targetLink));
+        }
 });
 
 const mapStateToProps = (state) => ({

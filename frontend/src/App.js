@@ -18,7 +18,7 @@ const App = () => {
                 
                 <Router history={enhancedHistory}>
                     <Route path='/'>
-                        <IndexRedirect to='/calculator' />
+                        <IndexRedirect to='/login' />
 
                         <Route
                             path="login"
