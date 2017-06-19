@@ -2,7 +2,13 @@ import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 
-
+const tableStyleOuter = {
+    marginLeft: '-5px',
+    marginRight: '-5px',
+    marginTop: '30px',
+    border: '2px solid rgb(0, 188, 212)',
+    borderRadius: '5px'
+};
 
 class NutritionResultsTable extends React.Component {
     render () {
@@ -60,7 +66,7 @@ class NutritionResultsTable extends React.Component {
         );
 
         return (
-            <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '30px', border: '2px solid rgb(0, 188, 212)'}}>
+            <div style={tableStyleOuter}>
                 
                 <ReactTable 
                     data={data}
