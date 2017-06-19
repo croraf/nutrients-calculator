@@ -1,37 +1,33 @@
 import React from 'react';
+
 import {connect} from 'react-redux';
 
 import TextField from 'material-ui/TextField';
-
 import AutoComplete from 'material-ui/AutoComplete';
 
 class FormControlWrapper extends React.Component {
 
     render () {
 
-        const {input, meta, dataSource, label, placeholder, type, ...props} = this.props;
-
+        // catching placeholder not to forward it to TextField
+        const {label, placeholder, input, meta, dataSource, ...props} = this.props;
+        
         return (
             <div>
-                {/*AutoComplete if it is the ingredient name from control, rather than quantity*/}
-                {input.name.match(/\.name$/) ?
-                    
+                {/*Enhanced FormControl if it is the name of the ingredient, rather than quantity*/}
+                {input.name.match(/name$/) ?
                     <AutoComplete
-                        {...input}
+                        floatingLabelText={label}
+                        fullWidth={true}
                         dataSource={dataSource}
-                        floatingLabelText={label}
-                        fullWidth={true}
-                        autoComplete="off" /> 
-                    
-                    : <TextField
                         {...input}
-                        type={type}
+                        {...props} /> :
+                    <TextField
                         floatingLabelText={label}
                         fullWidth={true}
-                        autoComplete="off"
-                        />
+                        {...input}
+                        {...props} />
                 }
-                
             </div>
         );
     }
@@ -39,7 +35,7 @@ class FormControlWrapper extends React.Component {
 
 
 const mapDispatchToProps = (dispatch) => ({
-    /*fetchIngredientSuggestions: (value) => {dispatch(fetchIngredientSuggestions(value));}*/
+
 });
 
 const mapStateToProps = (state) => ({

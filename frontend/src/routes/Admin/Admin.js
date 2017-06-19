@@ -49,6 +49,7 @@ class Admin extends React.Component {
             <div style={{padding: '10px'}}>
 
                 <RaisedButton label="Add ingredient" onTouchTap={this.handleOpen} style={{margin: '10px'}}/>
+                
                 <Dialog
                     title="Define ingredient"
                     actions={actions}
