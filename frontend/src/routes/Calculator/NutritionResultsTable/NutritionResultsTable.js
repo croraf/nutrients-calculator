@@ -34,8 +34,24 @@ class NutritionResultsTable extends React.Component {
             }
         });
 
+        const customProps = (state, rowInfo, column) => {
+            console.log(rowInfo);
+            if (rowInfo === undefined || rowInfo.index === 0 || rowInfo.index === 10 || rowInfo.index === 11) {
+                return {};
+            } else {
+                return { style: {paddingLeft: '20px'} };
+            }
+            /*switch (rowInfo.index) {
+            case 1:
+            case 2:
+                return { style: {paddingLeft: '20px'} };
+            default:
+                return { style: {} };   
+            }*/
+        };
+
         const columns = 
-            [{Header: '', accessor: 'component', width: 150}]
+            [{Header: '', accessor: 'component', width: 150, getProps: customProps}]
                 .concat(ingredientColumns)
                 .concat([{Header: 'Total [g]', accessor: 'total', width: 100, style: {textAlign: 'center'}}]);
 
@@ -45,6 +61,34 @@ class NutritionResultsTable extends React.Component {
             ingredients: nutrientsList.map((nutrient) => (
                 nutrient.nutrientsProportion[0] || '---'
             ))
+        },{
+            component: 'Histidine',
+            style: {paddingLeft: '20px'},
+            ingredients: [0]
+        },{
+            component: 'Isoleucine',
+            ingredients: [0]
+        },{
+            component: 'Leucine',
+            ingredients: [0]
+        },{
+            component: 'Lysine',
+            ingredients: [0]
+        },{
+            component: 'Methionine',
+            ingredients: [0]
+        },{
+            component: 'Phenylalanine',
+            ingredients: [0]
+        },{
+            component: 'Threonine',
+            ingredients: [0]
+        },{
+            component: 'Tryptophan',
+            ingredients: [0]
+        },{
+            component: 'Valine',
+            ingredients: [0]
         },{
             component: 'Fats',
             ingredients: nutrientsList.map((nutrient) => (
