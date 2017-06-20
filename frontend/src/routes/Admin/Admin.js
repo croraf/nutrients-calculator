@@ -2,14 +2,30 @@ import React from 'react';
 
 
 import RaisedButton from 'material-ui/RaisedButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import { submit } from 'redux-form';
 
 
 import {NutrientForm} from './NutrientForm/NutrientForm';
 import {IngredientsListContainer} from './IngredientsListContainer';
+
+const buttonOuterStyle = {
+    position: 'absolute',
+    bottom: '-30px',
+    right: '50px',
+    zIndex: 100
+};
+
+const iconStyle = {
+    /*width: '48px',
+    height: '48px',
+    pointerEvents: 'none',
+    position: 'absolute'*/
+};
 
 class Admin extends React.Component {
 
@@ -48,12 +64,14 @@ class Admin extends React.Component {
         return (
             <div style={{padding: '10px'}}>
 
-                <RaisedButton label="Add ingredient" onTouchTap={this.handleOpen} style={{margin: '10px'}}/>
+                
+
+                {/*<RaisedButton label="Add ingredient" onTouchTap={this.handleOpen} style={{margin: '10px'}}/>*/}
                 
                 <Dialog
                     title="Define ingredient"
                     actions={actions}
-                    modal={true}
+                    modal={false}
                     open={this.state.open}
                     onRequestClose={this.handleClose}
                     autoScrollBodyContent={true}
@@ -62,7 +80,12 @@ class Admin extends React.Component {
                     <NutrientForm onSubmit={(values) => {console.log('submitting: ' + JSON.stringify(values));}}  />
                 </Dialog>
 
-                <IngredientsListContainer />
+                <div style={{position: 'relative'}}>
+                    <FloatingActionButton onTouchTap={this.handleOpen} style={buttonOuterStyle} zDepth={3}>
+                        <ContentAdd />
+                    </FloatingActionButton>
+                    <IngredientsListContainer />
+                </div>
             </div>
             
         );
