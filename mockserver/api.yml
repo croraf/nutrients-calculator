@@ -1,0 +1,65 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Whole protein application
+  description: >
+    Swagger for Whole protein application
+consumes:
+  - application/json
+produces:
+  - application/json
+basePath: '/api'
+paths:
+  /login:
+    post:
+      tags: [Login]
+      description: Receives login credentials and returns token if credentials are valid
+      parameters:
+        - name: credentials
+          in: body
+          description: Credentials object with username and password
+          required: true
+          schema:
+            $ref: '#/definitions/credentials'
+      responses:
+        '200':
+          description: Valid token
+          schema:
+            $ref: "#/definitions/token"
+        default:
+          description: unexpected error
+          schema:
+            type: object
+  /ingredients:
+    get:
+      tags: [Ingredients]
+      description: Retrieves a list of available ingredients
+      responses:
+        '200':
+          description: Array of ingredients
+          schema:
+            type: array
+            items:
+              type: string
+            example: ["banana", "apple", "bread", "chockolate"]
+definitions:
+  credentials:
+    type: object
+    required: ["username", "password"]
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+    example: 
+      username: evedraf
+      password: admin
+  token:
+    type: object
+    properties:
+      header:
+        type: object
+      payload:
+        type: object
+      signature:
+        type: object
