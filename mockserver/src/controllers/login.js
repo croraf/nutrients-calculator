@@ -1,30 +1,40 @@
 
+import {checkCredentials} from '../dao/loginDAO';
+
 const loginRequestHandler = async (ctx, next) => {
 
     const body = ctx.request.body;
 
     console.log(body);
 
-    const JwtHeader = {
-        "alg": "HS256",
-        "typ": "JWT"
-    };
+    if (checkCredentials(body)){
 
-    const JwtPayload = {
-        "sub": "1234567890",
-        "name": body.username,
-        "admin": true
-    };
+        const JwtHeader = {
+            "alg": "HS256",
+            "typ": "JWT"
+        };
 
-    const JwtSign = {
-        "sign": 'asdasdadaadad'
+        const JwtPayload = {
+            "sub": "1234567890",
+            "name": body.username,
+            "admin": true
+        };
+
+        const JwtSign = {
+            "sign": 'asdasdadaadad'
+        }
+
+        ctx.body = {
+            header: JwtHeader,
+            payload: JwtPayload,
+            sign: JwtSign
+        };
+    } else {
+
+        ctx.status = 401;
     }
 
-    ctx.body = {
-        header: JwtHeader,
-        payload: JwtPayload,
-        sign: JwtSign
-    };
+        
 };
 
 export {loginRequestHandler};

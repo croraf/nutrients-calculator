@@ -11,6 +11,9 @@ const sendLoginRequest = (credentials) => (dispatch) => {
             dispatch({type: 'TOKEN_RECEIVED', token: token});
 
             dispatch(push('/calculator'));
+        }).catch(reason => {
+            console.log('unauthorized');
+            dispatch({type: 'UNAUTHORIZED', token: false});
         });
     
 };
@@ -31,6 +34,9 @@ const loginReducer = (state={loginInProgress: false, token: {}}, action) => {
     case 'LOG_OUT':
         console.log('LOG_OUT');
         return {loginInProgress: false, token: {}};
+    case 'UNAUTHORIZED':
+        console.log('UNAUTHORIZED');
+        return {loginInProgress: false, token: action.token};
     default:
         return state;
     }

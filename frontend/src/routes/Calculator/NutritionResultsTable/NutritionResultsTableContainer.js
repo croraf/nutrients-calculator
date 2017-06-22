@@ -7,7 +7,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    nutrientsList: state.ingredients.nutrientsList
+    nutrientsList: state.nutrients.nutrientsList
 });
 
 const NutritionResultsTableContainer = connect(mapStateToProps, mapDispatchToProps)(NutritionResultsTable);

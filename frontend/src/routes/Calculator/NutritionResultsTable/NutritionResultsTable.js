@@ -35,7 +35,7 @@ class NutritionResultsTable extends React.Component {
         });
 
         const customProps = (state, rowInfo, column) => {
-            console.log(rowInfo);
+            
             if (rowInfo === undefined || rowInfo.index === 0 || rowInfo.index === 10 || rowInfo.index === 14 || rowInfo.index > 16) {
                 return {};
             } else {

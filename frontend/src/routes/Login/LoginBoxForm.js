@@ -2,6 +2,7 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import image from 'resources/401.png';
 
 import {reduxForm, Field} from 'redux-form';
 
@@ -21,14 +22,20 @@ class MyTextField extends React.Component {
         const {floatingLabelText, type, input, meta} = this.props;
 
         return (
-            <TextField 
-                {...input}
-                floatingLabelFixed={true} 
-                floatingLabelText={floatingLabelText}
-                type={type}
-                autoComplete='off'
-                style={{margin: 'auto'}}
-            />
+            <div>
+                <TextField 
+                    {...input}
+                    floatingLabelFixed={true} 
+                    floatingLabelText={floatingLabelText}
+                    type={type}
+                    autoComplete='off'
+                    style={{margin: 'auto'}}
+                />
+                {input.error && 
+                <span>
+                    Invalid
+                </span>}
+            </div>
         );
     }
 }
@@ -36,27 +43,44 @@ class MyTextField extends React.Component {
 class LoginBox extends React.Component {
     render () {
             
-        const {handleSubmit} = this.props;
+        const {handleSubmit, unauthorized} = this.props;
 
         return (
-            <Paper style={style} zDepth={4}>
-                <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-                    <Field 
-                        name='username' 
-                        component={MyTextField} 
-                        floatingLabelText="Username"
-                        />
-                    <Field 
-                        name='password' 
-                        component={MyTextField} 
-                        floatingLabelText="Password"
-                        type="password"/>
+            
+            <div style={{display: 'flex', justifyContent: 'center', marginTop: '10%'}}>
+                <Paper style={style} zDepth={4}>
+                    <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                        <Field 
+                            name='username' 
+                            component={MyTextField} 
+                            floatingLabelText="Username"
+                            />
+                        <Field 
+                            name='password' 
+                            component={MyTextField} 
+                            floatingLabelText="Password (USE 'admin')"
+                            type="password"/>
 
-                    <div>
-                        <RaisedButton type='submit' label="Log in" primary={true} style={{margin: '30px 0px 5px 0px'}} />
-                    </div>
-                </form>
-            </Paper>
+                        <div style={{display: 'flex', flexDirection: 'column', position: 'relative'}}>
+                            {
+                                unauthorized && 
+                                <div style={{color: 'red', position: 'absolute', width: '100%'}}>Invalid username or password</div>
+                            }
+                            <RaisedButton type='submit' label="Log in" primary={true} style={{margin: 'auto', marginTop: '30px'}} />
+                        </div>
+                    </form>
+                    
+                {/*<div>
+                    {
+                        unauthorized && 
+                        <img 
+                            width={360}
+                            height={270}
+                            src='https://blog.dashburst.com/wp-content/uploads/2014/03/6508023065_1b3bf710ce_o-728x582.jpg' />
+                    }
+                </div>*/}
+                </Paper>
+            </div>
         );
     }
 }

@@ -11,9 +11,18 @@ if (window.location.hostname === 'localhost') backend = window.location.protocol
 
 const fetchResourceFromBackend = (resource, options) => {
 
+    console.log('fetching', resource);
     return (
         fetch(backend + resource, options)
-            .then((response) => response.json())
+            .then(response => {
+                console.log(response);
+                if (response.status === 401) {
+                    
+                    throw new Error('unauthorized');
+                } else {
+                    return response.json();
+                }
+            })
     );
 };
 

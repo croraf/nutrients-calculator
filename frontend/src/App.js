@@ -24,7 +24,7 @@ const App = () => {
                             path="login"
                             getComponent={(nextState, cb) => {
                                 import(/* webpackChunkName: "chunckCalculator" */  './routes/Calculator/CalculatorContainer');
-                                import(/* webpackChunkName: "chunckLogin" */  './routes/Login/Login').then((Login) => { cb(null, Login.Login); });
+                                import(/* webpackChunkName: "chunckLogin" */  './routes/Login/LoginContainer').then((LoginContainer) => { cb(null, LoginContainer.LoginContainer); });
                             }}/>
 
                         <Route

@@ -1,12 +1,22 @@
 import React from 'react';
 import {LoginBoxContainer} from './LoginBoxContainer';
 
+
 class Login extends React.Component {
     render () {
+
+        const {unauthorized} = this.props;
         return (
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: '10%'}}>
+            <div>
                 <LoginBoxContainer />
+                
+                {/*{unauthorized===true && <div style={{textAlign: 'center', marginTop: '10px'}}>
+                    <img src="http://catplanet.org/wp-content/uploads/2014/09/Cats-as-error-message-401.jpg" alt="UNAUTHORIZED"
+                        width='400' height='300'/>
+                </div>}*/}
             </div>
+
+                
         );
     }
 }

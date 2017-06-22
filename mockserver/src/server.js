@@ -3,7 +3,7 @@ import "babel-polyfill";
 import path from 'path';
 
 import {getNutritiveInfo} from './controllers/nutritiveInfo';
-import {getSuggestions} from './controllers/suggestions';
+import {getIngredients} from './controllers/ingredients';
 import {loginRequestHandler} from './controllers/login';
 
 const 
@@ -27,8 +27,8 @@ app.use(koaBody({
 
 router.post('/api/login/', loginRequestHandler);
 router.get('/api/nutritiveInfo', getNutritiveInfo);
-router.get('/api/suggestions/:ingredient', getSuggestions);
-router.get('/api/suggestions/', getSuggestions);
+// router.get('/api/ingredients/:ingredient', getIngredients);
+router.get('/api/ingredients/', getIngredients);
 
 app.use(router.routes());
 

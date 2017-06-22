@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    dataSource: state.suggestions.list
+    dataSource: state.ingredients.list
 });
 
 const FormControlWrapperContainer = connect(mapStateToProps, mapDispatchToProps)(FormControlWrapper);
