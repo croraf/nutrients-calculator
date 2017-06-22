@@ -36,10 +36,10 @@ class NutritionResultsTable extends React.Component {
 
         const customProps = (state, rowInfo, column) => {
             console.log(rowInfo);
-            if (rowInfo === undefined || rowInfo.index === 0 || rowInfo.index === 10 || rowInfo.index === 11) {
+            if (rowInfo === undefined || rowInfo.index === 0 || rowInfo.index === 10 || rowInfo.index === 14 || rowInfo.index > 16) {
                 return {};
             } else {
-                return { style: {paddingLeft: '20px'} };
+                return { style: {paddingLeft: '30px'} };
             }
             /*switch (rowInfo.index) {
             case 1:
@@ -95,10 +95,34 @@ class NutritionResultsTable extends React.Component {
                 nutrient.nutrientsProportion[1] || '---'
             ))
         },{
+            component: 'Saturated',
+            ingredients: [0]
+        },{
+            component: 'Polyunsaturated',
+            ingredients: [0]
+        },{
+            component: 'Monounsaturated',
+            ingredients: [0]
+        },{
             component: 'Carbohydrates',
             ingredients: nutrientsList.map((nutrient) => (
                 nutrient.nutrientsProportion[2] || '---'
             ))
+        },{
+            component: 'Dietary fiber',
+            ingredients: [0]
+        },{
+            component: 'Sugar',
+            ingredients: [0]
+        },{
+            component: 'Vitamin A',
+            ingredients: [0]
+        },{
+            component: 'Vitamin C',
+            ingredients: [0]
+        },{
+            component: 'Calcium',
+            ingredients: [0]
         }];
 
         const data = dataRows.map((item) => 
@@ -117,7 +141,7 @@ class NutritionResultsTable extends React.Component {
                     columns={columns}
                     showPagination={false}
                     pageSizeOptions={[10, 15, 25, 50, 100]}
-                    defaultPageSize={15} />
+                    defaultPageSize={20} />
             </div>
         );
     }
