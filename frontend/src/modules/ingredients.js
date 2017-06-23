@@ -6,25 +6,23 @@ const fetchIngredients = () => (dispatch) => {
     
     dispatch({type: 'FETCHING_INGREDIENTS'});
 
-    fetchResourceFromBackend('/api/ingredients').then(
+    fetchResourceFromBackend('/api/ingredients').then( results => {
 
-        resultsList => {
-            dispatch({type: 'INGREDIENTS_RETRIEVED', list: resultsList});
-        }
-    );
+        dispatch({type: 'INGREDIENTS_RETRIEVED', list: results});
+    });
     
 };
 
 const fetchIngredientsReducer = (state={fetching: false, list: []}, action) => {
     switch (action.type) {
-    case 'FETCHING_INGREDIENTS':
-        console.log('FETCHING_INGREDIENTS');
-        return {fetching: true, list: state.list};
-    case 'INGREDIENTS_RETRIEVED':
-        console.log('INGREDIENTS_RETRIEVED: ' + action.list);
-        return {fetching: false, list: action.list};
-    default:
-        return state;
+        case 'FETCHING_INGREDIENTS':
+            console.log('FETCHING_INGREDIENTS');
+            return {fetching: true, list: state.list};
+        case 'INGREDIENTS_RETRIEVED':
+            console.log('INGREDIENTS_RETRIEVED: ' + action.list);
+            return {fetching: false, list: action.list};
+        default:
+            return state;
     }
 };
 
