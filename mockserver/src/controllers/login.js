@@ -10,19 +10,19 @@ const loginRequestHandler = async (ctx, next) => {
     if (checkCredentials(body)){
 
         const JwtHeader = {
-            "alg": "HS256",
-            "typ": "JWT"
+            'alg': 'HS256',
+            'typ': 'JWT'
         };
 
         const JwtPayload = {
-            "sub": "1234567890",
-            "name": body.username,
-            "admin": true
+            'sub': '1234567890',
+            'name': body.username,
+            'admin': true
         };
 
         const JwtSign = {
-            "sign": 'asdasdadaadad'
-        }
+            'sign': 'asdasdadaadad'
+        };
 
         ctx.body = {
             header: JwtHeader,

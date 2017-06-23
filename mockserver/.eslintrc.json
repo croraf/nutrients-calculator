@@ -1,0 +1,38 @@
+{
+    "parser": "babel-eslint",
+    "env": {
+        "node": true,
+        "commonjs": true,
+        "es6": true
+    },
+    "extends": ["eslint:recommended"],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        },
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
+    },
+    "plugins": [
+    ],
+    "settings": {
+    },
+    "rules": {
+        "strict": "error",
+        "indent": ["error", 4, {"SwitchCase": 1}],
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "class-property/class-property-semicolon": ["warn", "never"],
+        "no-console": "off"
+    }
+}

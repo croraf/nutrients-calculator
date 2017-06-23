@@ -6,6 +6,6 @@ const checkCredentials = (credentials) => {
     } else {
         return false;
     }
-}
+};
 
 export {checkCredentials};
