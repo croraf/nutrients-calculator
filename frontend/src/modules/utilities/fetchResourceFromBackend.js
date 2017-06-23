@@ -16,11 +16,15 @@ const fetchResourceFromBackend = (resource, options) => {
         fetch(backend + resource, options)
             .then(response => {
                 console.log(response);
-                if (response.status === 401) {
-                    
-                    throw new Error('unauthorized');
-                } else {
-                    return response.json();
+                switch (response.status) {
+                    case 200:
+                        return response.json();
+                    case 401:
+                        throw new Error('unauthorized');
+                    case 400:
+                        throw new Error('bad request');
+                    default:
+                        throw new Error('unknown error');
                 }
             })
     );

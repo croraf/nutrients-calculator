@@ -26,6 +26,8 @@ paths:
           description: Valid token
           schema:
             $ref: "#/definitions/token"
+        '401':
+          description: Invalid username or password
         default:
           description: unexpected error
           schema:
