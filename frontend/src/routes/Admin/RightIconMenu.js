@@ -19,20 +19,23 @@ const iconButtonElement = (
 
 class RightIconMenu extends React.Component {
 
-    iconTouchTapHandler = (event, child) => {
-        
+    editHandler = () => {
+        this.props.editIngredient(this.props.elementKey);
+    }
+
+    deleteHandler = () => {
         this.props.deleteIngredient(this.props.elementKey);
     }
 
     render () {
 
         // need to catch some properties, not to pass them further
-        const {elementKey, deleteIngredient, ...props} = this.props;
+        const {elementKey, deleteIngredient, editIngredient, ...props} = this.props;
 
         return (
-            <IconMenu {...props} iconButtonElement={iconButtonElement} onItemTouchTap={this.iconTouchTapHandler}>
-                <MenuItem>Edit</MenuItem>
-                <MenuItem>Delete</MenuItem>
+            <IconMenu {...props} iconButtonElement={iconButtonElement}>
+                <MenuItem onTouchTap={this.editHandler}>Edit</MenuItem>
+                <MenuItem onTouchTap={this.deleteHandler}>Delete</MenuItem>
             </IconMenu>
         );
     }

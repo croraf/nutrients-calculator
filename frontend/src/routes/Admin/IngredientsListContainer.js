@@ -5,7 +5,8 @@ import {IngredientsList} from './IngredientsList';
 import {deleteIngredient} from 'modules/ingredients';
 
 const mapDispatchToProps = (dispatch) => ({
-    deleteIngredient: (id) => {dispatch(deleteIngredient(id));}
+    deleteIngredient: (id) => {dispatch(deleteIngredient(id));},
+    editIngredient: (id) => {console.log('edit ingredient', id);}
 });
 
 const mapStateToProps = (state) => ({

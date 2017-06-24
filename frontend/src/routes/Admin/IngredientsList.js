@@ -19,7 +19,7 @@ import {RightIconMenu} from './RightIconMenu';
 class IngredientsList extends React.Component {
     render () {
 
-        const {ingredients={}, deleteIngredient} = this.props;
+        const {ingredients={}, deleteIngredient, editIngredient} = this.props;
 
         return (
             <Paper zDepth={2} style={{border: '1px solid black'}}>
@@ -35,7 +35,11 @@ class IngredientsList extends React.Component {
                                 key={key}
                                 primaryText={ingredients[key]}
                                 leftIcon={<ContentInbox />}
-                                rightIconButton={<RightIconMenu deleteIngredient={deleteIngredient} elementKey={key}/>}/>
+                                rightIconButton={
+                                    <RightIconMenu 
+                                        deleteIngredient={deleteIngredient}
+                                        editIngredient={editIngredient}
+                                        elementKey={key}/>}/>
                         );
                     }).reverse()}
                 </List>
