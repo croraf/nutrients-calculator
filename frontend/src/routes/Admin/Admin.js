@@ -13,7 +13,7 @@ import {openDialogue, closeDialogue/*, saveDialogue*/} from 'modules/defineIngre
 import {NutrientForm} from './NutrientForm/NutrientForm';
 import {IngredientsListContainer} from './IngredientsListContainer';
 
-import {saveIngredient} from 'modules/ingredients';
+import {saveIngredient} from 'modules/ingredientsAdmin';
 
 const buttonOuterStyle = {
     position: 'absolute',

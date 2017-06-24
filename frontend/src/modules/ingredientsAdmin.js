@@ -1,43 +1,56 @@
+import {fetchResourceFromBackend} from './utilities/fetchResourceFromBackend';
+import {fetchIngredients} from './ingredients';
 
-const deleteIngredient = (ingredients) => (dispatch) => {
+const saveIngredient = (ingredient) => (dispatch) => {
     
-    const ingredientsNames = ingredients.map((item) => item.name);
-    dispatch({type: 'FETCHING_NUTRIENTS', ingredientsNames: ingredientsNames});
+    dispatch({type: 'INGREDIENT_SAVING'});
 
-    new Promise((resolve, reject) => {
+    console.log('saving: ', ingredient);
 
-        const nutrientsList = [];
+    const options = {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(ingredient)};
 
-        ingredientsNames.forEach((ingredientName, index) => {
-            nutrientsList[index] = {name: ingredientName};
-            nutrientsList[index].nutrientsProportion = 
-                (ingredientName === undefined || ingredients[index].quantity === undefined) ? [] 
-                    : [parseInt(Math.random()*100), parseInt(Math.random()*100), parseInt(Math.random()*100)];
-            nutrientsList[index].quantity = ingredients[index].quantity;
-        }, this);
+    fetchResourceFromBackend('/api/ingredients', options).then( result => {
 
-        setTimeout(()=>{
-            resolve(nutrientsList);
-        }, 1000);
-    }).then((nutrientsList) => {
+        console.log(result);
+        dispatch({type: 'INGREDIENT_SAVED', ingredientId: result});
 
-        dispatch({type: 'NUTRIENTS_RETRIEVED', nutrientsList: nutrientsList});
+        dispatch(fetchIngredients());
+
     });
-    
 };
 
-/*const nutrientsReducer = (state={fetching: false, nutrientsList: []}, action) => {
-    switch (action.type) {
-    case 'FETCHING_NUTRIENTS':
-        console.log('FETCHING_NUTRIENTS: ' + action.ingredientsNames);
-        return {fetching: true, nutrientsList: state.nutrientsList};
-    case 'NUTRIENTS_RETRIEVED':
-        console.log('NUTRIENTS_RETRIEVED: ', action.nutrientsList);
-        return {fetching: false, nutrientsList: action.nutrientsList};
-    default:
-        return state;
-    }
-};*/
+const deleteIngredient = (ingredientId) => (dispatch) => {
+    
+    dispatch({type: 'INGREDIENT_DELETING'});
+
+    console.log('deleting', ingredientId);
+
+    const options = {method: 'DELETE'};
+
+    fetchResourceFromBackend('/api/ingredients/' + ingredientId, options).then( result => {
+
+        console.log(result);
+        dispatch({type: 'INGREDIENT_DELETED', ingredientId: ingredientId});
+
+        dispatch(fetchIngredients());
+
+    });
+};
+
+const editIngredient = (ingredientId) => (dispatch) => {
+    
+
+    console.log('fetching', ingredientId);
+
+    fetchResourceFromBackend('/api/ingredients/' + ingredientId).then( result => {
+
+        console.log(result);
+        /*dispatch({type: 'INGREDIENT_DELETED', ingredientId: ingredientId});
+
+        dispatch(fetchIngredients());*/
+
+    });
+};
 
 
-export {deleteIngredient};
+export {saveIngredient, editIngredient, deleteIngredient};
