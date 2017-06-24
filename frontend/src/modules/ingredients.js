@@ -31,6 +31,24 @@ const saveIngredient = (ingredient) => (dispatch) => {
     });
 };
 
+const deleteIngredient = (ingredientId) => (dispatch) => {
+    
+    dispatch({type: 'INGREDIENT_DELETING'});
+
+    console.log('deleting', ingredientId);
+
+    const options = {method: 'DELETE'};
+
+    fetchResourceFromBackend('/api/ingredients/' + ingredientId, options).then( result => {
+
+        console.log(result);
+        dispatch({type: 'INGREDIENT_DELETED', ingredientId: ingredientId});
+
+        dispatch(fetchIngredients());
+
+    });
+};
+
 const fetchIngredientsReducer = (state={fetching: false, ingredients: []}, action) => {
     switch (action.type) {
         case 'FETCHING_INGREDIENTS':
@@ -51,7 +69,7 @@ const fetchIngredientsReducer = (state={fetching: false, ingredients: []}, actio
 };
 
 
-export {fetchIngredientsReducer, saveIngredient};
+export {fetchIngredientsReducer, saveIngredient, deleteIngredient};
 
 
 

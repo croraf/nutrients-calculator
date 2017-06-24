@@ -21,6 +21,8 @@ const fetchResourceFromBackend = (resource, options) => {
                         return response.json();
                     case 201:
                         return response.text();
+                    case 204:
+                        return;
                     case 401:
                         throw new Error('unauthorized');
                     case 400:

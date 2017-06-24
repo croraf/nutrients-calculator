@@ -2,8 +2,10 @@ import {connect} from 'react-redux';
 
 import {IngredientsList} from './IngredientsList';
 
-const mapDispatchToProps = (dispatch) => ({
+import {deleteIngredient} from 'modules/ingredients';
 
+const mapDispatchToProps = (dispatch) => ({
+    deleteIngredient: (id) => {dispatch(deleteIngredient(id));}
 });
 
 const mapStateToProps = (state) => ({
