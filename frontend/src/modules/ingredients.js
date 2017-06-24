@@ -73,5 +73,5 @@ export {fetchIngredientsReducer, saveIngredient, deleteIngredient};
 
 
 
-//fake fetching of ingredient names
+//initial fetching of ingredients
 setTimeout(() => {store.dispatch(fetchIngredients());}, 1000);

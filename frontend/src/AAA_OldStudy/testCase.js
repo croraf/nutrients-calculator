@@ -16,12 +16,12 @@ export {fetchTestCase};
 
 const testCaseActive = (state={testCase:{title: 'NO TEST CASE SELECTED', body: 'NO TEST CASE SELECTED'}}, action) => {
     switch (action.type) {
-    case 'TEST_CASE_RECEIVED':
-        return {
-            testCase: action.testCase
-        };
-    default:
-        return state;
+        case 'TEST_CASE_RECEIVED':
+            return {
+                testCase: action.testCase
+            };
+        default:
+            return state;
     }
 };
 
