@@ -7,7 +7,7 @@ import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-rou
 import { hashHistory } from 'react-router';
 
 import {fetchIngredientsReducer} from './ingredients';
-//import {draggableListsReducer} from './draggableList';
+import {defineIngredientDialogueReducer} from './defineIngredientDialogue';
 import {nutrientsReducer} from './nutrients';
 import {loginReducer} from './login';
 
@@ -16,6 +16,7 @@ const createReducer = (asyncReducers) => (
         login: loginReducer,
         nutrients: nutrientsReducer,
         ingredients: fetchIngredientsReducer,
+        defineIngredientDialogue: defineIngredientDialogueReducer,
         form: formReducer,
         routing: routerReducer,
         ...asyncReducers

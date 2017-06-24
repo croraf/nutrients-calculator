@@ -1,7 +1,6 @@
 import React from 'react';
 
 
-import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -9,6 +8,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import { submit } from 'redux-form';
 
+import {openDialogue, closeDialogue/*, saveDialogue*/} from 'modules/defineIngredientDialogue';
 
 import {NutrientForm} from './NutrientForm/NutrientForm';
 import {IngredientsListContainer} from './IngredientsListContainer';
@@ -22,16 +22,9 @@ const buttonOuterStyle = {
     zIndex: 100
 };
 
-const iconStyle = {
-    /*width: '48px',
-    height: '48px',
-    pointerEvents: 'none',
-    position: 'absolute'*/
-};
-
 class Admin extends React.Component {
 
-    state = {
+    /*state = {
         open: false,
     }
 
@@ -46,21 +39,23 @@ class Admin extends React.Component {
     handleSave = () => {
         this.handleClose();
         this.props.remoteSubmit();
-    }
+    }*/
 
     render () {
+
+        const {openDialogue, closeDialogue, saveDialogue, saveIngredient, open} = this.props;
 
         const actions = [
             <FlatButton
             label="Save ingredient"
             primary={true}
             keyboardFocused={true}
-            onTouchTap={this.handleSave}
+            onTouchTap={saveDialogue}
             />,
             <FlatButton
             label="Cancel"
             primary={true}
-            onTouchTap={this.handleClose}
+            onTouchTap={closeDialogue}
             />
         ];
 
@@ -73,19 +68,19 @@ class Admin extends React.Component {
                     title="Define ingredient"
                     actions={actions}
                     modal={false}
-                    open={this.state.open}
-                    onRequestClose={this.handleClose}
+                    open={open}
+                    onRequestClose={closeDialogue}
                     autoScrollBodyContent={true}
                     >
                     
-                    <NutrientForm onSubmit={this.props.saveIngredient}  />
+                    <NutrientForm onSubmit={saveIngredient}  />
                 </Dialog>
 
                 <div style={{position: 'relative'}}>
 
                     <IngredientsListContainer />
                     
-                    <FloatingActionButton onTouchTap={this.handleOpen} style={buttonOuterStyle} zDepth={3}>
+                    <FloatingActionButton onTouchTap={openDialogue} style={buttonOuterStyle} zDepth={3}>
                         <ContentAdd />
                     </FloatingActionButton>
                 </div>
@@ -98,12 +93,16 @@ class Admin extends React.Component {
 import {connect} from 'react-redux';
 
 const mapDispatchToProps = (dispatch) => ({
-    remoteSubmit: () => {dispatch(submit('manageNutrients'));},
-    saveIngredient: (values) => {dispatch(saveIngredient(values));}
+    /*remoteSubmit: () => {dispatch(submit('manageNutrients'));},*/
+    saveIngredient: (values) => {dispatch(saveIngredient(values));},
+
+    openDialogue: () => {dispatch(openDialogue());},
+    closeDialogue: () => {dispatch(closeDialogue());},
+    saveDialogue: () => {dispatch(submit('manageNutrients')); dispatch(closeDialogue());}
 });
 
 const mapStateToProps = (state) => ({
-
+    open: state.defineIngredientDialogue
 });
 
 const AdminContainer = connect(mapStateToProps, mapDispatchToProps)(Admin);
