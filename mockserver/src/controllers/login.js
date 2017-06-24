@@ -1,5 +1,6 @@
 
 import {checkCredentials} from '../dao/loginDAO';
+import jwt from 'jsonwebtoken';
 
 const loginRequestHandler = async (ctx, next) => {
 
@@ -9,7 +10,7 @@ const loginRequestHandler = async (ctx, next) => {
 
     if (checkCredentials(body)){
 
-        const JwtHeader = {
+        /*const JwtHeader = {
             'alg': 'HS256',
             'typ': 'JWT'
         };
@@ -28,7 +29,12 @@ const loginRequestHandler = async (ctx, next) => {
             header: JwtHeader,
             payload: JwtPayload,
             sign: JwtSign
-        };
+        };*/
+
+        ctx.status = 201;
+        //ctx.body = 'HS256JWT.' + body.username + '.asdadadsad';
+        console.log(jwt.sign({name: body.username}, 'abcd'));
+        ctx.body = jwt.sign({name: body.username}, 'abcd');
     } else {
 
         ctx.status = 401;

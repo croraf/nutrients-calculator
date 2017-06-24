@@ -5,7 +5,6 @@ import {LoginBoxContainer} from './LoginBoxContainer';
 class Login extends React.Component {
     render () {
 
-        const {unauthorized} = this.props;
         return (
             <div>
                 <LoginBoxContainer />

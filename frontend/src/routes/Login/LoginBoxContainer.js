@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    unauthorized: state.login.token === false
+    rejected: state.login.rejected === true
 });
 
 const LoginBoxContainer = connect(mapStateToProps, mapDispatchToProps)(LoginBoxForm);

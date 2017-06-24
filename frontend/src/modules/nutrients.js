@@ -40,14 +40,14 @@ const fetchNutrients = (ingredients) => (dispatch) => {
 
 const nutrientsReducer = (state={fetching: false, nutrientsList: []}, action) => {
     switch (action.type) {
-    case 'FETCHING_NUTRIENTS':
-        console.log('FETCHING_NUTRIENTS: ' + action.ingredientsNames);
-        return {fetching: true, nutrientsList: state.nutrientsList};
-    case 'NUTRIENTS_RETRIEVED':
-        console.log('NUTRIENTS_RETRIEVED: ', action.nutrientsList);
-        return {fetching: false, nutrientsList: action.nutrientsList};
-    default:
-        return state;
+        case 'FETCHING_NUTRIENTS':
+            console.log('FETCHING_NUTRIENTS: ' + action.ingredientsNames);
+            return {fetching: true, nutrientsList: state.nutrientsList};
+        case 'NUTRIENTS_RETRIEVED':
+            console.log('NUTRIENTS_RETRIEVED: ', action.nutrientsList);
+            return {fetching: false, nutrientsList: action.nutrientsList};
+        default:
+            return state;
     }
 };
 

@@ -12,6 +12,10 @@ basePath: '/api'
 paths:
   /login:
     post:
+      consumes:
+        - application/json
+      produces:
+        - text/plain
       tags: [Login]
       description: Receives login credentials and returns token if credentials are valid
       parameters:
@@ -22,10 +26,11 @@ paths:
           schema:
             $ref: '#/definitions/credentials'
       responses:
-        '200':
+        '201':
           description: Valid token
           schema:
-            $ref: "#/definitions/token"
+            type: string
+            example: 'RS256.rafaadmin.hash'
         '401':
           description: Invalid username or password
         default:

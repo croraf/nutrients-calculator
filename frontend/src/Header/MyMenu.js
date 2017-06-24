@@ -23,7 +23,7 @@ class MyMenu extends React.Component {
 
         const {navigate, activeLink, username, ...props} = this.props;
 
-        if (username === undefined) return <div />;
+        if (username === '') return <div />;
 
         return (
             <div>

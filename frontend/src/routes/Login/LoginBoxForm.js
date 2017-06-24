@@ -43,7 +43,7 @@ class MyTextField extends React.Component {
 class LoginBox extends React.Component {
     render () {
             
-        const {handleSubmit, unauthorized} = this.props;
+        const {handleSubmit, rejected} = this.props;
 
         return (
             
@@ -63,7 +63,7 @@ class LoginBox extends React.Component {
 
                         <div style={{display: 'flex', flexDirection: 'column', position: 'relative'}}>
                             {
-                                unauthorized && 
+                                rejected && 
                                 <div style={{color: 'red', position: 'absolute', width: '100%'}}>Invalid username or password</div>
                             }
                             <RaisedButton type='submit' label="Log in" primary={true} style={{margin: 'auto', marginTop: '30px'}} />

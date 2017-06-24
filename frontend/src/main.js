@@ -2,7 +2,7 @@
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-import styles from './styles/style1.scss';
+/*import styles from './styles/style1.scss';*/
 
 import React from 'react';
 import ReactDOM from 'react-dom';
