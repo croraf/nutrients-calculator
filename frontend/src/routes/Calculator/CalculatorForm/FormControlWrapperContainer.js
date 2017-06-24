@@ -18,7 +18,7 @@ class FormControlWrapper extends React.Component {
                     
                     <AutoComplete
                         {...input}
-                        dataSource={dataSource}
+                        dataSource={Object.values(dataSource)}
                         floatingLabelText={label}
                         fullWidth={true}
                         autoComplete="off" /> 
@@ -43,7 +43,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    dataSource: state.ingredients.list
+    dataSource: state.ingredients.ingredients
 });
 
 const FormControlWrapperContainer = connect(mapStateToProps, mapDispatchToProps)(FormControlWrapper);

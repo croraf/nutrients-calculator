@@ -13,6 +13,8 @@ import { submit } from 'redux-form';
 import {NutrientForm} from './NutrientForm/NutrientForm';
 import {IngredientsListContainer} from './IngredientsListContainer';
 
+import {saveIngredient} from 'modules/ingredients';
+
 const buttonOuterStyle = {
     position: 'absolute',
     bottom: '-30px',
@@ -42,6 +44,7 @@ class Admin extends React.Component {
     }
     
     handleSave = () => {
+        this.handleClose();
         this.props.remoteSubmit();
     }
 
@@ -64,8 +67,6 @@ class Admin extends React.Component {
         return (
             <div style={{padding: '10px'}}>
 
-                
-
                 {/*<RaisedButton label="Add ingredient" onTouchTap={this.handleOpen} style={{margin: '10px'}}/>*/}
                 
                 <Dialog
@@ -77,14 +78,16 @@ class Admin extends React.Component {
                     autoScrollBodyContent={true}
                     >
                     
-                    <NutrientForm onSubmit={(values) => {console.log('submitting: ' + JSON.stringify(values));}}  />
+                    <NutrientForm onSubmit={this.props.saveIngredient}  />
                 </Dialog>
 
                 <div style={{position: 'relative'}}>
+
+                    <IngredientsListContainer />
+                    
                     <FloatingActionButton onTouchTap={this.handleOpen} style={buttonOuterStyle} zDepth={3}>
                         <ContentAdd />
                     </FloatingActionButton>
-                    <IngredientsListContainer />
                 </div>
             </div>
             
@@ -95,7 +98,8 @@ class Admin extends React.Component {
 import {connect} from 'react-redux';
 
 const mapDispatchToProps = (dispatch) => ({
-    remoteSubmit: () => {dispatch(submit('manageNutrients'));}
+    remoteSubmit: () => {dispatch(submit('manageNutrients'));},
+    saveIngredient: (values) => {dispatch(saveIngredient(values));}
 });
 
 const mapStateToProps = (state) => ({

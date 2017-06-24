@@ -11,7 +11,7 @@ if (window.location.hostname === 'localhost') backend = window.location.protocol
 
 const fetchResourceFromBackend = (resource, options) => {
 
-    console.log('fetching', resource);
+    console.log('API request:', resource);
     return (
         fetch(backend + resource, options)
             .then(response => {
@@ -19,6 +19,8 @@ const fetchResourceFromBackend = (resource, options) => {
                 switch (response.status) {
                     case 200:
                         return response.json();
+                    case 201:
+                        return response.text();
                     case 401:
                         throw new Error('unauthorized');
                     case 400:

@@ -40,10 +40,38 @@ paths:
         '200':
           description: Array of ingredients
           schema:
-            type: array
-            items:
-              type: string
+            type: object
             example: ["banana", "apple", "bread", "chockolate"]
+    post:
+      produces: ["text/plain"]
+      tags: [Ingredients]
+      description: Adds an ingredient to collection of ingredients
+      parameters:
+        - name: ingredient
+          in: body
+          description: ingredient data to add
+          required: true
+          schema:
+            $ref: '#/definitions/IngredientData'
+      responses:
+        '201':
+          description: Sucessfully created, ID returned
+          schema:
+            type: string
+            example: "==Rafadadawd"
+  /ingredients/{ingredientID}:
+    delete:
+      tags: [Ingredients]
+      description: Deletes an ingredient
+      parameters:
+        - name: ingredientID
+          in: path
+          required: true
+          default: '==Rafadadawd'
+          type: string
+      responses:
+        '204':
+          description: Sucessfully deleted
 definitions:
   credentials:
     type: object
@@ -65,3 +93,11 @@ definitions:
         type: object
       signature:
         type: object
+  IngredientData:
+    type: object
+    required: ["name"]
+    properties:
+      name:
+        type: string
+    example: 
+      name: "Lemon"

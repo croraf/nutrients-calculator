@@ -38,7 +38,8 @@ const rightIconMenu = (
 class IngredientsList extends React.Component {
     render () {
 
-        const {ingredientsList=[]} = this.props;
+        const {ingredients={}} = this.props;
+        const ingredientsList = Object.values(ingredients);
 
         return (
             <Paper zDepth={2} style={{border: '1px solid black'}}>
@@ -48,7 +49,7 @@ class IngredientsList extends React.Component {
                 <List style={{border: '1px solid black', marginTop: '0px', height: '400px', overflowY: 'auto'}}>
                     {ingredientsList.map((item) => 
                         <ListItem key={item} primaryText={item} leftIcon={<ContentInbox />} rightIconButton={rightIconMenu}/>
-                    )}
+                    ).reverse()}
                 </List>
             </Paper>
         );

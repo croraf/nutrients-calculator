@@ -15,8 +15,16 @@ ingredientNames.forEach((ingredientName) => {
 
 const getIngredients = async (ctx, next) => {
 
-    console.log(Object.values(ingredients).map(ingredient => ingredient.name));
-    ctx.body = Object.values(ingredients).map(ingredient => ingredient.name); //responseBody.map((item) => ctx.params.ingredient + '---' + item);
+    const returnedIngredients = {};
+    Object.keys(ingredients).forEach((key) => {
+        returnedIngredients[key] = ingredients[key].name;
+    }, this);
+    
+    console.log(returnedIngredients);
+
+    ctx.body = returnedIngredients;
+    //ctx.body = Object.values(ingredients).map(ingredient => ingredient.name); //responseBody.map((item) => ctx.params.ingredient + '---' + item);
+    
 };
 
 const addIngredient = async (ctx, next) => {
@@ -26,6 +34,8 @@ const addIngredient = async (ctx, next) => {
     const id = new Buffer(body.name).toString('base64');
     ingredients[id] = body;
 
+    console.log(id);
+    ctx.status = 201;
     ctx.body = id;
 };
 

@@ -50,7 +50,8 @@ app.use(validate(document));
 router.post('/api/login/', loginRequestHandler);
 router.get('/api/nutritiveInfo', getNutritiveInfo);
 router.get('/api/ingredients/', ingredients.getIngredients);
-router.post('/api/ingredients', ingredients.addIngredient);
+router.post('/api/ingredients/', ingredients.addIngredient);
+router.delete('/api/ingredients/:ingredientId', ingredients.deleteIngredient);
 
 app.use(router.routes());
 
