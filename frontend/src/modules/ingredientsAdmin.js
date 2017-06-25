@@ -20,6 +20,23 @@ const saveIngredient = (ingredient) => (dispatch) => {
     });
 };
 
+const updateIngredient = (ingredient, ingredientId) => (dispatch) => {
+    
+    dispatch({type: 'INGREDIENT_UPDATING'});
+
+    console.log('updating: ', ingredient);
+
+    const options = {method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(ingredient)};
+
+    fetchResourceFromBackend('/api/ingredients/' + ingredientId, options).then( result => {
+
+        console.log(result);
+
+        dispatch(fetchIngredients());
+
+    });
+};
+
 const deleteIngredient = (ingredientId) => (dispatch) => {
     
     dispatch({type: 'INGREDIENT_DELETING'});
@@ -46,7 +63,7 @@ const editIngredient = (ingredientId) => (dispatch) => {
     fetchResourceFromBackend('/api/ingredients/' + ingredientId).then( result => {
 
         console.log(result);
-        dispatch(openDialogue(Object.assign({}, {AA1: 99}, result)));
+        dispatch(openDialogue(Object.assign({}, {AA1: 99}, result), ingredientId));
         /*dispatch({type: 'INGREDIENT_DELETED', ingredientId: ingredientId});
 
         dispatch(fetchIngredients());*/
@@ -55,4 +72,4 @@ const editIngredient = (ingredientId) => (dispatch) => {
 };
 
 
-export {saveIngredient, editIngredient, deleteIngredient};
+export {saveIngredient, editIngredient, deleteIngredient, updateIngredient};

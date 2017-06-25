@@ -13,7 +13,7 @@ import {openDialogue, closeDialogue/*, saveDialogue*/} from 'modules/defineIngre
 import {NutrientForm} from './NutrientForm/NutrientForm';
 import {IngredientsListContainer} from './IngredientsListContainer';
 
-import {saveIngredient} from 'modules/ingredientsAdmin';
+import {saveIngredient, updateIngredient} from 'modules/ingredientsAdmin';
 
 const buttonOuterStyle = {
     position: 'absolute',
@@ -24,26 +24,13 @@ const buttonOuterStyle = {
 
 class Admin extends React.Component {
 
-    /*state = {
-        open: false,
+    handleSaveSubmit = (values) => {
+        this.props.saveIngredient(values, this.props.editId);
     }
-
-    handleOpen = () => {
-        this.setState({open: true});
-    }
-
-    handleClose = () => {
-        this.setState({open: false});
-    }
-    
-    handleSave = () => {
-        this.handleClose();
-        this.props.remoteSubmit();
-    }*/
 
     render () {
 
-        const {openDialogue, closeDialogue, saveDialogue, saveIngredient, open, initialValues} = this.props;
+        const {openDialogue, closeDialogue, saveDialogue, open, initialValues} = this.props;
 
         const actions = [
             <FlatButton
@@ -73,7 +60,7 @@ class Admin extends React.Component {
                     autoScrollBodyContent={true}
                     >
                     
-                    <NutrientForm onSubmit={saveIngredient} initialValues={initialValues} />
+                    <NutrientForm onSubmit={this.handleSaveSubmit} initialValues={initialValues} />
                 </Dialog>
 
                 <div style={{position: 'relative'}}>
@@ -94,7 +81,7 @@ import {connect} from 'react-redux';
 
 const mapDispatchToProps = (dispatch) => ({
     /*remoteSubmit: () => {dispatch(submit('manageNutrients'));},*/
-    saveIngredient: (values) => {dispatch(saveIngredient(values));},
+    saveIngredient: (values, editId) => {editId ? dispatch(updateIngredient(values, editId)) : dispatch(saveIngredient(values));},
 
     openDialogue: () => {dispatch(openDialogue());},
     closeDialogue: () => {dispatch(closeDialogue());},
@@ -103,7 +90,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
     open: state.defineIngredientDialogue.open,
-    initialValues: state.defineIngredientDialogue.initialValues
+    initialValues: state.defineIngredientDialogue.initialValues,
+    editId: state.defineIngredientDialogue.editId
 });
 
 const AdminContainer = connect(mapStateToProps, mapDispatchToProps)(Admin);
