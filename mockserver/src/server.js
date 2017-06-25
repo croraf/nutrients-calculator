@@ -53,6 +53,7 @@ router.get('/api/ingredients/', ingredients.getIngredients);
 router.post('/api/ingredients/', ingredients.addIngredient);
 router.get('/api/ingredients/:ingredientId', ingredients.getIngredientById);
 router.delete('/api/ingredients/:ingredientId', ingredients.deleteIngredient);
+router.put('/api/ingredients/:ingredientId', ingredients.updateIngredient);
 
 app.use(router.routes());
 

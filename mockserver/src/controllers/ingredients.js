@@ -55,5 +55,13 @@ const getIngredientById = async (ctx, next) => {
     ctx.body = ingredients[ctx.params.ingredientId];
 };
 
-export default {addIngredient, getIngredients, deleteIngredient, getIngredientById};
+const updateIngredient = async (ctx, next) => {
+
+    console.log(ctx.params.ingredientId);
+
+    ingredients[ctx.params.ingredientId] = ctx.request.body;
+    ctx.body = ctx.request.body;
+};
+
+export default {addIngredient, getIngredients, deleteIngredient, getIngredientById, updateIngredient};
 

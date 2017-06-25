@@ -91,6 +91,26 @@ paths:
       responses:
         '204':
           description: Sucessfully deleted
+    put:
+      tags: [Ingredients]
+      description: Updates an ingredient
+      parameters:
+        - name: ingredientID
+          in: path
+          required: true
+          default: '==Rafadadawd'
+          type: string
+        - name: data
+          in: body
+          required: true
+          description: new ingredient data
+          schema:
+            $ref: '#/definitions/IngredientData'
+      responses:
+        '200':
+          description: Sucessfully updated
+          schema:
+            $ref: '#/definitions/IngredientData'
 definitions:
   credentials:
     type: object
