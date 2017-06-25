@@ -20,70 +20,25 @@ class FatsComponent extends React.Component {
                         <Col xs={4}>
 
                             <FieldComponent
-                                controlId='AA1'
+                                controlId='Sat'
                                 type='number'
-                                label='AA1'
-                                placeholder='Enter text' />
-                            <FieldComponent
-                                controlId='AA2'
-                                type='number'
-                                label='AA2'
-                                placeholder='Enter text' />
-                            <FieldComponent
-                                controlId='AA3'
-                                type='number'
-                                label='AA3'
-                                placeholder='Enter text' />
-                            <FieldComponent
-                                controlId='AA4'
-                                type='number'
-                                label='AA4'
+                                label='Sat'
                                 placeholder='Enter text' />
                         </Col>
                         <Col xs={4}>
                             <FieldComponent
-                                controlId='AA1'
+                                controlId='Polyuns'
                                 type='number'
-                                label='AA1'
-                                placeholder='Enter text' />
-                            <FieldComponent
-                                controlId='AA2'
-                                type='number'
-                                label='AA2'
-                                placeholder='Enter text' />
-                            <FieldComponent
-                                controlId='AA3'
-                                type='number'
-                                label='AA3'
-                                placeholder='Enter text' />
-                            <FieldComponent
-                                controlId='AA4'
-                                type='number'
-                                label='AA4'
+                                label='Polyuns'
                                 placeholder='Enter text' />
                         </Col>
 
                         <Col xs={4}>
 
                             <FieldComponent
-                                controlId='AA1'
+                                controlId='Monouns'
                                 type='number'
-                                label='AA1'
-                                placeholder='Enter text' />
-                            <FieldComponent
-                                controlId='AA2'
-                                type='number'
-                                label='AA2'
-                                placeholder='Enter text' />
-                            <FieldComponent
-                                controlId='AA3'
-                                type='number'
-                                label='AA3'
-                                placeholder='Enter text' />
-                            <FieldComponent
-                                controlId='AA4'
-                                type='number'
-                                label='AA4'
+                                label='Monouns'
                                 placeholder='Enter text' />
                         </Col>
                     </Row>

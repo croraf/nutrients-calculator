@@ -63,7 +63,7 @@ const editIngredient = (ingredientId) => (dispatch) => {
     fetchResourceFromBackend('/api/ingredients/' + ingredientId).then( result => {
 
         console.log(result);
-        dispatch(openDialogue(Object.assign({}, {AA1: 99}, result), ingredientId));
+        dispatch(openDialogue(result, ingredientId));
         /*dispatch({type: 'INGREDIENT_DELETED', ingredientId: ingredientId});
 
         dispatch(fetchIngredients());*/

@@ -20,27 +20,27 @@ class CarbohidratesComponent extends React.Component {
                         <Col xs={4}>
 
                             <FieldComponent
-                                controlId='AA1'
+                                controlId='Fiber'
                                 type='number'
-                                label='AA1'
+                                label='Fiber'
                                 placeholder='Enter text' />
                         </Col>
                         <Col xs={4}>
+                            <FieldComponent
+                                controlId='Sugar'
+                                type='number'
+                                label='Sugar'
+                                placeholder='Enter text' />
+                        </Col>
+
+                        {/*<Col xs={4}>
+
                             <FieldComponent
                                 controlId='AA1'
                                 type='number'
                                 label='AA1'
                                 placeholder='Enter text' />
-                        </Col>
-
-                        <Col xs={4}>
-
-                            <FieldComponent
-                                controlId='AA1'
-                                type='number'
-                                label='AA1'
-                                placeholder='Enter text' />
-                        </Col>
+                        </Col>*/}
                     </Row>
                 </Col>
             </Row>

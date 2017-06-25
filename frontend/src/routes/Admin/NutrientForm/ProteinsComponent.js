@@ -25,65 +25,50 @@ class ProteinsComponent extends React.Component {
                                 label='AA1'
                                 placeholder='Enter text' />
                             <FieldComponent
-                                controlId='AA2'
-                                type='number'
-                                label='AA2'
-                                placeholder='Enter text' />
-                            <FieldComponent
-                                controlId='AA3'
-                                type='number'
-                                label='AA3'
-                                placeholder='Enter text' />
-                            <FieldComponent
                                 controlId='AA4'
                                 type='number'
                                 label='AA4'
+                                placeholder='Enter text' />
+                            <FieldComponent
+                                controlId='AA7'
+                                type='number'
+                                label='AA7'
                                 placeholder='Enter text' />
                         </Col>
                         <Col xs={4}>
                             <FieldComponent
-                                controlId='AA1'
-                                type='number'
-                                label='AA1'
-                                placeholder='Enter text' />
-                            <FieldComponent
                                 controlId='AA2'
                                 type='number'
                                 label='AA2'
                                 placeholder='Enter text' />
                             <FieldComponent
-                                controlId='AA3'
+                                controlId='AA5'
                                 type='number'
-                                label='AA3'
+                                label='AA5'
                                 placeholder='Enter text' />
                             <FieldComponent
-                                controlId='AA4'
+                                controlId='AA8'
                                 type='number'
-                                label='AA4'
+                                label='AA8'
                                 placeholder='Enter text' />
                         </Col>
 
                         <Col xs={4}>
 
                             <FieldComponent
-                                controlId='AA1'
-                                type='number'
-                                label='AA1'
-                                placeholder='Enter text' />
-                            <FieldComponent
-                                controlId='AA2'
-                                type='number'
-                                label='AA2'
-                                placeholder='Enter text' />
-                            <FieldComponent
                                 controlId='AA3'
                                 type='number'
                                 label='AA3'
                                 placeholder='Enter text' />
                             <FieldComponent
-                                controlId='AA4'
+                                controlId='AA6'
                                 type='number'
-                                label='AA4'
+                                label='AA6'
+                                placeholder='Enter text' />
+                            <FieldComponent
+                                controlId='AA9'
+                                type='number'
+                                label='AA9'
                                 placeholder='Enter text' />
                         </Col>
                     </Row>
