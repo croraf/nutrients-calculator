@@ -11,9 +11,15 @@ if (window.location.hostname === 'localhost') backend = window.location.protocol
 
 const fetchResourceFromBackend = (resource, options) => {
 
+    const token = localStorage.getItem('wholeprotein_token');
+    // shallow copy not to mutate 'options', also assures options is defined
+    const optionsWithAuth = Object.assign({}, options);
+    // If headers exists set its Authentication field, otherwise set entire headers of options.
+    optionsWithAuth.headers ? optionsWithAuth.headers.Authentication = token : optionsWithAuth.headers = {Authentication: token}; 
+
     console.log('API request:', resource);
     return (
-        fetch(backend + resource, options)
+        fetch(backend + resource, optionsWithAuth)
             .then(response => {
                 console.log(response);
                 switch (response.status) {

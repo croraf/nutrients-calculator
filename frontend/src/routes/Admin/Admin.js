@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -8,12 +7,13 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import { submit } from 'redux-form';
 
-import {openDialogue, closeDialogue/*, saveDialogue*/} from 'modules/defineIngredientDialogue';
-
 import {NutrientForm} from './NutrientForm/NutrientForm';
 import {IngredientsListContainer} from './IngredientsListContainer';
 
+
+import {openDialogue, closeDialogue/*, saveDialogue*/} from 'modules/defineIngredientDialogue';
 import {saveIngredient, updateIngredient} from 'modules/ingredientsAdmin';
+
 
 const buttonOuterStyle = {
     position: 'absolute',
@@ -48,8 +48,6 @@ class Admin extends React.Component {
 
         return (
             <div style={{padding: '10px'}}>
-
-                {/*<RaisedButton label="Add ingredient" onTouchTap={this.handleOpen} style={{margin: '10px'}}/>*/}
                 
                 <Dialog
                     title="Define ingredient"
@@ -80,15 +78,16 @@ class Admin extends React.Component {
 import {connect} from 'react-redux';
 
 const mapDispatchToProps = (dispatch) => ({
-    /*remoteSubmit: () => {dispatch(submit('manageNutrients'));},*/
-    saveIngredient: (values, editId) => {editId ? dispatch(updateIngredient(values, editId)) : dispatch(saveIngredient(values));},
 
     openDialogue: () => {dispatch(openDialogue());},
     closeDialogue: () => {dispatch(closeDialogue());},
-    saveDialogue: () => {dispatch(submit('manageNutrients')); dispatch(closeDialogue());}
+    saveDialogue: () => {dispatch(submit('manageNutrients')); dispatch(closeDialogue());},
+
+    saveIngredient: (values, editId) => {editId ? dispatch(updateIngredient(values, editId)) : dispatch(saveIngredient(values));}
 });
 
 const mapStateToProps = (state) => ({
+
     open: state.defineIngredientDialogue.open,
     initialValues: state.defineIngredientDialogue.initialValues,
     editId: state.defineIngredientDialogue.editId
