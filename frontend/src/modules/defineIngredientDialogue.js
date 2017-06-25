@@ -14,9 +14,12 @@ const closeDialogue = () => (dispatch) => {
     });*/
 };
 
-const openDialogue = () => (dispatch) => {
+const openDialogue = (initialValues = {}) => (dispatch) => {
+
+
+    console.log('initial values:', initialValues);
     
-    dispatch({type: 'OPEN_DIALOGUE'});
+    dispatch({type: 'OPEN_DIALOGUE', initialValues});
 
     /*fetchResourceFromBackend('/api/ingredients/' + ingredientId, options).then( result => {
 
@@ -47,14 +50,14 @@ const saveDialogue = () => (dispatch) => {
     });*/
 };
 
-const defineIngredientDialogueReducer = (state=false,  action) => {
+const defineIngredientDialogueReducer = (state={open: false, initialValues: {}},  action) => {
     switch (action.type) {
         case 'OPEN_DIALOGUE':
             console.log('OPEN_DIALOGUE');
-            return true;
+            return {open: true, initialValues: action.initialValues};
         case 'CLOSE_DIALOGUE':
             console.log('CLOSE_DIALOGUE');
-            return false;
+            return {open: false, initialValues: {}};
         default:
             return state;
     }

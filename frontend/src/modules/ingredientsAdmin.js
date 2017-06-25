@@ -1,5 +1,6 @@
 import {fetchResourceFromBackend} from './utilities/fetchResourceFromBackend';
 import {fetchIngredients} from './ingredients';
+import {openDialogue} from './defineIngredientDialogue';
 
 const saveIngredient = (ingredient) => (dispatch) => {
     
@@ -45,6 +46,7 @@ const editIngredient = (ingredientId) => (dispatch) => {
     fetchResourceFromBackend('/api/ingredients/' + ingredientId).then( result => {
 
         console.log(result);
+        dispatch(openDialogue(Object.assign({}, {AA1: 99}, result)));
         /*dispatch({type: 'INGREDIENT_DELETED', ingredientId: ingredientId});
 
         dispatch(fetchIngredients());*/

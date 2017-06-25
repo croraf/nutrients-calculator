@@ -51,6 +51,7 @@ router.post('/api/login/', loginRequestHandler);
 router.get('/api/nutritiveInfo', getNutritiveInfo);
 router.get('/api/ingredients/', ingredients.getIngredients);
 router.post('/api/ingredients/', ingredients.addIngredient);
+router.get('/api/ingredients/:ingredientId', ingredients.getIngredientById);
 router.delete('/api/ingredients/:ingredientId', ingredients.deleteIngredient);
 
 app.use(router.routes());

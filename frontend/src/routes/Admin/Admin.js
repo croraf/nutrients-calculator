@@ -43,7 +43,7 @@ class Admin extends React.Component {
 
     render () {
 
-        const {openDialogue, closeDialogue, saveDialogue, saveIngredient, open} = this.props;
+        const {openDialogue, closeDialogue, saveDialogue, saveIngredient, open, initialValues} = this.props;
 
         const actions = [
             <FlatButton
@@ -73,7 +73,7 @@ class Admin extends React.Component {
                     autoScrollBodyContent={true}
                     >
                     
-                    <NutrientForm onSubmit={saveIngredient}  />
+                    <NutrientForm onSubmit={saveIngredient} initialValues={initialValues} />
                 </Dialog>
 
                 <div style={{position: 'relative'}}>
@@ -102,7 +102,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    open: state.defineIngredientDialogue
+    open: state.defineIngredientDialogue.open,
+    initialValues: state.defineIngredientDialogue.initialValues
 });
 
 const AdminContainer = connect(mapStateToProps, mapDispatchToProps)(Admin);

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {connect} from 'react-redux';
+
 import {reduxForm} from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -58,13 +60,19 @@ class NutrientForm extends React.Component {
 
 }
 
-const initialValues = {
-};
-
-const NutrientFormReduxWrapper = reduxForm({
+let NutrientFormReduxWrapper = reduxForm({
     form: 'manageNutrients',
-    destroyOnUnmount: true,
-    initialValues: initialValues
+    destroyOnUnmount: true
 })(NutrientForm);
+
+/*NutrientFormReduxWrapper = connect(
+    state => ({
+
+        initialValues: {
+            name: 'rafa',
+            AA1: 21
+        }
+    })
+)(NutrientFormReduxWrapper);*/
 
 export {NutrientFormReduxWrapper as NutrientForm};

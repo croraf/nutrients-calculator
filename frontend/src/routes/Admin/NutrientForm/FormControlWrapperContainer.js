@@ -20,6 +20,7 @@ class FormControlWrapper extends React.Component {
                         floatingLabelText={label}
                         fullWidth={true}
                         dataSource={Object.values(dataSource)}
+                        searchText={meta.visited === false ? input.value : undefined}
                         {...input}
                         {...props} /> :
                     <TextField

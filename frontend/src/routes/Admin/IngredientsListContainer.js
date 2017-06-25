@@ -2,11 +2,11 @@ import {connect} from 'react-redux';
 
 import {IngredientsList} from './IngredientsList';
 
-import {deleteIngredient} from 'modules/ingredientsAdmin';
+import {deleteIngredient, editIngredient} from 'modules/ingredientsAdmin';
 
 const mapDispatchToProps = (dispatch) => ({
     deleteIngredient: (id) => {dispatch(deleteIngredient(id));},
-    editIngredient: (id) => {console.log('edit ingredient', id);}
+    editIngredient: (id) => {dispatch(editIngredient(id));}
 });
 
 const mapStateToProps = (state) => ({

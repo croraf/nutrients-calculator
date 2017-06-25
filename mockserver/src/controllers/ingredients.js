@@ -48,5 +48,12 @@ const deleteIngredient = async (ctx, next) => {
     ctx.status = 204;
 };
 
-export default {addIngredient, getIngredients, deleteIngredient};
+const getIngredientById = async (ctx, next) => {
+
+    console.log(ctx.params.ingredientId);
+
+    ctx.body = ingredients[ctx.params.ingredientId];
+};
+
+export default {addIngredient, getIngredients, deleteIngredient, getIngredientById};
 
