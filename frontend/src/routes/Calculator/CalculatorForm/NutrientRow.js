@@ -40,7 +40,7 @@ class NutrientRow extends React.Component {
 }
 
 NutrientRow.propTypes = {
-    item: PropTypes.string
+    item: PropTypes.string.isRequired
 };
 
 export {NutrientRow};

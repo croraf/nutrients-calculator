@@ -25,9 +25,9 @@ class FieldComponent extends React.Component {
 }
 
 FieldComponent.propTypes = {
-    controlId: PropTypes.string,
-    type: PropTypes.string,
-    label: PropTypes.string
+    controlId: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired
 };
 
 

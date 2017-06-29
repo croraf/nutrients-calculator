@@ -33,6 +33,7 @@ class LoginBox extends React.Component {
                             name='username' 
                             component={MyTextField} 
                             floatingLabelText="Username"
+                            type="text"
                             />
                         <Field 
                             name='password' 

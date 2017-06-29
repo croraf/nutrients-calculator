@@ -42,8 +42,8 @@ FormControlWrapper.propTypes = {
     // TODO: check if should be object or array, conceptually
     // TODO: check what to do with input and meta
     dataSource: PropTypes.object,
-    label: PropTypes.string,
-    type: PropTypes.string,
+    label: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

@@ -55,7 +55,7 @@ RightIconMenu.propTypes = {
     // TODO: check for other properties
     editIngredient: PropTypes.func.isRequired,
     deleteIngredient: PropTypes.func.isRequired,
-    elementKey: PropTypes.string
+    elementKey: PropTypes.string.isRequired
 };
 
 

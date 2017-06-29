@@ -74,7 +74,7 @@ Admin.propTypes = {
     closeDialogue: PropTypes.func.isRequired,
     saveDialogue: PropTypes.func.isRequired,
     saveIngredient: PropTypes.func.isRequired,
-    editId: PropTypes.string,
+    editId: PropTypes.string, // only available when Dialogue is open for editing existing nutrient
     open: PropTypes.bool,
     // TODO: define all ingredients
     initialValues: PropTypes.object

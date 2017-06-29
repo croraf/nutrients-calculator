@@ -29,8 +29,8 @@ class MyTextField extends React.Component {
 }
 
 MyTextField.propTypes = {
-    floatingLabelText: PropTypes.string,
-    type: PropTypes.string,
+    floatingLabelText: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
     input: PropTypes.object,
     meta: PropTypes.object
 };
