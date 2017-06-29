@@ -151,9 +151,9 @@ class NutritionResultsTable extends React.Component {
 NutritionResultsTable.propTypes = {
     nutrientsList: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
-        nutrientsProportion: PropTypes.arrayOf(PropTypes.number),
-        quantity: PropTypes.number
-    }))
+        nutrientsProportion: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+        quantity: PropTypes.number.isRequired
+    }).isRequired).isRequired
 };
 
 
