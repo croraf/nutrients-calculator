@@ -13,7 +13,7 @@ const fetchIngredients = () => (dispatch) => {
     
 };
 
-const fetchIngredientsReducer = (state={fetching: false, ingredients: []}, action) => {
+const fetchIngredientsReducer = (state={fetching: false, ingredients: {}}, action) => {
     switch (action.type) {
         case 'FETCHING_INGREDIENTS':
             console.log('FETCHING_INGREDIENTS');

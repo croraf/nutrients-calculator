@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 
@@ -146,5 +147,14 @@ class NutritionResultsTable extends React.Component {
         );
     }
 }
+
+NutritionResultsTable.propTypes = {
+    nutrientsList: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string,
+        nutrientsProportion: PropTypes.arrayOf(PropTypes.number),
+        quantity: PropTypes.number
+    }))
+};
+
 
 export {NutritionResultsTable};

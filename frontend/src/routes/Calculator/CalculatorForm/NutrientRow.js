@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {Row, Col} from 'react-flexbox-grid';
 import {FieldComponent} from './FieldComponent';
@@ -16,15 +17,13 @@ class NutrientRow extends React.Component {
                         <FieldComponent
                             controlId={`${item}.name`}
                             type='text'
-                            label='Ingredient name'
-                            placeholder='Enter ingredient name'/>
+                            label='Ingredient name' />
                     </Col>
                     <Col xs={3}>
                         <FieldComponent
                             controlId={`${item}.quantity`}
                             type='number'
-                            label='Serving size [g]'
-                            placeholder='Enter serving size' />
+                            label='Serving size [g]' />
                     </Col>
                     <Col xs={1} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                         <i
@@ -39,5 +38,9 @@ class NutrientRow extends React.Component {
         );
     }
 }
+
+NutrientRow.propTypes = {
+    item: PropTypes.string
+};
 
 export {NutrientRow};

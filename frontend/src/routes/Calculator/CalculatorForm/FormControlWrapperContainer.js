@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import TextField from 'material-ui/TextField';
@@ -9,7 +10,7 @@ class FormControlWrapper extends React.Component {
 
     render () {
 
-        const {input, meta, dataSource, label, placeholder, type, ...props} = this.props;
+        const {input, meta, dataSource, label, type} = this.props;
 
         return (
             <div>
@@ -37,6 +38,15 @@ class FormControlWrapper extends React.Component {
     }
 }
 
+FormControlWrapper.propTypes = {
+    // TODO: check if should be object or array, conceptually
+    // TODO: check what to do with input and meta
+    dataSource: PropTypes.object,
+    label: PropTypes.string,
+    type: PropTypes.string,
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 const mapDispatchToProps = (dispatch) => ({
     /*fetchIngredientSuggestions: (value) => {dispatch(fetchIngredientSuggestions(value));}*/

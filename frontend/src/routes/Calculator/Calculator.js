@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {CalculatorForm} from './CalculatorForm/CalculatorForm';
 import {NutritionResultsTableContainer} from './NutritionResultsTable/NutritionResultsTableContainer';
@@ -19,5 +20,10 @@ class Calculator extends React.Component {
         );
     }
 }
+
+Calculator.propTypes = {
+    calculateHandler: PropTypes.func
+};
+
 
 export {Calculator};

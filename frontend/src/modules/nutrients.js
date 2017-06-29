@@ -12,13 +12,13 @@ const fetchNutrients = (ingredients) => (dispatch) => {
             nutrientsList[index] = {name: ingredientName};
             nutrientsList[index].nutrientsProportion = 
                 (ingredientName === undefined || ingredients[index].quantity === undefined) ? [] 
-                    : [parseInt(Math.random()*100), parseInt(Math.random()*100), parseInt(Math.random()*100)];
-            nutrientsList[index].quantity = ingredients[index].quantity;
+                    : [Math.round(Math.random()*100), Math.round(Math.random()*100), Math.round(Math.random()*100)];
+            nutrientsList[index].quantity = parseInt(ingredients[index].quantity);
         }, this);
 
         setTimeout(()=>{
             resolve(nutrientsList);
-        }, 1000);
+        }, 300);
     }).then((nutrientsList) => {
 
         dispatch({type: 'NUTRIENTS_RETRIEVED', nutrientsList: nutrientsList});

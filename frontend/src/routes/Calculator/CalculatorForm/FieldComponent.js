@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-/*import {FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';*/
 import {Field} from 'redux-form';
 
 import {FormControlWrapperContainer} from './FormControlWrapperContainer';
@@ -9,19 +9,26 @@ class FieldComponent extends React.Component {
 
     render () {
         
-        const { controlId, help, ...props } = this.props;
+        const { controlId, type, label } = this.props;
 
         return (
             <div>
-            {/*<FormGroup controlId={controlId}>
-                <ControlLabel>{label}</ControlLabel>*/}
-                <Field name={controlId} component={FormControlWrapperContainer} {...props} />
-             {/*   {help && <HelpBlock>{help}</HelpBlock>}
-            </FormGroup>*/}
+                <Field 
+                    name={controlId}
+                    component={FormControlWrapperContainer}
+                    type={type}
+                    label={label} />
             </div>
         );
     }
 
 }
+
+FieldComponent.propTypes = {
+    controlId: PropTypes.string,
+    type: PropTypes.string,
+    label: PropTypes.string
+};
+
 
 export {FieldComponent};

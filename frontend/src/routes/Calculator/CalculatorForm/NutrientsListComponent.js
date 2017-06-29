@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import {NutrientRow} from './NutrientRow';
@@ -32,5 +33,12 @@ class NutrientsListComponent extends React.Component {
         );
     }
 }
+
+NutrientsListComponent.propTypes = {
+    fields: PropTypes.shape({
+        map: PropTypes.func
+    }),
+    meta: PropTypes.object
+};
 
 export {NutrientsListComponent};

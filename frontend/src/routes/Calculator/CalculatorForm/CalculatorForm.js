@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {reduxForm, FieldArray} from 'redux-form';
 
@@ -19,6 +20,13 @@ class CalculatorForm extends React.Component {
 
 }
 
+CalculatorForm.propTypes = {
+    handleSubmit: PropTypes.func
+};
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
 const initialValues = {
     nutrients: [{/*name: 'oat leafs', quantity: 50*/}, {/*name: 'Cornflex', quantity: 100*/}, {/*name: 'chockolate, dark', quantity: 150*/}]
 };
@@ -28,5 +36,10 @@ const CalculatorFormReduxWrapper = reduxForm({
     destroyOnUnmount: true,
     initialValues: initialValues
 })(CalculatorForm);
+
+
+CalculatorFormReduxWrapper.propTypes = {
+    onSubmit: PropTypes.func
+};
 
 export {CalculatorFormReduxWrapper as CalculatorForm};
