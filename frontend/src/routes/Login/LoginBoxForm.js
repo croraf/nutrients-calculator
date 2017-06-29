@@ -1,10 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import image from 'resources/401.png';
 
 import {reduxForm, Field} from 'redux-form';
+
+import {MyTextField} from './MyTextField';
+
+//planned to show funny image if unauthorized
+//import image from 'resources/401.png';
 
 
 const style = {
@@ -14,31 +18,6 @@ const style = {
     textAlign: 'center',
     borderRadius: '3%'
 };
-
-class MyTextField extends React.Component {
-
-    render () {
-
-        const {floatingLabelText, type, input, meta} = this.props;
-
-        return (
-            <div>
-                <TextField 
-                    {...input}
-                    floatingLabelFixed={true} 
-                    floatingLabelText={floatingLabelText}
-                    type={type}
-                    autoComplete='off'
-                    style={{margin: 'auto'}}
-                />
-                {input.error && 
-                <span>
-                    Invalid
-                </span>}
-            </div>
-        );
-    }
-}
 
 class LoginBox extends React.Component {
     render () {
@@ -70,24 +49,36 @@ class LoginBox extends React.Component {
                         </div>
                     </form>
                     
-                {/*<div>
-                    {
-                        unauthorized && 
-                        <img 
-                            width={360}
-                            height={270}
-                            src='https://blog.dashburst.com/wp-content/uploads/2014/03/6508023065_1b3bf710ce_o-728x582.jpg' />
-                    }
-                </div>*/}
+                    {/*<div>
+                        {
+                            unauthorized && 
+                            <img 
+                                width={360}
+                                height={270}
+                                src='https://blog.dashburst.com/wp-content/uploads/2014/03/6508023065_1b3bf710ce_o-728x582.jpg' />
+                        }
+                    </div>*/}
                 </Paper>
             </div>
         );
     }
 }
 
+LoginBox.propTypes = {
+    handleSubmit: PropTypes.func,
+    rejected: PropTypes.bool
+};
 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 const LoginBoxForm = reduxForm({
     form: 'login'
 })(LoginBox);
+
+LoginBoxForm.propTypes = {
+    onSubmit: PropTypes.func,
+    rejected: PropTypes.bool
+};
 
 export {LoginBoxForm};

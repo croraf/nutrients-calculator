@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {SubmissionError} from 'redux-form';
+/*import {SubmissionError} from 'redux-form';*/
 
 import {LoginBoxForm} from './LoginBoxForm';
 

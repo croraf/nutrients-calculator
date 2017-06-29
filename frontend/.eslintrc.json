@@ -42,6 +42,7 @@
             "error",
             "always"
         ],
+        "no-use-before-define": "error",
         "class-property/class-property-semicolon": ["warn", "never"],
         "no-console": "off"
     }

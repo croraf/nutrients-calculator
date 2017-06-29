@@ -32,7 +32,6 @@
             "error",
             "always"
         ],
-        "class-property/class-property-semicolon": ["warn", "never"],
         "no-console": "off"
     }
 }
