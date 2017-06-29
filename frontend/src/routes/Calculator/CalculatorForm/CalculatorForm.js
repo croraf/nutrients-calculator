@@ -21,7 +21,7 @@ class CalculatorForm extends React.Component {
 }
 
 CalculatorForm.propTypes = {
-    handleSubmit: PropTypes.func
+    handleSubmit: PropTypes.func.isRequired
 };
 
 
@@ -39,7 +39,7 @@ const CalculatorFormReduxWrapper = reduxForm({
 
 
 CalculatorFormReduxWrapper.propTypes = {
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func.isRequired
 };
 
 export {CalculatorFormReduxWrapper as CalculatorForm};

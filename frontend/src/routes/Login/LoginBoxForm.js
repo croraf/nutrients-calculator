@@ -65,7 +65,7 @@ class LoginBox extends React.Component {
 }
 
 LoginBox.propTypes = {
-    handleSubmit: PropTypes.func,
+    handleSubmit: PropTypes.func.isRequired,
     rejected: PropTypes.bool
 };
 
@@ -77,7 +77,7 @@ const LoginBoxForm = reduxForm({
 })(LoginBox);
 
 LoginBoxForm.propTypes = {
-    onSubmit: PropTypes.func,
+    onSubmit: PropTypes.func.isRequired,
     rejected: PropTypes.bool
 };
 

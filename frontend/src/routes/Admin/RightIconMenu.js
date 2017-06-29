@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
@@ -49,5 +50,13 @@ class RightIconMenu extends React.Component {
         </IconMenu>
     );  
 };*/
+
+RightIconMenu.propTypes = {
+    // TODO: check for other properties
+    editIngredient: PropTypes.func.isRequired,
+    deleteIngredient: PropTypes.func.isRequired,
+    elementKey: PropTypes.string
+};
+
 
 export {RightIconMenu};

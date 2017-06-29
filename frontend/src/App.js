@@ -24,22 +24,24 @@ const App = () => {
                             path="login"
                             getComponent={(nextState, cb) => {
                                 import(/* webpackChunkName: "chunckCalculator" */  './routes/Calculator/CalculatorContainer');
-                                import(/* webpackChunkName: "chunckLogin" */  './routes/Login/LoginContainer').then((LoginContainer) => { cb(null, LoginContainer.LoginContainer); });
+                                import(/* webpackChunkName: "chunckLogin" */  './routes/Login/LoginContainer').then(
+                                    (file) => { cb(null, file.LoginContainer); }
+                                );
                             }}/>
 
                         <Route
                             path="calculator"
                             getComponent={(nextState, cb) => {
                                 import(/* webpackChunkName: "chunckCalculator" */  './routes/Calculator/CalculatorContainer').then(
-                                    (CalculatorContainer) => { cb(null, CalculatorContainer.CalculatorContainer); }
+                                    (file) => { cb(null, file.CalculatorContainer); }
                                 );
                             }}/>
 
                         <Route
                             path="admin"
                             getComponent={(nextState, cb) => {
-                                import(/* webpackChunkName: "chunckAdmin" */  './routes/Admin/Admin').then(
-                                    (Admin) => { cb(null, Admin.Admin); });
+                                import(/* webpackChunkName: "chunckAdmin" */  './routes/Admin/AdminContainer').then(
+                                    (file) => { cb(null, file.AdminContainer); });
                             }}/>
                     </Route>
                 </Router>

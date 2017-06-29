@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {List, ListItem} from 'material-ui/List';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
@@ -47,5 +48,12 @@ class IngredientsList extends React.Component {
         );
     }
 }
+
+IngredientsList.propTypes = {
+    ingredients: PropTypes.object,
+    deleteIngredient: PropTypes.func.isRequired,
+    editIngredient: PropTypes.func.isRequired
+};
+
 
 export {IngredientsList};

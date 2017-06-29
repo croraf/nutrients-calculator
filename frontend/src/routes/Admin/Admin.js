@@ -1,19 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-import { submit } from 'redux-form';
-
 import {NutrientForm} from './NutrientForm/NutrientForm';
 import {IngredientsListContainer} from './IngredientsListContainer';
-
-
-import {openDialogue, closeDialogue/*, saveDialogue*/} from 'modules/defineIngredientDialogue';
-import {saveIngredient, updateIngredient} from 'modules/ingredientsAdmin';
-
 
 const buttonOuterStyle = {
     position: 'absolute',
@@ -75,24 +69,17 @@ class Admin extends React.Component {
     }
 }
 
-import {connect} from 'react-redux';
+Admin.propTypes = {
+    openDialogue: PropTypes.func.isRequired,
+    closeDialogue: PropTypes.func.isRequired,
+    saveDialogue: PropTypes.func.isRequired,
+    saveIngredient: PropTypes.func.isRequired,
+    editId: PropTypes.string,
+    open: PropTypes.bool,
+    // TODO: define all ingredients
+    initialValues: PropTypes.object
+};
 
-const mapDispatchToProps = (dispatch) => ({
 
-    openDialogue: () => {dispatch(openDialogue());},
-    closeDialogue: () => {dispatch(closeDialogue());},
-    saveDialogue: () => {dispatch(submit('manageNutrients')); dispatch(closeDialogue());},
 
-    saveIngredient: (values, editId) => {editId ? dispatch(updateIngredient(values, editId)) : dispatch(saveIngredient(values));}
-});
-
-const mapStateToProps = (state) => ({
-
-    open: state.defineIngredientDialogue.open,
-    initialValues: state.defineIngredientDialogue.initialValues,
-    editId: state.defineIngredientDialogue.editId
-});
-
-const AdminContainer = connect(mapStateToProps, mapDispatchToProps)(Admin);
-
-export {AdminContainer as Admin};
+export {Admin};

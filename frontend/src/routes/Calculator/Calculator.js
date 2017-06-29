@@ -22,7 +22,7 @@ class Calculator extends React.Component {
 }
 
 Calculator.propTypes = {
-    calculateHandler: PropTypes.func
+    calculateHandler: PropTypes.func.isRequired
 };
 
 

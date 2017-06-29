@@ -36,7 +36,7 @@ class NutrientsListComponent extends React.Component {
 
 NutrientsListComponent.propTypes = {
     fields: PropTypes.shape({
-        map: PropTypes.func
+        map: PropTypes.func.isRequired
     }),
     meta: PropTypes.object
 };
