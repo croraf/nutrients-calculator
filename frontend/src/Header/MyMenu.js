@@ -34,8 +34,8 @@ class MyMenu extends React.Component {
                     {...props}
                     onItemTouchTap={navigate}
                     iconButtonElement={
-                        <IconButton>
-                            <NavigationMenu color={white} />
+                        <IconButton iconStyle={{color: 'white'}}>
+                            <NavigationMenu />
                         </IconButton>
                     }
                     targetOrigin={{horizontal: 'right', vertical: 'top'}}
