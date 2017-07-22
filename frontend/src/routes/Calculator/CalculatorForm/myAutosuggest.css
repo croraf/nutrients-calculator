@@ -7,13 +7,13 @@
 .react-autosuggest__suggestions-list{
     
     padding: 0px;
-    margin-top: 0px;
+    margin-top: 8px;
     margin-bottom: 8px;
 }
 
 .react-autosuggest__suggestion--highlighted{
     
-    background-color: lightblue;
+    background-color: lightgray;
 }
 
 .react-autosuggest__container{
