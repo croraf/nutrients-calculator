@@ -6,7 +6,7 @@ import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-rou
 
 import { hashHistory } from 'react-router';
 
-import {fetchIngredientsReducer} from './ingredients';
+import {fetchIngredientsReducer, fetchIngredients} from './ingredients';
 import {defineIngredientDialogueReducer} from './defineIngredientDialogue';
 import {nutrientsReducer} from './nutrients';
 import {loginReducer} from './login';
@@ -43,5 +43,7 @@ const injectAsyncReducer = (name, asyncReducer) => {
     }));
 
 };
+
+setTimeout(() => {store.dispatch(fetchIngredients());}, 1000);
 
 export {store, injectAsyncReducer, enhancedHistory};

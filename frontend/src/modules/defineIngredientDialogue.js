@@ -2,7 +2,7 @@ import {fetchResourceFromBackend} from './utilities/fetchResourceFromBackend';
 
 const closeDialogue = () => (dispatch) => {
     
-    dispatch({type: 'CLOSE_DIALOGUE'});
+    return dispatch({type: 'CLOSE_DIALOGUE'});
 
     /*fetchResourceFromBackend('/api/ingredients', options).then( result => {
 

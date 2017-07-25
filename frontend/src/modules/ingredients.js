@@ -1,12 +1,11 @@
 import {fetchResourceFromBackend} from './utilities/fetchResourceFromBackend';
-
-import {store} from './store';
+//import {store} from './store';
 
 const fetchIngredients = () => (dispatch) => {
     
     dispatch({type: 'FETCHING_INGREDIENTS'});
 
-    fetchResourceFromBackend('/api/ingredients').then( result => {
+    return fetchResourceFromBackend('/api/ingredients').then( result => {
 
         dispatch({type: 'INGREDIENTS_RETRIEVED', retrievedIngredients: result});
     });
@@ -31,4 +30,4 @@ export {fetchIngredientsReducer, fetchIngredients};
 
 
 //initial fetching of ingredients
-setTimeout(() => {store.dispatch(fetchIngredients());}, 1000);
+//setTimeout(() => {store.dispatch(fetchIngredients());}, 1000);

@@ -34,7 +34,11 @@ module.exports = {
                     {loader: 'css-loader', options: { modules: true}},
                     {loader: 'sass-loader'}
                 ]
-            },
+            },/*{
+                test: /test\.js$/,
+                include: path.resolve(__dirname, 'test'),
+                use: 'mocha-loader'
+            },*/
             {
                 /* legacy css from node_modules should not have css-loader modules enabled */
                 test: /\.css$/,
