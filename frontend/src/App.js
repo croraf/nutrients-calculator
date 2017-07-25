@@ -7,7 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import {enhancedHistory} from './modules/store';
 
-import {Header} from './Header/Header';
+import {Header} from './Common/Header/Header';
 
 const App = () => {
 
