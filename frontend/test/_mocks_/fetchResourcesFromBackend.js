@@ -1,5 +1,5 @@
 
-const fetchResourceFromBackend = (resource, options) => {
+const fetchResourceFromBackend__mock = (resource, options) => {
 
     if (resource === '/api/ingredients'){
         return (
@@ -11,4 +11,4 @@ const fetchResourceFromBackend = (resource, options) => {
 
 };
 
-export {fetchResourceFromBackend};
+export {fetchResourceFromBackend__mock};

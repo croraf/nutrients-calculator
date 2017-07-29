@@ -1,20 +1,20 @@
 
 import chai, {expect} from 'chai';
-import chaiAsPromised from 'chai-as-promised';
+/*import chaiAsPromised from 'chai-as-promised';*/
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 
-chai.use(chaiAsPromised);
+/*chai.use(chaiAsPromised);*/
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-import {fetchResourceFromBackend} from '../_mocks_/fetchResourcesFromBackend';
+import {fetchResourceFromBackend__mock} from '../_mocks_/fetchResourcesFromBackend';
 
 
-jest.doMock('../../src/modules/utilities/fetchResourceFromBackend', () =>({
-    fetchResourceFromBackend: fetchResourceFromBackend
+jest.doMock('modules/utilities/fetchResourceFromBackend', () =>({
+    fetchResourceFromBackend: fetchResourceFromBackend__mock
 }));
 
 const {fetchIngredientsReducer, fetchIngredients} = require('modules/ingredients');
