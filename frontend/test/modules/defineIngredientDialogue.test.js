@@ -1,8 +1,10 @@
 
-/*import {describe, it} from 'mocha';*/
-import {expect} from 'chai';
+import chai, {expect} from 'chai';
+import chaiAsPromised from 'chai-as-promised';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+
+chai.use(chaiAsPromised);
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -56,11 +58,27 @@ describe('(modules)defineIngredientDialogue', function () {
 
         it('should return current state when unrecognized action is given', function () {
 
-            const store = mockStore({open: true, initialValues: {}, editId: '21'});
+            expect(defineIngredientDialogueReducer({open: true, initialValues: {name: 'apple'}, editId: '123'}, {})).to.deep.equal(
+                {open: true, initialValues: {name: 'apple'}, editId: '123'}
+            );
+        });
 
-            store.dispatch({type: 'DEFAULT'});
+        it('should open dialogue without ingredient data on OPEN_DIALOGUE action (create ingredient)', function () {
 
-            expect(store.getState()).to.deep.equal({open: true, initialValues: {}, editId: '21'});
+            expect(defineIngredientDialogueReducer(
+                {open: false, initialValues: {}, editId: undefined},
+                {type: 'OPEN_DIALOGUE',  initialValues: {}, editId: undefined})).to.deep.equal(
+                {open: true, initialValues: {}, editId: undefined}
+            );
+        });
+
+        it('should open dialogue with ingredient on OPEN_DIALOGUE action (edit ingredient)', function () {
+
+            expect(defineIngredientDialogueReducer(
+                {open: false, initialValues: {}, editId: undefined},
+                {type: 'OPEN_DIALOGUE',  initialValues: {name: 'apple'}, editId: '123'})).to.deep.equal(
+                {open: true, initialValues: {name: 'apple'}, editId: '123'}
+            );
         });
     });
 });
