@@ -11,7 +11,7 @@ import {defineIngredientDialogueReducer, openDialogue, closeDialogue} from 'modu
 
 describe('(modules)defineIngredientDialogue', function () {
     describe('#closeDialogue()', function () {
-        test('should dispatch CLOSE_DIALOGUE action', function () {
+        it('should dispatch CLOSE_DIALOGUE action', function () {
 
             const store = mockStore();
 
@@ -22,7 +22,7 @@ describe('(modules)defineIngredientDialogue', function () {
     });
 
     describe('#openDialogue()', function () {
-        test('should dispatch OPEN_DIALOGUE action with {} when no initial values', function () {
+        it('should dispatch OPEN_DIALOGUE action with {} when no initial values provided', function () {
 
             const store = mockStore();
 
@@ -31,7 +31,7 @@ describe('(modules)defineIngredientDialogue', function () {
             expect(store.getActions()).to.deep.equal([{type: 'OPEN_DIALOGUE', initialValues: {}, editId: undefined}]);
         });
 
-        test('should dispatch OPEN_DIALOGUE action with initial values and editId', function () {
+        it('should dispatch OPEN_DIALOGUE action with initial values and editId when provided', function () {
 
             const store = mockStore();
 
@@ -42,6 +42,25 @@ describe('(modules)defineIngredientDialogue', function () {
                 initialValues: {name: 'apple', proteins: 20},
                 editId: '12345'
             }]);
+        });
+    });
+
+    describe('#defineIngredientDialogueReducer()', function () {
+        it('should return proper default state on initialization', function () {
+
+            expect(defineIngredientDialogueReducer(undefined, {})).to.deep.equal(
+                {open: false, initialValues: {}, editId: undefined}
+            );
+
+        });
+
+        it('should return current state when unrecognized action is given', function () {
+
+            const store = mockStore({open: true, initialValues: {}, editId: '21'});
+
+            store.dispatch({type: 'DEFAULT'});
+
+            expect(store.getState()).to.deep.equal({open: true, initialValues: {}, editId: '21'});
         });
     });
 });

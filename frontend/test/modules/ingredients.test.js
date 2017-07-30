@@ -27,7 +27,7 @@ describe('(modules)ingredients', function () {
 
     describe('#fetchIngredients()', function () {
 
-        test('should make a call to fetchResourceFromBackend for ingredients, and then dispatch retrieved ingredients', function () {
+        it('should make a call to fetchResourceFromBackend for ingredients, and then dispatch retrieved ingredients', function () {
             /*nock('http://example.com/')
                 .get('/todos')
                 .reply(200, { body: { todos: ['do something'] } });*/
@@ -44,7 +44,7 @@ describe('(modules)ingredients', function () {
             
         });
 
-        /*test('should dispatch OPEN_DIALOGUE action with initial values and editId', function () {
+        /*it('should dispatch OPEN_DIALOGUE action with initial values and editId', function () {
 
             const store = mockStore();
 

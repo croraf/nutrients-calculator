@@ -4,10 +4,11 @@
   "description": "Boilerplate: webpack, react, redux, ",
   "main": "index.js",
   "scripts": {
-    "test": "SET NODE_PATH=%CD%/src&& mocha --compilers js:babel-core/register \"test/**/*test.js\" -w",
+    "test:mocha": "SET NODE_PATH=%CD%/src&& mocha --compilers js:babel-core/register \"test/**/*test.js\" -w",
     "dev": "SET NODE_ENV=DEV webpack-dev-server",
     "dev:no-server": "webpack --progress --watch",
-    "test2": "SET NODE_PATH=%CD%/src&& jest test.js",
+    "test": "SET NODE_PATH=%CD%/src&& jest test.js",
+    "test:watch": "npm test -- --watch",
     "compile": "webpack",
     "installAndCompile": "npm install && npm run compile"
   },
@@ -52,6 +53,7 @@
     "eslint-plugin-react": "^6.10.0",
     "file-loader": "^0.10.1",
     "jest": "^20.0.4",
+    "jest-html-reporter": "^0.5.1",
     "mocha": "^3.2.0",
     "mocha-loader": "^1.1.1",
     "nock": "^9.0.14",
@@ -62,5 +64,8 @@
     "url-loader": "^0.5.8",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.1"
+  },
+  "jest-html-reporter": {
+    "outputPath": "./test/report/test-report.html"
   }
 }

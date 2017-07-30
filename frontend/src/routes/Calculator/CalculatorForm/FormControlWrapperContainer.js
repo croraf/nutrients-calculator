@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import TextField from 'material-ui/TextField';
 
-import {MyAutosuggest} from './MyAutosuggest'
+import {MyAutosuggest} from './MyAutosuggest';
 
 class FormControlWrapper extends React.Component {
 
