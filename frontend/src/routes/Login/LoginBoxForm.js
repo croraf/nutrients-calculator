@@ -26,7 +26,7 @@ class LoginBox extends React.Component {
 
         return (
             
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: '10%'}}>
+            <div style={{display: 'flex', justifyContent: 'center', marginTop: '7%', marginBottom: '3%'}}>
                 <Paper style={style} zDepth={4}>
                     <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                         <Field 
