@@ -67,12 +67,10 @@ class NutritionResultsTable extends React.Component {
 
         let dataRows = [];
 
-        if (foodsAnalyzed.length > 0) {
-            dataRows = Object.keys(nutrientsMap).map((key) => ({
-                component: nutrientsMap[key].name,
-                ingredients: []
-            })); 
-        } 
+        dataRows = Object.keys(nutrientsMap).map((key) => ({
+            component: nutrientsMap[key].name,
+            ingredients: []
+        }));
 
         /* console.log('dataRows', dataRows); */
         if (foodsAnalyzed.length > 0) {
