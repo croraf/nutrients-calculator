@@ -8,7 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {enhancedHistory} from './modules/store';
 
 import {Header} from './Common/Header/Header';
-import {AltcoinGraphElement} from './Common/EmbeddedElements/AltcoinGraphElement';
+import {AdvertisementFooter} from './Common/Advertisement/AdvertisementFooter';
 
 const App = () => {
 
@@ -47,7 +47,7 @@ const App = () => {
                     </Route>
                 </Router>
 
-                <AltcoinGraphElement />
+                <AdvertisementFooter />
             </div>
         </MuiThemeProvider>
     );
