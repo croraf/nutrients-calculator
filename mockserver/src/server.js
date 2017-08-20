@@ -16,6 +16,8 @@ import {
     ui
 } from 'swagger2-koa';
 
+import historyApiFallback from 'koa-history-api-fallback';
+
 const
     Koa = require('koa'),
     /*koaStatic = require('koa-static'),*/
@@ -68,9 +70,10 @@ app.use(async(ctx) => {
     });
 });
 
+app.use(historyApiFallback());
 
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-    console.log('listening on port:', port)
+    console.log('listening on port:', port);
 });
