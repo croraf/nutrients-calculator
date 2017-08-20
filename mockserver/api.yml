@@ -45,8 +45,8 @@ paths:
         '200':
           description: Array of ingredients
           schema:
-            type: object
-            example: ["banana", "apple", "bread", "chockolate"]
+            type: array
+            example: [{ndbno: 10000, name: "Banana"}, {ndbno: 10010, name: "Apple"}, {ndbno: 10300, name: "Chocolate"}]
     post:
       produces: ["text/plain"]
       tags: [Ingredients]

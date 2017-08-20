@@ -18,6 +18,9 @@ import {
 
 import historyApiFallback from 'koa-history-api-fallback';
 
+import {} from './main';
+import {getFoods} from './fetchFoods/fetchFoods';
+
 const
     Koa = require('koa'),
     /*koaStatic = require('koa-static'),*/
@@ -51,7 +54,7 @@ app.use(validate(document));
 
 router.post('/api/login/', loginRequestHandler);
 router.get('/api/nutritiveInfo', getNutritiveInfo);
-router.get('/api/ingredients/', ingredients.getIngredients);
+router.get('/api/ingredients/', /* ingredients.getIngredients */ getFoods);
 router.post('/api/ingredients/', ingredients.addIngredient);
 router.get('/api/ingredients/:ingredientId', ingredients.getIngredientById);
 router.delete('/api/ingredients/:ingredientId', ingredients.deleteIngredient);

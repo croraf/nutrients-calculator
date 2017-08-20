@@ -24,6 +24,7 @@
     "koa-router": "^7.2.0",
     "koa-send": "^4.1.0",
     "koa-static": "^3.0.0",
+    "node-fetch": "^1.7.2",
     "swagger2-koa": "0.0.36"
   },
   "devDependencies": {
