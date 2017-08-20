@@ -8,6 +8,8 @@ const embedSingleGraph = (embeddingRoot, currency, secondaryCurrency) => {
     widget.setAttribute('data-base', 'USD');
     secondaryCurrency && widget.setAttribute('data-secondary', secondaryCurrency); 
     widget.style.margin = '5px';
+    widget.style.backgroundColor = 'white';
+    widget.style.borderRadius = '10px';
 
     embeddingRoot.appendChild(widget);
 };
