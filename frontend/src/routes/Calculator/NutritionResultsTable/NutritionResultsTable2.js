@@ -19,9 +19,8 @@ class NutritionResultsTable extends React.Component {
         const {foodsAnalyzed} = this.props;
 
         const ingredientColumns = foodsAnalyzed.map((foodWrapper, index) => {
-            const ingredient = foodWrapper.food;
 
-            if (ingredient.desc === undefined) {
+            if (foodWrapper.food.desc === undefined) {
                 return {
                     Header: '---',
                     accessor: 'ingredients[' + index + ']',
@@ -30,7 +29,7 @@ class NutritionResultsTable extends React.Component {
                 };
             } else {
                 return {
-                    Header: ingredient.desc.name + ' [' + (ingredient.quantity || '--- ') + 'g]',
+                    Header: foodWrapper.food.desc.name + ' [' + (foodWrapper.quantity || '--- ') + 'g]',
                     accessor: 'ingredients[' + index + ']',
                     width: 150,
                     minWidth: 150,
@@ -56,7 +55,7 @@ class NutritionResultsTable extends React.Component {
         };
 
         const columns = 
-            [{Header: '', accessor: 'component', width: 150, getProps: customProps}]
+            [{Header: '', accessor: 'component', width: 200, getProps: customProps}]
                 .concat(ingredientColumns)
                 .concat([{Header: 'Total [g]', accessor: 'total', width: 100, style: {textAlign: 'center'}}]);
 
@@ -78,7 +77,7 @@ class NutritionResultsTable extends React.Component {
                 if (index > 20) return;
                 const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
                 if (rowIndex === -1) console.log('no nutrient row');
-                else dataRows[rowIndex].ingredients[0] = nutrient.value;
+                else dataRows[rowIndex].ingredients[0] = nutrient.value * foodsAnalyzed[0].quantity/100;
             });
         }
 
@@ -87,7 +86,7 @@ class NutritionResultsTable extends React.Component {
                 if (index > 20) return;
                 const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
                 if (rowIndex === -1) console.log('no nutrient row');
-                else dataRows[rowIndex].ingredients[1] = nutrient.value;
+                else dataRows[rowIndex].ingredients[1] = nutrient.value * foodsAnalyzed[1].quantity/100;
             });
             
         }
@@ -97,7 +96,7 @@ class NutritionResultsTable extends React.Component {
                 if (index > 20) return;
                 const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
                 if (rowIndex === -1) console.log('no nutrient row');
-                else dataRows[rowIndex].ingredients[2] = nutrient.value;
+                else dataRows[rowIndex].ingredients[2] = nutrient.value * foodsAnalyzed[2].quantity/100;
             });
             
         } 

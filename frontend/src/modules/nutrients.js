@@ -8,6 +8,8 @@ const fetchNutrients = (ingredients, dataSource) => (dispatch) => {
     
     dispatch({type: 'FETCHING_NUTRIENTS', ingredients: ingredients});
 
+    console.log('rafa', ingredients);
+
     let queryCodes = '';
     ingredients.forEach((item, index) => {
         dataSource.forEach(food => {
@@ -25,7 +27,10 @@ const fetchNutrients = (ingredients, dataSource) => (dispatch) => {
         }, (reason) => {
             console.log(reason);
         }).then((body) => {
-            dispatch({type: 'NUTRIENTS_DATA_RECEIVED', foodsAnalyzed: body.foods});
+            const foodsAnalyzed = body.foods.map((item, index) => ({
+                food: item.food, quantity: parseFloat(ingredients[index].quantity).toFixed(3)
+            }));
+            dispatch({type: 'NUTRIENTS_DATA_RECEIVED', foodsAnalyzed: foodsAnalyzed});
         });
     
 };
