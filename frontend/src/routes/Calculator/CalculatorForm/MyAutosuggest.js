@@ -81,7 +81,10 @@ class MyAutosuggest extends React.Component {
                 top: '70px',
                 backgroundColor: 'white',
                 zIndex: 100,
-                width: '100%'
+                width: '100%',
+                maxHeight: 500,
+                overflowY: 'auto',
+                overflowX: 'hidden'
             }}>
                 {children}
                 {/*<div>
