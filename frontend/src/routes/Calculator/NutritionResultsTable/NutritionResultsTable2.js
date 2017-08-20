@@ -99,6 +99,16 @@ class NutritionResultsTable extends React.Component {
                 else dataRows[rowIndex].ingredients[2] = nutrient.value * foodsAnalyzed[2].quantity/100;
             });
             
+        }
+
+        if (foodsAnalyzed.length > 3) {
+            foodsAnalyzed[3].food.nutrients.forEach((nutrient, index) => {
+                if (index > 20) return;
+                const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
+                if (rowIndex === -1) console.log('no nutrient row');
+                else dataRows[rowIndex].ingredients[3] = nutrient.value * foodsAnalyzed[3].quantity/100;
+            });
+            
         } 
 
 
