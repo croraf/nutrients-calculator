@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import {CalculatorForm} from './CalculatorForm/CalculatorForm';
 import {NutritionResultsTableContainer} from './NutritionResultsTable/NutritionResultsTableContainer';
+import {NutritionResultsTableContainer2} from './NutritionResultsTable/NutritionResultsTableContainer2';
 
 class Calculator extends React.Component {
     render () {
@@ -12,9 +13,11 @@ class Calculator extends React.Component {
         return (
             <div style={{padding: '10px'}}>
                 <CalculatorForm 
-                    onSubmit={(values) => {calculateHandler(values.nutrients);}} />
+                    onSubmit={(values) => {calculateHandler(values.nutrients, this.props.dataSource);}} />
                 
-                <NutritionResultsTableContainer />
+                {/* <NutritionResultsTableContainer /> */}
+
+                <NutritionResultsTableContainer2 />
                 
             </div>
         );

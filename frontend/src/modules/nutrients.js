@@ -1,51 +1,43 @@
+const fetchDataNAL = {
+    address: 'https://api.nal.usda.gov/ndb/V2/reports?',
+    details: 'type=b&format=json&api_key=NYYLHns54La4bh2r7nLLMfLTgkXYLKVY4Icedoum'
+};
 
-const fetchNutrients = (ingredients) => (dispatch) => {
+
+const fetchNutrients = (ingredients, dataSource) => (dispatch) => {
     
-    const ingredientsNames = ingredients.map((item) => item.name);
-    dispatch({type: 'FETCHING_NUTRIENTS', ingredientsNames: ingredientsNames});
+    dispatch({type: 'FETCHING_NUTRIENTS', ingredients: ingredients});
 
-    new Promise((resolve, reject) => {
-
-        const nutrientsList = [];
-
-        ingredientsNames.forEach((ingredientName, index) => {
-            nutrientsList[index] = {name: ingredientName};
-            nutrientsList[index].nutrientsProportion = 
-                (ingredientName === undefined || ingredients[index].quantity === undefined) ? [] 
-                    : [Math.round(Math.random()*100), Math.round(Math.random()*100), Math.round(Math.random()*100)];
-            nutrientsList[index].quantity = parseInt(ingredients[index].quantity);
-        }, this);
-
-        setTimeout(()=>{
-            resolve(nutrientsList);
-        }, 300);
-    }).then((nutrientsList) => {
-
-        dispatch({type: 'NUTRIENTS_RETRIEVED', nutrientsList: nutrientsList});
+    let queryCodes = '';
+    ingredients.forEach((item, index) => {
+        dataSource.forEach(food => {
+            if (food.name === item.name) {
+                queryCodes += 'ndbno=' + food.ndbno + '&';
+            }
+        });
     });
 
-    /*fetch('https://jsonplaceholder.typicode.com/users')
-        .then((response) => response.json())
-        .then(responseList => {
-            const ingredientsList = responseList.map((item) => item.name);
-            dispatch({type: 'NUTRIENTS_RETRIEVED', ingredients: ingredientsList});
-        });*/
-
+    console.log('fetching codes:', queryCodes);
     
-
-
-    /*console.log('fetchIngredient method ended');*/
+    fetch(fetchDataNAL.address + queryCodes + fetchDataNAL.details)
+        .then((response) => {
+            return response.json();
+        }, (reason) => {
+            console.log(reason);
+        }).then((body) => {
+            dispatch({type: 'NUTRIENTS_DATA_RECEIVED', foodsAnalyzed: body.foods});
+        });
     
 };
 
-const nutrientsReducer = (state={fetching: false, nutrientsList: []}, action) => {
+const nutrientsReducer = (state={fetching: false, nutrientsList: [], foodsAnalyzed: []}, action) => {
     switch (action.type) {
         case 'FETCHING_NUTRIENTS':
-            console.log('FETCHING_NUTRIENTS: ' + action.ingredientsNames);
-            return {fetching: true, nutrientsList: state.nutrientsList};
-        case 'NUTRIENTS_RETRIEVED':
-            console.log('NUTRIENTS_RETRIEVED: ', action.nutrientsList);
-            return {fetching: false, nutrientsList: action.nutrientsList};
+            console.log('FETCHING_NUTRIENTS: ', action.ingredientsNames);
+            return {fetching: true, nutrientsList: state.nutrientsList, foodsAnalyzed: state.foodsAnalyzed};
+        case 'NUTRIENTS_DATA_RECEIVED':
+            console.log('NUTRIENTS_DATA_RECEIVED: ', action.foodsAnalyzed);
+            return {fetching: false, nutrientsList: state.nutrientsList, foodsAnalyzed: action.foodsAnalyzed};
         default:
             return state;
     }

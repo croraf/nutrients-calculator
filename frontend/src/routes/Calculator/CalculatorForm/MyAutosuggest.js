@@ -21,13 +21,13 @@ class MyAutosuggest extends React.Component {
         };
     }
 
-    getSuggestionValue = suggestion => suggestion;
+    getSuggestionValue = suggestion => suggestion
 
     getSuggestions = value => {
         const inputValue = value.trim().toLowerCase();
         const inputLength = inputValue.length;
 
-        return inputLength === 0 ? [] : Object.values(this.props.dataSource).filter(ingredient =>
+        return inputLength === 0 ? [] : this.props.dataSource.map(food => food.name).filter(ingredient =>
             ingredient.toLowerCase().slice(0, inputLength) === inputValue
         );
     }

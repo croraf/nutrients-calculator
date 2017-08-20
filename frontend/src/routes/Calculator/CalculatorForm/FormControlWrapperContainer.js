@@ -38,7 +38,7 @@ class FormControlWrapper extends React.Component {
 FormControlWrapper.propTypes = {
     // TODO: check if should be object or array, conceptually
     // TODO: check what to do with input and meta
-    dataSource: PropTypes.object,
+    dataSource: PropTypes.array,
     label: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
 };

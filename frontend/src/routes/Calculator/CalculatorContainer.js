@@ -5,11 +5,11 @@ import {Calculator} from './Calculator';
 import {fetchNutrients} from 'modules/nutrients';
 
 const mapDispatchToProps = (dispatch) => ({
-    calculateHandler: (ingredients) => {dispatch(fetchNutrients(ingredients));}
+    calculateHandler: (ingredients, dataSource) => {dispatch(fetchNutrients(ingredients, dataSource));}
 });
 
 const mapStateToProps = (state) => ({
-
+    dataSource: state.ingredients.ingredients
 });
 
 const CalculatorContainer = connect(mapStateToProps, mapDispatchToProps)(Calculator);
