@@ -61,6 +61,8 @@ app.use(router.routes());
 
 app.use(ui(document, '/swagger'));
 
+app.use(historyApiFallback());
+
 app.use(async(ctx) => {
     console.log('serving static resource, incomingPath:', ctx.path);
     let urlPath = ctx.path;
@@ -70,7 +72,6 @@ app.use(async(ctx) => {
     });
 });
 
-app.use(historyApiFallback());
 
 const port = process.env.PORT || 3000;
 
