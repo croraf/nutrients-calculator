@@ -8,6 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {enhancedHistory} from './modules/store';
 
 import {Header} from './Common/Header/Header';
+import {EmbeddedElement} from './EmbeddedElement';
 
 const App = () => {
 
@@ -45,6 +46,8 @@ const App = () => {
                             }}/>
                     </Route>
                 </Router>
+
+                <EmbeddedElement />
             </div>
         </MuiThemeProvider>
     );
