@@ -28,7 +28,7 @@ const fetchNutrients = (ingredients, dataSource) => (dispatch) => {
             console.log(reason);
         }).then((body) => {
             const foodsAnalyzed = body.foods.map((item, index) => ({
-                food: item.food, quantity: parseFloat(ingredients[index].quantity).toFixed(3)
+                food: item.food, quantity: parseFloat(ingredients[index].quantity)
             }));
             dispatch({type: 'NUTRIENTS_DATA_RECEIVED', foodsAnalyzed: foodsAnalyzed});
         });
