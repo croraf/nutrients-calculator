@@ -1,13 +1,13 @@
 
-/*const port = process.env.PORT || 3000;
-const production = process.env.NODE_ENV === 'production';*/
+const port = process.env.PORT || 3000;
+const production = process.env.NODE_ENV === 'production';
 
 
 // const backend = true ? 'https://wholeprotein.herokuapp.com:' + port : 'http://localhost:' + port;
 
 let backend = '';
 
-if (process.env.NODE_ENV === 'dev') backend = window.location.protocol + '//' + window.location.hostname + ':3000';
+if (process.env.NODE_ENV === 'DEV') backend = window.location.protocol + '//' + window.location.hostname + ':3000';
 
 const fetchResourceFromBackend = (resource, options) => {
 

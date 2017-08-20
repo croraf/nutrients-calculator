@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:mocha": "SET NODE_PATH=%CD%/src&& mocha --compilers js:babel-core/register \"test/**/*test.js\" -w",
-    "dev": "SET NODE_ENV=DEV webpack-dev-server",
+    "dev": "SET NODE_ENV=DEV&& webpack-dev-server",
     "dev:no-server": "webpack --progress --watch",
     "test": "SET NODE_PATH=%CD%/src&& jest test.js",
     "test:watch": "npm test -- --watch",
