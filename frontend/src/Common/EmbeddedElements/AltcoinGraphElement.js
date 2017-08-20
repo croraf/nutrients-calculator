@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class EmbeddedElement extends React.Component {
+class AltcoinGraphElement extends React.Component {
 
     componentDidMount () {
         
@@ -16,9 +16,9 @@ class EmbeddedElement extends React.Component {
 
         let widget = document.createElement('div');
         widget.setAttribute('class', 'coinmarketcap-currency-widget');
-        widget.setAttribute('data-currency', 'adex');
+        widget.setAttribute('data-currency', 'bitcoin');
         widget.setAttribute('data-base', 'USD');
-        widget.setAttribute('data-secondary', 'BTC');
+        /* widget.setAttribute('data-secondary', 'BTC'); */
         widget.style.margin = '5px';
         
         embeddedElement.appendChild(widget);
@@ -48,4 +48,4 @@ class EmbeddedElement extends React.Component {
     }
 }
 
-export {EmbeddedElement};
+export {AltcoinGraphElement};
