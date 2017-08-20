@@ -121,7 +121,7 @@ class NutritionResultsTable extends React.Component {
                     columns={columns}
                     showPagination={false}
                     pageSizeOptions={[10, 15, 25, 50, 100]}
-                    defaultPageSize={33} />
+                    defaultPageSize={25} />
             </div>
         );
     }
