@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux';
 
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 import {fetchIngredientsReducer, fetchIngredients} from './ingredients';
 import {defineIngredientDialogueReducer} from './defineIngredientDialogue';
@@ -28,12 +28,12 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
     createReducer({}), 
     composeEnhancers(
-        applyMiddleware(routerMiddleware(hashHistory), thunk)
+        applyMiddleware(routerMiddleware(browserHistory), thunk)
     )
 );
 store.asyncReducers = {};
 
-const enhancedHistory = syncHistoryWithStore(hashHistory, store);
+const enhancedHistory = syncHistoryWithStore(browserHistory, store);
 
 const injectAsyncReducer = (name, asyncReducer) => {
 
