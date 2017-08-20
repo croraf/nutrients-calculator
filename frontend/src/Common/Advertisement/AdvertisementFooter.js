@@ -21,7 +21,7 @@ class AdvertisementFooter extends React.Component {
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'space-around',
-                    backgroundColor: 'rgb(0, 188, 212)',
+                    border: '2px solid rgb(0, 188, 212)',
                     borderRadius: '5px'
                 }} 
                 className='embedded-element' />
