@@ -14,25 +14,28 @@ class MyDatePicker extends React.Component {
         super(props);
         /* moment.locale('de'); */
         this.state = {
-            startDate: moment()
+            startDate: moment().startOf('day')
         };
-        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(date) {
+    handleChange = (date) => {
         this.setState({
             startDate: date
         });
     }
 
     render () {
+
+        const {saveData} = this.props;
+
         return (
             <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                 <DatePicker 
                         selected={this.state.startDate}
                         onChange={this.handleChange}
                         withPortal={true} /> 
-                <RaisedButton label='Save' primary={true} type='button' onTouchTap={() => {alert('Your food intake for this day is saved!');}}/>
+                <RaisedButton label='Save' primary={true} type='button' 
+                    onTouchTap={() => { saveData(this.state.startDate.toDate(), Math.random()*1000 + 1000); }}/>
             </div>
         );
     }

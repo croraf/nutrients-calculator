@@ -49,6 +49,7 @@ class CaloriesGraph extends React.Component {
     render () {
 
         const {nutrientsIntakeData, optimalIntake} = this.props;
+        console.log(nutrientsIntakeData);
         
         /* const yMin = Math.min(...nutrientsIntakeData.map((item => item.calories))) * 0.5; */
         const yMax = Math.max(...nutrientsIntakeData.map((item => item.y)), optimalIntake) * 1.3;
@@ -58,18 +59,18 @@ class CaloriesGraph extends React.Component {
         return (
             <XYPlot height={400} width= {700} style={{padding: 50}} 
                 xType='time'
-                xDomain={[new Date('2017-08-15'), new Date('2017-08-21')]} 
+                xDomain={[new Date('2017-08-13'), new Date('2017-08-23')]} 
                 yDomain={[0, yMax]} >
                 <VerticalGridLines />
                 <HorizontalGridLines />
                 <XAxis title='date' style={{title: {textAnchor: 'end'}}}
-                    tickTotal={(new Date('2017-08-21') - new Date('2017-08-15'))/1000/3600/24}
+                    tickTotal={(new Date('2017-08-23') - new Date('2017-08-13'))/1000/3600/24}
                     tickFormat={v => v.getDate() + '/' + (v.getMonth()+1) + '/' + v.getFullYear()}
                     tickLabelAngle={-45} />
                 <YAxis title='calories [kcal]'/>
                 <LineSeries data={nutrientsIntakeData} />
                 <LineSeries color='lightgray'
-                    data={[{x: new Date('2017-08-15'), y: optimalIntake}, {x: new Date('2017-08-21'), y: optimalIntake}]} />
+                    data={[{x: new Date('2017-08-13'), y: optimalIntake}, {x: new Date('2017-08-23'), y: optimalIntake}]} />
             </XYPlot>
         );
     }

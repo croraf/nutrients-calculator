@@ -21,13 +21,12 @@ const nutrientsIntakeData = [
     }
 ];
 
-
 const mapDispatchToProps = (dispatch) => ({
 
 });
 
 const mapStateToProps = (state) => ({
-    nutrientsIntakeData: nutrientsIntakeData,
+    nutrientsIntakeData: state.dailyData,
     optimalIntake: 1600
 });
 
