@@ -44,6 +44,13 @@ const App = () => {
                                 import(/* webpackChunkName: "chunckAdmin" */  './routes/Admin/AdminContainer').then(
                                     (file) => { cb(null, file.AdminContainer); });
                             }}/>
+                        
+                        <Route
+                            path="trend"
+                            getComponent={(nextState, cb) => {
+                                import(/* webpackChunkName: "chunckTrend" */  './routes/Trend/Trend').then(
+                                    (file) => { cb(null, file.Trend); });
+                            }}/>
                     </Route>
                 </Router>
 

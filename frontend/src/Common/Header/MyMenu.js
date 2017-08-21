@@ -44,6 +44,7 @@ class MyMenu extends React.Component {
                 >
                     <MenuItem primaryText="Calculator" value='/calculator' style={activeLink === '/calculator' ? styleActive: styleInactive}/>
                     {/* <MenuItem primaryText="Admin" value='/admin' style={activeLink === '/admin' ? styleActive: styleInactive}/> */}
+                    <MenuItem primaryText="Trend" value='/trend' style={activeLink === '/trend' ? styleActive: styleInactive}/>
                     <MenuItem primaryText="Log out" value='/login' style={activeLink === '/login' ? styleActive: styleInactive}/>
                 </IconMenu>
             </div>
