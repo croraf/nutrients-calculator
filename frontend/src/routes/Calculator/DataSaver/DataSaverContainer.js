@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {MyDatePicker} from './MyDatePicker';
+import {DataSaver} from './DataSaver';
 
 import {saveData} from 'modules/dailyData';
 
@@ -9,9 +9,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-
+    foodsAnalyzed: state.nutrients.foodsAnalyzed
 });
 
-const DatePickerContainer = connect(mapStateToProps, mapDispatchToProps)(MyDatePicker);
+const DataSaverContainer = connect(mapStateToProps, mapDispatchToProps)(DataSaver);
 
-export {DatePickerContainer};
+export {DataSaverContainer};

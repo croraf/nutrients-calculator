@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {NutritionResultsTable} from './NutritionResultsTable';
 
 const mapDispatchToProps = (dispatch) => ({
-
 });
 
 const mapStateToProps = (state) => ({

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {CalculatorForm} from './CalculatorForm/CalculatorForm';
 import {NutritionResultsTableContainer} from './NutritionResultsTable/NutritionResultsTableContainer';
-import {DatePickerContainer} from './DatePicker/DatePickerContainer';
+import {DataSaverContainer} from './DataSaver/DataSaverContainer';
 
 class Calculator extends React.Component {
     render () {
@@ -13,7 +13,7 @@ class Calculator extends React.Component {
         return (
             <div style={{padding: '10px'}}>
 
-                <DatePickerContainer />
+                <DataSaverContainer />
 
                 <CalculatorForm 
                     onSubmit={(values) => {calculateHandler(values.nutrients, this.props.dataSource);}} />

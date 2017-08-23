@@ -1,33 +1,37 @@
 import {connect} from 'react-redux';
-
+import moment from 'moment';
 import {CaloriesGraph} from './CaloriesGraph';
 
 /* const nutrientsIntakeData = [
     {
         y: 1000,
-        x: new Date('2017-08-16')
+        x: moment(new Date('2017-08-16')),
+        color: 0
     },
     {
         y: 1300,
-        x: new Date('2017-08-17')
+        x: moment(new Date('2017-08-17')),
+        color: 1
     },
     {
         y: 1200,
-        x: new Date('2017-08-18')
+        x: moment(new Date('2017-08-18')),
+        color: 1
     },
     {
         y: 900,
-        x: new Date('2017-08-19')
+        x: moment(new Date('2017-08-19')),
+        color: 1
     }
-]; */
+];  */
 
 const mapDispatchToProps = (dispatch) => ({
-
+    onDataClick: (dataPoint) => {console.log(dataPoint);}
 });
 
 const mapStateToProps = (state) => ({
-    nutrientsIntakeData: state.dailyData.sort((a, b) => b.x - a.x),
-    optimalIntake: 1600
+    nutrientsIntakeData:  state.dailyData.sort((a, b) => b.x - a.x) ,
+    optimalIntake: (state.form.profile && state.form.profile.values.calories) || 1600 
 });
 
 const CaloriesGraphContainer = connect(mapStateToProps, mapDispatchToProps)(CaloriesGraph);

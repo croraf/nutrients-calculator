@@ -1,3 +1,5 @@
+import {analyzeFoods} from './utilities/analyzeFoods';
+
 const fetchDataNAL = {
     address: 'https://api.nal.usda.gov/ndb/V2/reports?',
     details: 'type=b&format=json&api_key=NYYLHns54La4bh2r7nLLMfLTgkXYLKVY4Icedoum'
@@ -30,19 +32,20 @@ const fetchNutrients = (ingredients, dataSource) => (dispatch) => {
             const foodsAnalyzed = body.foods.map((item, index) => ({
                 food: item.food, quantity: parseFloat(ingredients[index].quantity)
             }));
-            dispatch({type: 'NUTRIENTS_DATA_RECEIVED', foodsAnalyzed: foodsAnalyzed});
+
+            dispatch({type: 'NUTRIENTS_DATA_RECEIVED', foodsAnalyzed: analyzeFoods(foodsAnalyzed)});
         });
     
 };
 
-const nutrientsReducer = (state={fetching: false, nutrientsList: [], foodsAnalyzed: []}, action) => {
+const nutrientsReducer = (state={fetching: false, foodsAnalyzed: analyzeFoods([])}, action) => {
     switch (action.type) {
         case 'FETCHING_NUTRIENTS':
             console.log('FETCHING_NUTRIENTS: ', action.ingredientsNames);
-            return {fetching: true, nutrientsList: state.nutrientsList, foodsAnalyzed: state.foodsAnalyzed};
+            return {fetching: true, foodsAnalyzed: state.foodsAnalyzed};
         case 'NUTRIENTS_DATA_RECEIVED':
             console.log('NUTRIENTS_DATA_RECEIVED: ', action.foodsAnalyzed);
-            return {fetching: false, nutrientsList: state.nutrientsList, foodsAnalyzed: action.foodsAnalyzed};
+            return {fetching: false, foodsAnalyzed: action.foodsAnalyzed};
         default:
             return state;
     }
