@@ -51,6 +51,13 @@ const App = () => {
                                 import(/* webpackChunkName: "chunckStatistics" */  './routes/Statistics/Statistics').then(
                                     (file) => { cb(null, file.Statistics); });
                             }}/>
+
+                        <Route
+                            path="profile"
+                            getComponent={(nextState, cb) => {
+                                import(/* webpackChunkName: "chunckProfile" */  './routes/Profile/ProfileContainer').then(
+                                    (file) => { cb(null, file.ProfileContainer); });
+                            }}/>
                     </Route>
                 </Router>
 
