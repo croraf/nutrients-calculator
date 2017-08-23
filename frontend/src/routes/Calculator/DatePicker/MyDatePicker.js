@@ -7,6 +7,18 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './my-date-picker.css';
+import DatePicker2 from 'material-ui/DatePicker';
+
+const text_field_style = {
+    height: '90%',
+    borderRadius: '5px',/* 
+    color: white,
+    background-color: blue, */
+    textAlign: 'center',
+    cursor: 'pointer',
+    width: '100px',
+    borderStyle: 'outset',
+};
 
 class MyDatePicker extends React.Component {
 
@@ -14,13 +26,13 @@ class MyDatePicker extends React.Component {
         super(props);
         /* moment.locale('de'); */
         this.state = {
-            startDate: moment().startOf('day')
+            date: moment().startOf('day').toDate()
         };
     }
 
-    handleChange = (date) => {
+    handleChange = (event, date) => {
         this.setState({
-            startDate: date
+            date: date
         });
     }
 
@@ -30,12 +42,16 @@ class MyDatePicker extends React.Component {
 
         return (
             <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                <DatePicker 
-                        selected={this.state.startDate}
+                {/* <DatePicker 
+                        selected={this.state.date}
                         onChange={this.handleChange}
-                        withPortal={true} /> 
+                        withPortal={true} />  */}
+                <DatePicker2 
+                    value={this.state.date}
+                    onChange={this.handleChange}
+                    autoOk={true} className='react-datepicker__input-container' textFieldStyle={text_field_style}/>
                 <RaisedButton label='Save' primary={true} type='button' 
-                    onTouchTap={() => { saveData(this.state.startDate.toDate(), Math.random()*1000 + 1000); }}/>
+                    onTouchTap={() => { saveData(this.state.date, Math.random()*1000 + 1000); }}/>
             </div>
         );
     }
