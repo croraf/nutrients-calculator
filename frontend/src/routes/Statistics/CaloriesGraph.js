@@ -49,6 +49,7 @@ class CaloriesGraph extends React.Component {
                     data={[{x:xMin, y: optimalIntake}, {x: xMax, y: optimalIntake}]} />
                 
                 <LineMarkSeries data={nutrientsIntakeData2} 
+                    size={12}
                     colorDomain={[0,1]}
                     colorRange={['red', 'black']}
                     onValueClick={(datapoint, event)=>{

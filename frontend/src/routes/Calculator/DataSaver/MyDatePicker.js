@@ -28,7 +28,10 @@ class MyDatePicker extends React.Component {
                 name='my-date-picker'
                 value={this.props.value}
                 onChange={this.props.handleChange}
-                autoOk={true} className='react-datepicker__input-container' textFieldStyle={text_field_style}/>
+                autoOk={true} 
+                className='react-datepicker__input-container'
+                textFieldStyle={text_field_style}
+                underlineShow={false} />
         );
     }
 }
