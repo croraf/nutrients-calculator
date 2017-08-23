@@ -15,7 +15,7 @@ class Profile extends React.Component {
                     My Profile
                 </h2>
                 
-                <div style={{position: 'relative', height: '400px', width: '90%', margin: 'auto'}}>
+                <div style={{position: 'relative', height: '450px', width: '90%', margin: 'auto'}}>
 
                     <ProfileForm onSubmit={(values) => {console.log(values);}} />
 

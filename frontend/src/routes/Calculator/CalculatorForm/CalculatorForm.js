@@ -33,7 +33,7 @@ const initialValues = {
 
 const CalculatorFormReduxWrapper = reduxForm({
     form: 'calculatorForm',
-    destroyOnUnmount: true,
+    destroyOnUnmount: false,
     initialValues: initialValues
 })(CalculatorForm);
 

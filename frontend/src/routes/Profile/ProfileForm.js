@@ -8,6 +8,11 @@ const fieldStyle = {
     marginBottom: '10px'
 };
 
+const fieldStyle2 = {
+    width: '150px',
+    marginBottom: '10px'
+};
+
 let ProfileForm = props => {
     const { handleSubmit } = props;
     return (
@@ -24,32 +29,49 @@ let ProfileForm = props => {
                 <label htmlFor="email">Email</label>
                 <Field name="email" component="input" type="email" style={fieldStyle} />
             </div>
-            <div>
-                <label htmlFor="age">Age</label>
-                <Field name="age" component="input" type="number" style={fieldStyle} />
-            </div>
-            <div>
-                <label htmlFor="sex">Sex</label>
-                <div style={fieldStyle}>
-                    <label>
-                        <Field
-                        name="sex"
-                        component="input"
-                        type="radio"
-                        value="male"
-                        />{' '}
-                        Male
-                    </label>
-                    <label>
-                        <Field
-                        name="sex"
-                        component="input"
-                        type="radio"
-                        value="female"
-                        />{' '}
-                        Female
-                    </label>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+
+                <div>
+                    <label htmlFor="height">Height</label>
+                    <Field name="height" component="input" type="number" style={fieldStyle2} />
                 </div>
+                <div>
+                    <label htmlFor="weight">Weight</label>
+                    <Field name="weight" component="input" type="number" style={fieldStyle2} />
+                </div>
+
+            </div>
+
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                
+                <div>
+                    <label htmlFor="age">Age</label>
+                    <Field name="age" component="input" type="number" style={fieldStyle2} />
+                </div>
+                <div>
+                    <label htmlFor="sex">Sex</label>
+                    <div style={{...fieldStyle2, display: 'inline', border: '1px solid gray', paddingLeft: '10px', paddingRight: '15px'}}>
+                        <label>
+                            <Field
+                            name="sex"
+                            component="input"
+                            type="radio"
+                            value="male"
+                            />{' '}
+                            Male
+                        </label>
+                        <label>
+                            <Field
+                            name="sex"
+                            component="input"
+                            type="radio"
+                            value="female"
+                            />{' '}
+                            Female
+                        </label>
+                    </div>
+                </div>
+
             </div>
             <div>
                 <label>Phisical activity</label>

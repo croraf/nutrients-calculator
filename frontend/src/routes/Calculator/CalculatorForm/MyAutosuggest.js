@@ -27,7 +27,7 @@ class MyAutosuggest extends React.Component {
         const inputValue = value.trim().toLowerCase();
         const inputLength = inputValue.length;
 
-        return inputLength <= 1 ? [] : this.props.dataSource.map(food => food.name).filter(ingredient =>
+        return inputLength <= 2 ? [] : this.props.dataSource.map(food => food.name).filter(ingredient =>
             ingredient.toLowerCase().slice(0, inputLength) === inputValue
         );
     }
