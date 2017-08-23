@@ -1,16 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries, LineMarkSeries } from 'react-vis';
+import {XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries, LineMarkSeries, MarkSeries, Crosshair } from 'react-vis';
 import moment from 'moment';
 
 import styles from 'react-vis/dist/style.css';
 /* import styles2 from 'react-vis/dist/styles/legends.scss'; */
 
 class CaloriesGraph extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            index: -1
+        };
+    }
+
     render () {
 
-        const {nutrientsIntakeData, optimalIntake} = this.props;
+        const {nutrientsIntakeData, optimalIntake, onDataClick} = this.props;
         console.log(nutrientsIntakeData);
         
         /* const yMin = Math.min(...nutrientsIntakeData.map((item => item.calories))) * 0.5; */
@@ -18,6 +26,10 @@ class CaloriesGraph extends React.Component {
         /* cloning moment with moment() */
         const xMin = moment(moment.min(...nutrientsIntakeData.map((item => item.x)))).subtract(1, 'day');
         const xMax = moment(moment.max(...nutrientsIntakeData.map((item => item.x)))).add(1, 'day');
+
+        let nutrientsIntakeData2 = nutrientsIntakeData.map((point, index) => 
+            {index === this.state.index ? point.color = 1 : point.color = 0; point.index=index; return point;} 
+        );
 
         console.log(xMax, xMin);
         return (
@@ -36,7 +48,18 @@ class CaloriesGraph extends React.Component {
                 <LineSeries color='lightgray'
                     data={[{x:xMin, y: optimalIntake}, {x: xMax, y: optimalIntake}]} />
                 
-                <LineMarkSeries data={nutrientsIntakeData} />
+                <LineMarkSeries data={nutrientsIntakeData2} 
+                    colorDomain={[0,1]}
+                    colorRange={['red', 'black']}
+                    onValueClick={(datapoint, event)=>{
+                        onDataClick(datapoint);
+                    }}
+                    onValueMouseOver={(datapoint, event) => {
+                        this.setState({index: datapoint.index}); 
+                    }}
+                    onValueMouseOut={(datapoint, event) => {
+                        this.setState({index: -1});
+                    }} />
             </XYPlot>
         );
     }
