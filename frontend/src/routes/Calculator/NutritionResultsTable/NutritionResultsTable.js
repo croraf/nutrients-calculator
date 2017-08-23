@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 
+import { nutrientsMap } from './nutrientsMap';
+
 const tableStyleOuter = {
     marginLeft: '-5px',
     marginRight: '-5px',
@@ -14,10 +16,11 @@ const tableStyleOuter = {
 class NutritionResultsTable extends React.Component {
     render () {
 
-        const {nutrientsList} = this.props;
+        const {foodsAnalyzed} = this.props;
 
-        const ingredientColumns = nutrientsList.map((ingredient, index) => {
-            if (ingredient.name === undefined) {
+        const ingredientColumns = foodsAnalyzed.map((foodWrapper, index) => {
+
+            if (foodWrapper.food.desc === undefined) {
                 return {
                     Header: '---',
                     accessor: 'ingredients[' + index + ']',
@@ -26,7 +29,7 @@ class NutritionResultsTable extends React.Component {
                 };
             } else {
                 return {
-                    Header: ingredient.name + ' [' + (ingredient.quantity || '--- ') + 'g]',
+                    Header: foodWrapper.food.desc.name + ' [' + (foodWrapper.quantity || '--- ') + 'g]',
                     accessor: 'ingredients[' + index + ']',
                     width: 150,
                     minWidth: 150,
@@ -40,7 +43,7 @@ class NutritionResultsTable extends React.Component {
             if (rowInfo === undefined || rowInfo.index === 0 || rowInfo.index === 10 || rowInfo.index === 14 || rowInfo.index > 16) {
                 return {};
             } else {
-                return { style: {paddingLeft: '30px'} };
+                return { /* style: {paddingLeft: '30px'} */ };
             }
             /*switch (rowInfo.index) {
             case 1:
@@ -52,85 +55,74 @@ class NutritionResultsTable extends React.Component {
         };
 
         const columns = 
-            [{Header: '', accessor: 'component', width: 150, getProps: customProps}]
+            [{Header: '', accessor: 'component', width: 200, getProps: customProps}]
                 .concat(ingredientColumns)
                 .concat([{Header: 'Total [g]', accessor: 'total', width: 100, style: {textAlign: 'center'}}]);
 
+        /* console.log('name:', foodsAnalyzed.desc.name);
+        foodsAnalyzed.nutrients.forEach((nutrient) => {
+            console.log('nutrient name:', nutrient.name, ', quantity:', nutrient.value);
+        }); */
 
-        const dataRows = [{
-            component: 'Proteins',
-            ingredients: nutrientsList.map((nutrient) => (
-                nutrient.nutrientsProportion[0] || '---'
-            ))
-        },{
-            component: 'Histidine',
-            style: {paddingLeft: '20px'},
-            ingredients: [0]
-        },{
-            component: 'Isoleucine',
-            ingredients: [0]
-        },{
-            component: 'Leucine',
-            ingredients: [0]
-        },{
-            component: 'Lysine',
-            ingredients: [0]
-        },{
-            component: 'Methionine',
-            ingredients: [0]
-        },{
-            component: 'Phenylalanine',
-            ingredients: [0]
-        },{
-            component: 'Threonine',
-            ingredients: [0]
-        },{
-            component: 'Tryptophan',
-            ingredients: [0]
-        },{
-            component: 'Valine',
-            ingredients: [0]
-        },{
-            component: 'Fats',
-            ingredients: nutrientsList.map((nutrient) => (
-                nutrient.nutrientsProportion[1] || '---'
-            ))
-        },{
-            component: 'Saturated',
-            ingredients: [0]
-        },{
-            component: 'Polyunsaturated',
-            ingredients: [0]
-        },{
-            component: 'Monounsaturated',
-            ingredients: [0]
-        },{
-            component: 'Carbohydrates',
-            ingredients: nutrientsList.map((nutrient) => (
-                nutrient.nutrientsProportion[2] || '---'
-            ))
-        },{
-            component: 'Dietary fiber',
-            ingredients: [0]
-        },{
-            component: 'Sugar',
-            ingredients: [0]
-        },{
-            component: 'Vitamin A',
-            ingredients: [0]
-        },{
-            component: 'Vitamin C',
-            ingredients: [0]
-        },{
-            component: 'Calcium',
-            ingredients: [0]
-        }];
+        let dataRows = [];
+
+        dataRows = Object.keys(nutrientsMap).map((key) => ({
+            component: nutrientsMap[key].name,
+            ingredients: []
+        }));
+
+        /* console.log('dataRows', dataRows); */
+        if (foodsAnalyzed.length > 0) {
+            foodsAnalyzed[0].food.nutrients.forEach((nutrient, index) => {
+                if (index > 20) return;
+                const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
+                if (rowIndex === -1) console.log('no nutrient row');
+                else dataRows[rowIndex].ingredients[0] = nutrient.value * foodsAnalyzed[0].quantity/100;
+            });
+        }
+
+        if (foodsAnalyzed.length > 1) {
+            foodsAnalyzed[1].food.nutrients.forEach((nutrient, index) => {
+                if (index > 20) return;
+                const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
+                if (rowIndex === -1) console.log('no nutrient row');
+                else dataRows[rowIndex].ingredients[1] = nutrient.value * foodsAnalyzed[1].quantity/100;
+            });
+            
+        }
+
+        if (foodsAnalyzed.length > 2) {
+            foodsAnalyzed[2].food.nutrients.forEach((nutrient, index) => {
+                if (index > 20) return;
+                const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
+                if (rowIndex === -1) console.log('no nutrient row');
+                else dataRows[rowIndex].ingredients[2] = nutrient.value * foodsAnalyzed[2].quantity/100;
+            });
+            
+        }
+
+        if (foodsAnalyzed.length > 3) {
+            foodsAnalyzed[3].food.nutrients.forEach((nutrient, index) => {
+                if (index > 20) return;
+                const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
+                if (rowIndex === -1) console.log('no nutrient row');
+                else dataRows[rowIndex].ingredients[3] = nutrient.value * foodsAnalyzed[3].quantity/100;
+            });
+        } 
+        if (foodsAnalyzed.length > 4) {
+            foodsAnalyzed[4].food.nutrients.forEach((nutrient, index) => {
+                if (index > 20) return;
+                const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
+                if (rowIndex === -1) console.log('no nutrient row');
+                else dataRows[rowIndex].ingredients[4] = nutrient.value * foodsAnalyzed[4].quantity/100;
+            });
+        } 
 
         const data = dataRows.map((item) => 
             Object.assign(
                 {},
                 item, 
-                {total: item.ingredients.reduce((x, y) => {return y === '---' ? x : (x + y);}, 0)}
+                {total: item.ingredients.reduce((x, y) => {return y === '---' ? x : (x + parseFloat(y));}, 0)}
             )
         );
 
@@ -142,18 +134,18 @@ class NutritionResultsTable extends React.Component {
                     columns={columns}
                     showPagination={false}
                     pageSizeOptions={[10, 15, 25, 50, 100]}
-                    defaultPageSize={20} />
+                    defaultPageSize={25} />
             </div>
         );
     }
 }
 
 NutritionResultsTable.propTypes = {
-    nutrientsList: PropTypes.arrayOf(PropTypes.shape({
+    /* nutrientsList: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
         nutrientsProportion: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
         quantity: PropTypes.number.isRequired
-    }).isRequired).isRequired
+    }).isRequired).isRequired */
 };
 
 
