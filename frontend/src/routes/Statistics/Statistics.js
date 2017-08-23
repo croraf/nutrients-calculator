@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {CaloriesGraphContainer} from './CaloriesGraphContainer';
 
-class Trend extends React.Component {
+class Statistics extends React.Component {
     render () {
 
         return (
@@ -16,5 +16,5 @@ class Trend extends React.Component {
     }
 }
 
-export {Trend};
+export {Statistics};
 

@@ -47,11 +47,12 @@ class MyDatePicker extends React.Component {
                         onChange={this.handleChange}
                         withPortal={true} />  */}
                 <DatePicker2 
+                    name='my-date-picker'
                     value={this.state.date}
                     onChange={this.handleChange}
                     autoOk={true} className='react-datepicker__input-container' textFieldStyle={text_field_style}/>
                 <RaisedButton label='Save' primary={true} type='button' 
-                    onTouchTap={() => { saveData(this.state.date, Math.random()*1000 + 1000); }}/>
+                    onTouchTap={() => { saveData(moment(this.state.date), Math.random()*1000 + 1000); }}/>
             </div>
         );
     }

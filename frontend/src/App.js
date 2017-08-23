@@ -46,10 +46,10 @@ const App = () => {
                             }}/>
                         
                         <Route
-                            path="trend"
+                            path="statistics"
                             getComponent={(nextState, cb) => {
-                                import(/* webpackChunkName: "chunckTrend" */  './routes/Trend/Trend').then(
-                                    (file) => { cb(null, file.Trend); });
+                                import(/* webpackChunkName: "chunckStatistics" */  './routes/Statistics/Statistics').then(
+                                    (file) => { cb(null, file.Statistics); });
                             }}/>
                     </Route>
                 </Router>
