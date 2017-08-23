@@ -5,11 +5,13 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 const fieldStyle = {
     width: '100%',
-    marginBottom: '10px'
+    marginBottom: '10px',
+    marginLeft: '2px'
 };
 
 const fieldStyle2 = {
-    width: '150px',
+    width: '80px',
+    marginLeft: '5px',
     marginBottom: '10px'
 };
 
@@ -50,7 +52,7 @@ let ProfileForm = props => {
                 </div>
                 <div>
                     <label htmlFor="sex">Sex</label>
-                    <div style={{...fieldStyle2, display: 'inline', border: '1px solid gray', paddingLeft: '10px', paddingRight: '15px'}}>
+                    <div style={{...fieldStyle2, display: 'inline', width: '150px', paddingLeft: '10px', paddingRight: '15px'}}>
                         <label>
                             <Field
                             name="sex"
@@ -86,9 +88,13 @@ let ProfileForm = props => {
                     </Field>
                 </div>
             </div>
-            <div>
-                <label htmlFor="calories">Calories</label>
-                <Field name="calories" component="input" type="number" style={fieldStyle} />
+            <div style={{display: 'flex', justifyContent: 'center', marginBottom: '20px'}}>
+                <RaisedButton style={{}} label='Calculate Calories Target' primary={true} type="button" />
+            </div>
+            
+            <div style={{display: 'flex', justifyContent: 'center', marginBottom: '40px'}}>
+                <label htmlFor="calories">Calories target:</label>
+                <Field name="calories" component="input" type="number" style={fieldStyle2} />
             </div>
             
             <RaisedButton style={{margin: 'auto', display: 'block', width:'100px'}} label='Save' primary={true} type="submit" />

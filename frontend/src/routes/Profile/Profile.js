@@ -7,7 +7,7 @@ import ProfileForm from './ProfileForm';
 class Profile extends React.Component {
     render () {
         return (
-            <div style={{position: 'relative', width: '50%', margin: 'auto',
+            <div style={{position: 'relative', width: '400px', margin: 'auto',
                 marginTop: '10px', marginBottom: '10px', border: '2px solid black',
                 borderRadius: '5px', borderColor: 'rgb(0, 188, 212)'}} >
                 
