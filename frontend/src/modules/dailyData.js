@@ -3,7 +3,7 @@ const saveData = (date, foodsAnalyzed) => (dispatch) => {
 
     console.log('foodsAnalyzed', foodsAnalyzed);
 
-    alert('Your intake has been saved: ' + date.format('YYYY-MM-DD') + ', ' + foodsAnalyzed.data[3].total);
+    /* alert('Your intake has been saved: ' + date.format('YYYY-MM-DD') + ', ' + foodsAnalyzed.data[3].total); */
     return dispatch({type: 'SAVE_DAILY_DATA', data: {x: date, y: foodsAnalyzed.data[3].total}});
         
     /* console.log(Object.keys(nutrientsMap).indexOf('203') );

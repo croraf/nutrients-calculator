@@ -6,6 +6,7 @@ import {MyDatePicker} from './MyDatePicker';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import moment from 'moment';
+import Snackbar from 'material-ui/Snackbar';
 
 class DataSaver extends React.Component {
     
@@ -13,13 +14,20 @@ class DataSaver extends React.Component {
         super(props);
         /* moment.locale('de'); */
         this.state = {
-            date: moment().startOf('day').toDate()
+            date: moment().startOf('day').toDate(),
+            snackbarOpen: false
         };
     }
 
     handleChange = (event, date) => {
         this.setState({
             date: date
+        });
+    }
+
+    toggleSnackbar = (open) => {
+        this.setState({
+            snackbarOpen: open
         });
     }
 
@@ -31,8 +39,20 @@ class DataSaver extends React.Component {
             <div style={{display: 'flex', justifyContent: 'flex-end'}}>
 
                 <MyDatePicker value={this.state.date} handleChange={this.handleChange}/>
-                <RaisedButton label='Save' primary={true} type='button' 
-                    onTouchTap={() => { saveData(moment(this.state.date), foodsAnalyzed); }}/>
+                <RaisedButton
+                    label='Save'
+                    primary={true}
+                    type='button' 
+                    disabled={this.state.snackbarOpen}
+                    onTouchTap={() => { saveData(moment(this.state.date), foodsAnalyzed); this.toggleSnackbar(true); }}/>
+                <Snackbar 
+                    open={this.state.snackbarOpen}
+                    message={'Saved! (date: ' + moment(this.state.date).format('YYYY-MM-DD') + ', calories: ' + foodsAnalyzed.data[3].total + ')'}
+                    autoHideDuration={5000}
+                    onRequestClose={() => {this.toggleSnackbar(false);}}
+                    contentStyle={{fontSize: 24, color: 'white'}}
+                    bodyStyle={{backgroundColor: 'rgb(0, 188, 212)'}}
+                    />
             </div>
         );
     }

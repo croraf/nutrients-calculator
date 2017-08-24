@@ -51,7 +51,7 @@ class CaloriesGraph extends React.Component {
                 <LineMarkSeries data={nutrientsIntakeData2} 
                     size={12}
                     colorDomain={[0,1]}
-                    colorRange={['red', 'black']}
+                    colorRange={['rgb(0, 188, 212)', 'black']}
                     onValueClick={(datapoint, event)=>{
                         onDataClick(datapoint);
                     }}
