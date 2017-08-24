@@ -10,7 +10,7 @@ const fieldStyle = {
 };
 
 const fieldStyle2 = {
-    width: '80px',
+    width: '100px',
     marginLeft: '5px',
     marginBottom: '10px'
 };
@@ -51,8 +51,8 @@ let ProfileForm = props => {
                     <Field name="age" component="input" type="number" style={fieldStyle2} />
                 </div>
                 <div>
-                    <label htmlFor="sex">Sex</label>
-                    <div style={{...fieldStyle2, display: 'inline', width: '150px', paddingLeft: '10px', paddingRight: '15px'}}>
+                    {/* <label htmlFor="sex">Sex</label> */}
+                    <div style={{...fieldStyle2, display: 'inline', width: '150px', marginLeft: '0px', paddingRight: '15px'}}>
                         <label>
                             <Field
                             name="sex"
@@ -92,12 +92,15 @@ let ProfileForm = props => {
                 <RaisedButton style={{}} label='Calculate Calories Target' primary={true} type="button" />
             </div>
             
-            <div style={{display: 'flex', justifyContent: 'center', marginBottom: '40px'}}>
+            <div style={{display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
                 <label htmlFor="calories">Calories target:</label>
                 <Field name="calories" component="input" type="number" style={fieldStyle2} />
             </div>
             
-            <RaisedButton style={{margin: 'auto', display: 'block', width:'100px'}} label='Save' primary={true} type="submit" />
+            <RaisedButton style={{margin: 'auto', display: 'block', width:'100px', marginBottom: '10px'}}
+                label='Save'
+                primary={true}
+                type="submit" />
         </form>
     );
 };
