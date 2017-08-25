@@ -1,10 +1,19 @@
 
+const dailyData = new Map([]);
+
 const saveData = (date, foodsAnalyzed) => (dispatch) => {
 
-    console.log('foodsAnalyzed', foodsAnalyzed);
+    console.log('date, foodsAnalyzed', date, foodsAnalyzed);
 
-    /* alert('Your intake has been saved: ' + date.format('YYYY-MM-DD') + ', ' + foodsAnalyzed.data[3].total); */
-    return dispatch({type: 'SAVE_DAILY_DATA', data: {x: date, y: foodsAnalyzed.data[3].total}});
+    if (dailyData.has(date.unix())) {
+        alert('already inputted for this date');
+    } else {
+        dailyData.set(date.unix(), foodsAnalyzed.data[3].total);
+        alert('set');
+        
+        return dispatch({type: 'SAVE_DAILY_DATA', data: {x: date, y: foodsAnalyzed.data[3].total}});
+    }
+
         
     /* console.log(Object.keys(nutrientsMap).indexOf('203') );
     console.log(dataRows); */

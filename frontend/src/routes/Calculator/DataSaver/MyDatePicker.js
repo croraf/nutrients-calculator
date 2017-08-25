@@ -31,7 +31,9 @@ class MyDatePicker extends React.Component {
                 autoOk={true} 
                 className='react-datepicker__input-container'
                 textFieldStyle={text_field_style}
-                underlineShow={false} />
+                underlineShow={false}
+                minDate={new Date('2017-07-10')}
+                maxDate={new Date('2017-12-31')} />
         );
     }
 }

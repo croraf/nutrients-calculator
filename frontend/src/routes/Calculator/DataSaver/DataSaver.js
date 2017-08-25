@@ -31,9 +31,16 @@ class DataSaver extends React.Component {
         });
     }
 
+    onSaveHandler = () => {
+        
+        const {saveData, foodsAnalyzed} = this.props;
+
+        saveData(moment(this.state.date), foodsAnalyzed); this.toggleSnackbar(true);
+    }
+
     render () {
 
-        const {saveData, foodsAnalyzed} = this.props;
+        const {foodsAnalyzed} = this.props;
 
         return (
             <div style={{display: 'flex', justifyContent: 'flex-end'}}>
@@ -44,7 +51,7 @@ class DataSaver extends React.Component {
                     primary={true}
                     type='button' 
                     disabled={this.state.snackbarOpen}
-                    onTouchTap={() => { saveData(moment(this.state.date), foodsAnalyzed); this.toggleSnackbar(true); }}/>
+                    onTouchTap={this.onSaveHandler}/>
                 <Snackbar 
                     open={this.state.snackbarOpen}
                     message={'Saved! (date: ' + moment(this.state.date).format('YYYY-MM-DD') + ', calories: ' + foodsAnalyzed.data[3].total + ')'}

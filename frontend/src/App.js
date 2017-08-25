@@ -4,16 +4,23 @@ import { Router, Route, IndexRedirect } from 'react-router';
 
 // For material-ui
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import {enhancedHistory} from './modules/store';
 
 import {Header} from './Common/Header/Header';
 import {AdvertisementFooter} from './Common/Advertisement/AdvertisementFooter';
 
+const muiTheme = getMuiTheme({
+    datePicker: {
+        selectColor: 'orange'
+    }
+});
+
 const App = () => {
 
     return (
-        <MuiThemeProvider>
+        <MuiThemeProvider muiTheme={muiTheme}>
             <div>
                 <Header />
                 
