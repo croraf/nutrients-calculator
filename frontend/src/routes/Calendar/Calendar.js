@@ -6,6 +6,10 @@ import BigCalendar from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
 
+import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
+import NavigationArrowForward from 'material-ui/svg-icons/navigation/arrow-forward';
+import Today from 'material-ui/svg-icons/action/all-out';
+
 import './my-calendar-styles.css';
 
 import {MyDayBackgroundWrapper} from './MyDayBackgroundWrapper';
@@ -25,6 +29,11 @@ class Calendar extends React.Component {
                 <div style={{width: '90%', maxWidth: 1000, height: 600}}>
                     <BigCalendar
                         events={[]}
+                        messages={{
+                            previous: <NavigationArrowBack />,
+                            next: <NavigationArrowForward />,
+                            today: <Today />
+                        }}
                         views={['month']}
                         components={{dateCellWrapper: (props) => 
                             <MyDayBackgroundWrapper markedDates={markedDates} editDateHandler={editDateHandler} {...props} />

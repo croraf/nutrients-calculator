@@ -2,6 +2,11 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 const fieldStyle = {
     width: '100%',
@@ -15,86 +20,101 @@ const fieldStyle2 = {
     marginBottom: '10px'
 };
 
+class MyTextField extends React.Component {
+    render () {
+        const {input, meta, type, label} = this.props;
+
+        return (
+            <div>
+                <TextField 
+                    {...input}
+                    type={type}
+                    floatingLabelText={label}
+                    fullWidth={true}
+                    errorText={meta.error && 'required'}/>
+            </div>
+        );
+    }
+}
+
+class MyRadioField extends React.Component {
+    render () {
+        const {input, meta, label} = this.props;
+
+        return (
+            
+            <RadioButtonGroup 
+                name={input.name}
+                valueSelected={input.value}
+                {...input}
+                style={{width: '50%', margin: 'auto', textAlign: 'center'}}>
+
+                <RadioButton
+                    value="male"
+                    label="Male"
+                />
+                <RadioButton
+                    value="female"
+                    label="Female"
+                />
+            </RadioButtonGroup>
+        );
+    }
+}
+
+class MySelectField extends React.Component {
+    render () {
+        const {input, meta, label} = this.props;
+
+        return (
+            
+            <SelectField
+                floatingLabelText={label}
+                fullWidth={true}
+                {...input} 
+                onChange={ (event, key, payload) => {input.onChange(payload);} } >
+                
+                <MenuItem value='none' primaryText="None" />
+                <MenuItem value='minor' primaryText="Minor walking" />
+                <MenuItem value='average' primaryText="Walking and minor excercise" />
+                <MenuItem value='heavy' primaryText="Heavier excercise or sports" />
+                <MenuItem value='pro' primaryText="Professional excercise or sports" />
+            </SelectField>
+        );
+    }
+}
+
+
 let ProfileForm = props => {
     const { handleSubmit } = props;
     return (
         <form onSubmit={ handleSubmit }>
-            <div>
-                <label htmlFor="firstName">First Name</label>
-                <Field name="firstName" component="input" type="text" style={fieldStyle}/>
-            </div>
-            <div>
-                <label htmlFor="lastName">Last Name</label>
-                <Field name="lastName" component="input" type="text" style={fieldStyle} />
-            </div>
-            <div>
-                <label htmlFor="email">Email</label>
-                <Field name="email" component="input" type="email" style={fieldStyle} />
-            </div>
+            <Field name='firstName' label='First Name' component={MyTextField} />
+            <Field name='lastName' label='Last Name' component={MyTextField} />
+            <Field name='email' label='E-mail' component={MyTextField} type='email' />
+
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
 
-                <div>
-                    <label htmlFor="height">Height</label>
-                    <Field name="height" component="input" type="number" style={fieldStyle2} />
-                </div>
-                <div>
-                    <label htmlFor="weight">Weight</label>
-                    <Field name="weight" component="input" type="number" style={fieldStyle2} />
-                </div>
+                <Field name='height' label='Height' component={MyTextField} type='number' />
+                <Field name='weight' label='Weight' component={MyTextField} type='number' />
 
             </div>
 
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 
-                <div>
-                    <label htmlFor="age">Age</label>
-                    <Field name="age" component="input" type="number" style={fieldStyle2} />
-                </div>
-                <div>
-                    {/* <label htmlFor="sex">Sex</label> */}
-                    <div style={{...fieldStyle2, display: 'inline', width: '150px', marginLeft: '0px', paddingRight: '15px'}}>
-                        <label>
-                            <Field
-                            name="sex"
-                            component="input"
-                            type="radio"
-                            value="male"
-                            />{' '}
-                            Male
-                        </label>
-                        <label>
-                            <Field
-                            name="sex"
-                            component="input"
-                            type="radio"
-                            value="female"
-                            />{' '}
-                            Female
-                        </label>
-                    </div>
-                </div>
+                <Field name='age' label='Age' component={MyTextField} type='number' />
+                <Field name='sex' label='Sex' component={MyRadioField} />
 
             </div>
             <div>
-                <label>Phisical activity</label>
-                <div>
-                    <Field name="activity" component="select" style={fieldStyle} >
-                        <option></option>
-                        <option value="none">None</option>
-                        <option value="minor">Minor walking</option>
-                        <option value="average">Walking and minor excercise</option>
-                        <option value="heavy">Heavier excercise or sports</option>
-                        <option value="professional">Professional excercise or sports</option>
-                    </Field>
-                </div>
+                <Field name='activity' label='Physical activity' component={MySelectField} />
             </div>
-            <div style={{display: 'flex', justifyContent: 'center', marginBottom: '20px'}}>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
                 <RaisedButton style={{}} label='Calculate Calories Target' primary={true} type="button" />
             </div>
             
             <div style={{display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
-                <label htmlFor="calories">Calories target:</label>
-                <Field name="calories" component="input" type="number" style={fieldStyle2} />
+                <Field name="calories" label='Calories target' component={MyTextField} type="number" />
             </div>
             
             <RaisedButton style={{margin: 'auto', display: 'block', width:'100px', marginBottom: '10px'}}
@@ -109,7 +129,7 @@ ProfileForm = reduxForm({
   // a unique name for the form
     form: 'profile',
     destroyOnUnmount: false,
-    initialValues: {calories: 1600, sex: 'male', activity: 'none'}
+    initialValues: {calories: 1600, sex: 'female', activity: 'minor', firstName: 'rafa'}
 })(ProfileForm);
 
 export default ProfileForm;
