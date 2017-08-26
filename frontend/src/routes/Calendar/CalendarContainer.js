@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    markedDates
+    markedDates: [...markedDates, ...state.dailyData.map((dailyData) => dailyData.x.toDate())]
 });
 
 const CalendarContainer = connect(mapStateToProps, mapDispatchToProps)(Calendar);
