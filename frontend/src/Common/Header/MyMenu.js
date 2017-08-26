@@ -43,6 +43,7 @@ class MyMenu extends React.Component {
                     touchTapCloseDelay={300}
                 >
                     <MenuItem primaryText="Profile" value='/profile' style={activeLink === '/profile' ? styleActive: styleInactive}/>
+                    <MenuItem primaryText="Calendar" value='/calendar' style={activeLink === '/calendar' ? styleActive: styleInactive}/>
                     <MenuItem primaryText="Calculator" value='/calculator' style={activeLink === '/calculator' ? styleActive: styleInactive}/>
                     {/* <MenuItem primaryText="Admin" value='/admin' style={activeLink === '/admin' ? styleActive: styleInactive}/> */}
                     <MenuItem primaryText="Statistics" value='/statistics' style={activeLink === '/statistics' ? styleActive: styleInactive}/>

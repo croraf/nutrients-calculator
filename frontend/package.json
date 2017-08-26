@@ -22,6 +22,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-autosuggest": "^9.3.1",
+    "react-big-calendar": "^0.14.4",
     "react-datepicker": "^0.53.0",
     "react-debounce-input": "^3.0.0",
     "react-dom": "^15.4.2",

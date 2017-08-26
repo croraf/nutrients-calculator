@@ -38,6 +38,14 @@ const App = () => {
                             }}/>
 
                         <Route
+                            path="calendar"
+                            getComponent={(nextState, cb) => {
+                                import(/* webpackChunkName: "chunckCalendar" */  './routes/Calendar/CalendarContainer').then(
+                                    (file) => { cb(null, file.CalendarContainer); }
+                                );
+                            }}/>
+
+                        <Route
                             path="calculator"
                             getComponent={(nextState, cb) => {
                                 import(/* webpackChunkName: "chunckCalculator" */  './routes/Calculator/CalculatorContainer').then(
