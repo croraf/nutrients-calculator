@@ -1,17 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Grid, Row, Col } from 'react-flexbox-grid';
+
 import {CaloriesGraphContainer} from './CaloriesGraphContainer';
 
 class Statistics extends React.Component {
     render () {
 
         return (
-            <div style={{display: 'flex', justifyContent: 'center', width: '100%', height: 500}}>
+            <Grid fluid>
+                <Row>
+                    <Col xs={12} xsOffset={0} md={8} mdOffset={2} style={{minHeight: '600px', height: '80%'}}>
+                
+                        
+                        <CaloriesGraphContainer />
+                    
+                    </Col>
+                </Row>
+            </Grid>
 
-                <CaloriesGraphContainer />
-
-            </div>
         );
     }
 }

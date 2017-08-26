@@ -5,6 +5,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 
+import { Row, Col } from 'react-flexbox-grid';
+
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
@@ -47,7 +49,7 @@ class MyRadioField extends React.Component {
                 name={input.name}
                 valueSelected={input.value}
                 {...input}
-                style={{width: '50%', margin: 'auto', textAlign: 'center'}}>
+                style={{border: '1px solid lightgray', margin: 'auto', textAlign: 'center', height: '52px', paddingTop: '10px'}}>
 
                 <RadioButton
                     value="male"
@@ -93,19 +95,26 @@ let ProfileForm = props => {
             <Field name='lastName' label='Last Name' component={MyTextField} />
             <Field name='email' label='E-mail' component={MyTextField} type='email' />
 
-            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+            <Row>
+                <Col xs={6} style={{minWidth: '200px'}}>
+                    <Field name='height' label='Height' component={MyTextField} type='number' />
+                </Col>
+                <Col xs={6}  style={{minWidth: '200px'}}>
+                    <Field name='weight' label='Weight' component={MyTextField} type='number' />
+                </Col>
+            </Row>
 
-                <Field name='height' label='Height' component={MyTextField} type='number' />
-                <Field name='weight' label='Weight' component={MyTextField} type='number' />
+            <Row>
+                <Col xs={6} style={{minWidth: '200px'}}>
+                    <Field name='age' label='Age' component={MyTextField} type='number' />
+                </Col>
+                <Col xs={6} style={{minWidth: '200px'}}>
+                    <Field name='sex' label='Sex' component={MyRadioField} />
+                </Col>
+            </Row>
 
-            </div>
-
-            <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 
-                <Field name='age' label='Age' component={MyTextField} type='number' />
-                <Field name='sex' label='Sex' component={MyRadioField} />
 
-            </div>
             <div>
                 <Field name='activity' label='Physical activity' component={MySelectField} />
             </div>

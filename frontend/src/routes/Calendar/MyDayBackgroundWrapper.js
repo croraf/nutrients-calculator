@@ -60,6 +60,7 @@ class MyDayBackgroundWrapper extends React.Component {
                         marginTop: '20px',
                         height: '100%',
                         width: '100%',
+                        minWidth: '0px'
                     }}
                     backgroundColor={this.state.marked && 'aqua'}
                     hoverColor='lightgray'

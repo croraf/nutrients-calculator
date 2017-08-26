@@ -33,7 +33,7 @@ class CaloriesGraph extends React.Component {
 
         console.log(xMax, xMin);
         return (
-            <XYPlot height={400} width= {700} style={{padding: 50}} 
+            <XYPlot height={500} width= {600} style={{padding: 50}} 
                 xType='time'
                 xDomain={[xMin.toDate() , xMax.toDate()]} 
                 yDomain={[0, yMax]} >
