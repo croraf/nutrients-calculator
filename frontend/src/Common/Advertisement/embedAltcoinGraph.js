@@ -27,7 +27,7 @@ const embedAltcoinGraphs = () => {
 
     embedSingleGraph(embeddingRoot, 'bitcoin', null);
     embedSingleGraph(embeddingRoot, 'ethereum', 'BTC');
-    embedSingleGraph(embeddingRoot, 'adex', 'BTC');
+    embedSingleGraph(embeddingRoot, 'adx-net', 'BTC');
 };
 
 export {embedAltcoinGraphs};
