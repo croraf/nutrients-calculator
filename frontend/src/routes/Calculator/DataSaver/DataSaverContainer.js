@@ -12,7 +12,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
     foodsAnalyzed: state.nutrients.foodsAnalyzed,
-    activeDate: state.dateSelect.activeDate
+    activeDate: state.dateSelect.activeDate,
+    isEdit: state.dateSelect.isEdit
 });
 
 const DataSaverContainer = connect(mapStateToProps, mapDispatchToProps)(DataSaver);

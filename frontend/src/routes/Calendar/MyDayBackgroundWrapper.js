@@ -32,7 +32,7 @@ class MyDayBackgroundWrapper extends React.Component {
     editDateHandler = () => {
         const {value, editDateHandler} = this.props;
 
-        editDateHandler(value.toDateString());
+        editDateHandler(value.toDateString(), this.state.marked);
     }
 
     componentWillMount () {

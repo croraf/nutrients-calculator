@@ -36,7 +36,14 @@ class DataSaver extends React.Component {
 
     render () {
 
-        const {foodsAnalyzed, activeDate, activeDateClickHandler} = this.props;
+        const {foodsAnalyzed, activeDate, activeDateClickHandler, isEdit} = this.props;
+
+        const snacbarMessage = 
+            (isEdit ? 'Edited!' : 'Saved!') 
+            + ' (date: ' + 
+            moment(activeDate).format('YYYY-MM-DD') + 
+            ', calories: ' + 
+            foodsAnalyzed.data[3].total + ')';
 
         return (
             <div style={{display: 'flex', justifyContent: 'center', height: '44px'}}>
@@ -56,7 +63,7 @@ class DataSaver extends React.Component {
                     style={{height: '100%'}}/>
                 <Snackbar 
                     open={this.state.snackbarOpen}
-                    message={'Saved! (date: ' + moment(activeDate).format('YYYY-MM-DD') + ', calories: ' + foodsAnalyzed.data[3].total + ')'}
+                    message={snacbarMessage}
                     autoHideDuration={5000}
                     onRequestClose={() => {this.toggleSnackbar(false);}}
                     contentStyle={{fontSize: 24, color: 'white'}}

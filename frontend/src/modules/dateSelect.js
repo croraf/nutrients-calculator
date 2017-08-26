@@ -1,16 +1,16 @@
 
 
-const dateSelect = (date) => (dispatch) => {
+const dateSelect = (date, isEdit) => (dispatch) => {
 
-    dispatch({type: 'DATE_SELECTED', date});
+    dispatch({type: 'DATE_SELECTED', data: {date, isEdit}});
 };
 
 
-const selectDateReducer = (state={activeDate: undefined}, action) => {
+const selectDateReducer = (state={activeDate: undefined, isEdit: false}, action) => {
     switch (action.type) {
         case 'DATE_SELECTED':
-            console.log('DATE_SELECTED', action.date);
-            return {activeDate: action.date};
+            console.log('DATE_SELECTED', action.data.date);
+            return {activeDate: action.data.date, isEdit: action.data.isEdit};
         default:
             return state;
     }
