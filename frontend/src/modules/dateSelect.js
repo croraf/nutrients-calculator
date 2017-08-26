@@ -2,24 +2,15 @@
 
 const dateSelect = (date) => (dispatch) => {
 
-    return dispatch({type: 'DATE_SELECTED', date});
-
-        
-    /* console.log(Object.keys(nutrientsMap).indexOf('203') );
-    console.log(dataRows); */
-    /* const totalProtein = dataRows[Object.keys(nutrientsMap).indexOf('203')].ingredients
-                                .reduce((x, y) => {return y === '---' ? x : (x + parseFloat(y));}, 0);
-    const totalEnergy = dataRows[Object.keys(nutrientsMap).indexOf('208')].ingredients
-                                .reduce((x, y) => {return y === '---' ? x : (x + parseFloat(y));}, 0);
-    console.log(totalProtein, totalEnergy); */
+    dispatch({type: 'DATE_SELECTED', date});
 };
 
 
-const selectDateReducer = (state=[], action) => {
+const selectDateReducer = (state={activeDate: undefined}, action) => {
     switch (action.type) {
         case 'DATE_SELECTED':
             console.log('DATE_SELECTED', action.date);
-            return state;
+            return {activeDate: action.date};
         default:
             return state;
     }

@@ -6,10 +6,9 @@ const saveData = (date, foodsAnalyzed) => (dispatch) => {
     console.log('date, foodsAnalyzed', date, foodsAnalyzed);
 
     if (dailyData.has(date.unix())) {
-        alert('already inputted for this date');
+        
     } else {
         dailyData.set(date.unix(), foodsAnalyzed.data[3].total);
-        alert('set');
         
         return dispatch({type: 'SAVE_DAILY_DATA', data: {x: date, y: foodsAnalyzed.data[3].total}});
     }

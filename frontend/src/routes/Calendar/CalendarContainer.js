@@ -1,6 +1,8 @@
 
 import {connect} from 'react-redux';
 
+import {push} from 'react-router-redux';
+
 import {Calendar} from './Calendar';
 
 import {dateSelect} from 'modules/dateSelect';
@@ -11,7 +13,7 @@ const markedDates = [
 ];
 
 const mapDispatchToProps = (dispatch) => ({
-    dateSelectHandler: (date) => {dispatch(dateSelect(date));}
+    dateSelectHandler: (date) => {dispatch(dateSelect(date)); dispatch(push('calculator'));}
 });
 
 const mapStateToProps = (state) => ({

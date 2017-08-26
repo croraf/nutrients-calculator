@@ -28,7 +28,7 @@ class MyDayBackgroundWrapper extends React.Component {
                     hoverColor='lightgray'
                     onClick={() => {dateSelectHandler(value.toDateString());}}>
                     
-                    {markedDate ? 'filled' : <div />}
+                    {markedDate ? <div /> : <div />}
                 </FlatButton>
             </div>
         );
