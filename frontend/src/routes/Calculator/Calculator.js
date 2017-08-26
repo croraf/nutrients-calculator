@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {Grid, Row, Column} from 'react-flexbox-grid';
+
 import {CalculatorForm} from './CalculatorForm/CalculatorForm';
 import {NutritionResultsTableContainer} from './NutritionResultsTable/NutritionResultsTableContainer';
 import {DataSaverContainer} from './DataSaver/DataSaverContainer';
@@ -11,7 +13,7 @@ class Calculator extends React.Component {
         const {calculateHandler} = this.props;
 
         return (
-            <div style={{padding: '10px'}}>
+            <Grid fluid style={{padding: '10px'}}>
 
                 <DataSaverContainer />
 
@@ -20,7 +22,7 @@ class Calculator extends React.Component {
 
                 <NutritionResultsTableContainer />
                 
-            </div>
+            </Grid>
         );
     }
 }

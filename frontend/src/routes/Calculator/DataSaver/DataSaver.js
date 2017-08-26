@@ -10,6 +10,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import moment from 'moment';
 import Snackbar from 'material-ui/Snackbar';
 
+
+import { Row, Col } from 'react-flexbox-grid';
+
 class DataSaver extends React.Component {
     
     constructor (props) {
@@ -46,21 +49,27 @@ class DataSaver extends React.Component {
             foodsAnalyzed.data[3].total + ')';
 
         return (
-            <div style={{display: 'flex', justifyContent: 'center', height: '44px'}}>
+            <Row style={{height: '44px'}} end='xs'>
+                
+                <Col xs={3} md={2} lg={1}>
+                    <RaisedButton
+                        label='Save'
+                        primary={true}
+                        type='button'
+                        disabled={this.state.snackbarOpen}
+                        onTouchTap={this.onSaveHandler} 
+                        className='my-data-saver'
+                        style={{height: '100%'}}/>
+                </Col>
+                <Col xs={6} md={3} lg={2} style={{minWidth: '250px'}}>
 
-                <div style={{fontSize: 24, padding: '8px', cursor: 'pointer', border: '1px solid rgb(0, 188, 212)'}}
-                    onClick={activeDateClickHandler}
-                >
-                    {activeDate || '<SELECT DATE>'}
-                </div>
-                <RaisedButton
-                    label='Save'
-                    primary={true}
-                    type='button'
-                    disabled={this.state.snackbarOpen}
-                    onTouchTap={this.onSaveHandler} 
-                    className='my-data-saver'
-                    style={{height: '100%'}}/>
+                    <div style={{fontSize: 24, textAlign: 'center', padding: '8px', cursor: 'pointer', border: '1px solid rgb(0, 188, 212)'}}
+                        onClick={activeDateClickHandler}
+                    >
+                        {activeDate || '<SELECT DATE>'}
+                    </div>
+                </Col>
+
                 <Snackbar 
                     open={this.state.snackbarOpen}
                     message={snacbarMessage}
@@ -69,7 +78,7 @@ class DataSaver extends React.Component {
                     contentStyle={{fontSize: 24, color: 'white'}}
                     bodyStyle={{backgroundColor: 'rgb(0, 188, 212)'}}
                     />
-            </div>
+            </Row>
         );
     }
 }

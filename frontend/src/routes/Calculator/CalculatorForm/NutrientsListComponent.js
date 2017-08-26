@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import {NutrientRow} from './NutrientRow';
 
-import {Row, Col, Grid} from 'react-flexbox-grid';
+import {Row, Col} from 'react-flexbox-grid';
 
 const calculateButtonStyle = {
     marginLeft: '5px',
@@ -19,7 +19,7 @@ class NutrientsListComponent extends React.Component {
 
         const {fields, meta: {error, submitFailed}} = this.props;
         return (
-            <Grid fluid style={{paddingLeft: '2%', paddingRight: '0px'}}>
+            <div style={{paddingLeft: '2%', paddingRight: '0px'}}>
                 {fields.map((item, index) => (
                     <NutrientRow key={index} item={item} index={index} fields={fields} />
                 ))}
@@ -29,7 +29,7 @@ class NutrientsListComponent extends React.Component {
                         <RaisedButton label='Calculate' labelColor='white' secondary={true} style={calculateButtonStyle} type='submit' />
                     </Col>
                 </Row>
-            </Grid>
+            </div>
         );
     }
 }
