@@ -48,7 +48,7 @@ class DataSaver extends React.Component {
         return (
             <div style={{display: 'flex', justifyContent: 'center', height: '44px'}}>
 
-                <div style={{fontSize: 24, margin: '8px', cursor: 'pointer'}}
+                <div style={{fontSize: 24, padding: '8px', cursor: 'pointer', border: '1px solid rgb(0, 188, 212)'}}
                     onClick={activeDateClickHandler}
                 >
                     {activeDate || '<SELECT DATE>'}
