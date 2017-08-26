@@ -2,14 +2,51 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import FlatButton from 'material-ui/FlatButton';
-
+import {MyDialog} from './MyDialog';
 
 class MyDayBackgroundWrapper extends React.Component {
+
+    state = {
+        marked: undefined,
+        dialogOpen: false
+    }
+
+    dateSelectHandler = () => {
+
+        if (this.state.marked) {
+            console.log('marked date');
+            this.setState({
+                dialogOpen: true
+            });
+        } else {
+            this.editDateHandler();
+        }
+    }
+
+    closeDialog = () => {
+        this.setState({
+            dialogOpen: false
+        });
+    }
+
+    editDateHandler = () => {
+        const {value, editDateHandler} = this.props;
+
+        editDateHandler(value.toDateString());
+    }
+
+    componentWillMount () {
+        
+        const {value, markedDates} = this.props;
+
+        if (markedDates.find((date) => (date.toDateString() === value.toDateString()))){
+            this.setState({
+                marked: true
+            });
+        }
+    }
+
     render () {
-
-        const {value, markedDates, dateSelectHandler} = this.props;
-
-        const markedDate = markedDates.find((date) => (date.toDateString() === value.toDateString()));
 
         return (
             <div 
@@ -24,12 +61,13 @@ class MyDayBackgroundWrapper extends React.Component {
                         height: '100%',
                         width: '100%',
                     }}
-                    backgroundColor={markedDate && 'aqua'}
+                    backgroundColor={this.state.marked && 'aqua'}
                     hoverColor='lightgray'
-                    onClick={() => {dateSelectHandler(value.toDateString());}}>
+                    onClick={this.dateSelectHandler}>
                     
-                    {markedDate ? <div /> : <div />}
+                    {this.state.marked ? <div /> : <div />}
                 </FlatButton>
+                <MyDialog open={this.state.dialogOpen} onClose={this.closeDialog} onConfirm={this.editDateHandler} />
             </div>
         );
     }

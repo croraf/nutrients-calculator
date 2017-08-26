@@ -18,7 +18,7 @@ BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 class Calendar extends React.Component {
     render () {
-        const {dateSelectHandler, markedDates} = this.props;
+        const {editDateHandler, markedDates} = this.props;
 
         return (
             <div style={{display: 'flex', justifyContent: 'center', margin: '10px'}} >
@@ -27,7 +27,7 @@ class Calendar extends React.Component {
                         events={[]}
                         views={['month']}
                         components={{dateCellWrapper: (props) => 
-                            <MyDayBackgroundWrapper markedDates={markedDates} dateSelectHandler={dateSelectHandler} {...props} />
+                            <MyDayBackgroundWrapper markedDates={markedDates} editDateHandler={editDateHandler} {...props} />
                         }}
                     />
                 </div>

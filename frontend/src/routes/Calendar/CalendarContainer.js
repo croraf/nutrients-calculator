@@ -13,7 +13,7 @@ const markedDates = [
 ];
 
 const mapDispatchToProps = (dispatch) => ({
-    dateSelectHandler: (date) => {dispatch(dateSelect(date)); dispatch(push('calculator'));}
+    editDateHandler: (date) => {dispatch(dateSelect(date)); dispatch(push('calculator'));}
 });
 
 const mapStateToProps = (state) => ({

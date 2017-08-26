@@ -14,18 +14,10 @@ class DataSaver extends React.Component {
     
     constructor (props) {
         super(props);
-        /* moment.locale('de'); */
         this.state = {
-            /* date: moment().startOf('day').toDate(), */
             snackbarOpen: false
         };
     }
-
-    /* handleChange = (event, date) => {
-        this.setState({
-            date: date
-        });
-    } */
 
     toggleSnackbar = (open) => {
         this.setState({
@@ -37,7 +29,9 @@ class DataSaver extends React.Component {
         
         const {saveData, foodsAnalyzed} = this.props;
 
-        saveData(moment(this.props.activeDate), foodsAnalyzed); this.toggleSnackbar(true);
+        saveData(moment(this.props.activeDate), foodsAnalyzed);
+        
+        this.toggleSnackbar(true);
     }
 
     render () {
@@ -52,7 +46,6 @@ class DataSaver extends React.Component {
                 >
                     {activeDate || '<SELECT DATE>'}
                 </div>
-                {/* <MyDatePicker value={this.state.date} handleChange={this.handleChange}/> */}
                 <RaisedButton
                     label='Save'
                     primary={true}
