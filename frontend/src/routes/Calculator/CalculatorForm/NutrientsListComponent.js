@@ -19,7 +19,7 @@ class NutrientsListComponent extends React.Component {
 
         const {fields, meta: {error, submitFailed}} = this.props;
         return (
-            <Grid>
+            <Grid fluid style={{paddingLeft: '2%', paddingRight: '0px'}}>
                 {fields.map((item, index) => (
                     <NutrientRow key={index} item={item} index={index} fields={fields} />
                 ))}
