@@ -7,7 +7,7 @@ import FlatButton from 'material-ui/FlatButton';
 class MyDayBackgroundWrapper extends React.Component {
     render () {
 
-        const {value, markedDates} = this.props;
+        const {value, markedDates, dateSelectHandler} = this.props;
 
         const markedDate = markedDates.find((date) => (date.toDateString() === value.toDateString()));
 
@@ -26,7 +26,7 @@ class MyDayBackgroundWrapper extends React.Component {
                     }}
                     backgroundColor={markedDate && 'aqua'}
                     hoverColor='lightgray'
-                    onClick={() => {alert(value.toDateString());}}>
+                    onClick={() => {dateSelectHandler(value.toDateString());}}>
                     
                     {markedDate ? 'filled' : <div />}
                 </FlatButton>

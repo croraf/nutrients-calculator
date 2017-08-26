@@ -11,6 +11,7 @@ import {defineIngredientDialogueReducer} from './defineIngredientDialogue';
 import {nutrientsReducer} from './nutrients';
 import {loginReducer} from './login';
 import {dailyDataReducer} from './dailyData';
+import {selectDateReducer} from './dateSelect';
 
 const createReducer = (asyncReducers) => (
     combineReducers({
@@ -21,6 +22,7 @@ const createReducer = (asyncReducers) => (
         form: formReducer,
         routing: routerReducer,
         dailyData: dailyDataReducer,
+        dateSelect: selectDateReducer,
         ...asyncReducers
     })
 );
