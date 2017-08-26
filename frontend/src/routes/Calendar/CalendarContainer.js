@@ -3,12 +3,14 @@ import {connect} from 'react-redux';
 
 import {Calendar} from './Calendar';
 
+import moment from 'moment';
+
 const myEventsList = [
     {
         'title': 'All Day Event',
         'allDay': true,
-        'start': new Date(2017, 7, 1),
-        'end': new Date(2017, 7, 2)
+        'start': new Date('2017-08-02'),
+        'end': new Date('2017-08-05')
     },
     {
         'title': 'Long Event',
@@ -74,13 +76,18 @@ const myEventsList = [
     }
 ];
 
+const markedDates = [
+    new Date('2017-08-05'),
+    new Date('2017-08-15')
+];
 
 const mapDispatchToProps = (dispatch) => ({
 
 });
 
 const mapStateToProps = (state) => ({
-    myEventsList
+    myEventsList,
+    markedDates
 });
 
 const CalendarContainer = connect(mapStateToProps, mapDispatchToProps)(Calendar);
