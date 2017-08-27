@@ -8,6 +8,7 @@ import Dimensions from 'react-dimensions';
 
 import 'react-vis/dist/style.css';
 /* import styles2 from 'react-vis/dist/styles/legends.scss'; */
+import './graph-styles.css';
 
 class CaloriesGraph extends React.Component {
 
@@ -39,7 +40,8 @@ class CaloriesGraph extends React.Component {
                 xType='time'
                 xDomain={[xMin.toDate() , xMax.toDate()]} 
                 yDomain={[0, yMax]} >
-                <VerticalGridLines style={{stroke: 'darkgray'}}/>
+                <VerticalGridLines style={{stroke: 'darkgray'}}
+                    tickTotal={(xMax.toDate() - xMin.toDate())/1000/3600/24}/>
                 <HorizontalGridLines style={{stroke: 'darkgray'}}/>
                 <XAxis title='date' style={{title: {textAnchor: 'end'}}}
                     tickTotal={(xMax.toDate() - xMin.toDate())/1000/3600/24}

@@ -1,0 +1,9 @@
+.rv-xy-plot__axis__title text {
+     font-size: 18px;
+     fill: black;
+}
+
+.rv-xy-plot__axis__tick__text{
+    font-size: 16px;
+    fill: black;
+}

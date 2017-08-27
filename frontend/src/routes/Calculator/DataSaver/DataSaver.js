@@ -32,7 +32,7 @@ class DataSaver extends React.Component {
         
         const {saveData, foodsAnalyzed} = this.props;
 
-        saveData(moment(this.props.activeDate), foodsAnalyzed);
+        saveData(moment(this.props.activeDate).startOf('day'), foodsAnalyzed);
         
         this.toggleSnackbar(true);
     }
