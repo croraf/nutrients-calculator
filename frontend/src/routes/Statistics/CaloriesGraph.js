@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import {XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries, LineMarkSeries, MarkSeries, Crosshair } from 'react-vis';
 import moment from 'moment';
 
-import styles from 'react-vis/dist/style.css';
+import Dimensions from 'react-dimensions';
+
+import 'react-vis/dist/style.css';
 /* import styles2 from 'react-vis/dist/styles/legends.scss'; */
 
 class CaloriesGraph extends React.Component {
@@ -18,7 +20,7 @@ class CaloriesGraph extends React.Component {
 
     render () {
 
-        const {nutrientsIntakeData, optimalIntake, onDataClick} = this.props;
+        const {nutrientsIntakeData, optimalIntake, onDataClick, containerWidth, containerHeight} = this.props;
         console.log(nutrientsIntakeData);
         
         /* const yMin = Math.min(...nutrientsIntakeData.map((item => item.calories))) * 0.5; */
@@ -33,19 +35,19 @@ class CaloriesGraph extends React.Component {
 
         console.log(xMax, xMin);
         return (
-            <XYPlot height={500} width= {600} style={{padding: 50}} 
+            <XYPlot height={containerHeight-30} width={containerWidth-60} style={{padding: '0px 30px 30px 30px'}} 
                 xType='time'
                 xDomain={[xMin.toDate() , xMax.toDate()]} 
                 yDomain={[0, yMax]} >
-                <VerticalGridLines />
-                <HorizontalGridLines />
+                <VerticalGridLines style={{stroke: 'darkgray'}}/>
+                <HorizontalGridLines style={{stroke: 'darkgray'}}/>
                 <XAxis title='date' style={{title: {textAnchor: 'end'}}}
                     tickTotal={(xMax.toDate() - xMin.toDate())/1000/3600/24}
                     tickFormat={v => v.getDate() + '/' + (v.getMonth()+1) + '/' + v.getFullYear()}
                     tickLabelAngle={-45} />
                 <YAxis title='calories [kcal]'/>
                 
-                <LineSeries color='lightgray'
+                <LineSeries color='purple'
                     data={[{x:xMin, y: optimalIntake}, {x: xMax, y: optimalIntake}]} />
                 
                 <LineMarkSeries data={nutrientsIntakeData2} 
@@ -66,4 +68,5 @@ class CaloriesGraph extends React.Component {
     }
 }
 
-export {CaloriesGraph};
+
+export default Dimensions()(CaloriesGraph);

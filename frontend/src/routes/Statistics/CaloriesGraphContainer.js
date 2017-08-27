@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import moment from 'moment';
-import {CaloriesGraph} from './CaloriesGraph';
+/* import moment from 'moment'; */
+import CaloriesGraph from './CaloriesGraph';
 
 /* const nutrientsIntakeData = [
     {

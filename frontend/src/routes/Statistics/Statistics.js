@@ -11,7 +11,13 @@ class Statistics extends React.Component {
         return (
             <Grid fluid>
                 <Row>
-                    <Col xs={12} xsOffset={0} md={8} mdOffset={2} style={{minHeight: '600px', height: '80%'}}>
+                    <Col xs={12} 
+                        style={{
+                            minWidth: '700px',
+                            margin: '20px 0px',
+                            border: '1px solid rgb(0, 188, 212)',
+                            minHeight: '600px'
+                        }}>
                 
                         
                         <CaloriesGraphContainer />
