@@ -88,7 +88,9 @@ class MySelectField extends React.Component {
 
 
 let ProfileForm = props => {
-    const { handleSubmit } = props;
+
+    const { handleSubmit, caloriesTarget } = props;
+
     return (
         <form onSubmit={ handleSubmit }>
             <Field name='firstName' label='First Name' component={MyTextField} />
@@ -118,18 +120,41 @@ let ProfileForm = props => {
             <div>
                 <Field name='activity' label='Physical activity' component={MySelectField} />
             </div>
-            <div style={{display: 'flex', justifyContent: 'center'}}>
-                <RaisedButton style={{}} label='Calculate Calories Target' primary={true} type="button" />
+
+            <div style={{display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
+                <RaisedButton 
+                    style={{}}
+                    label='Calculate Calories Target'
+                    primary={true}
+                    type="submit" />
             </div>
             
             <div style={{display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
-                <Field name="calories" label='Calories target' component={MyTextField} type="number" />
+                <div style={{fontSize: 24}}>
+                    <span style={{
+                        display: 'inline-block',
+                        border: '1px solid rgb(0, 188, 212)',
+                        borderRadius: '4px',
+                        width: '100px', 
+                        textAlign: 'center',
+                        marginLeft: '100px'
+                    }}>
+                        {caloriesTarget.toFixed(0)}
+                    </span>
+                    <span style={{
+                        display: 'inline-block',
+                        width: '100px', 
+                        textAlign: 'left'
+                    }}>
+                        kcal
+                    </span>
+                </div>
             </div>
             
-            <RaisedButton style={{margin: 'auto', display: 'block', width:'100px', marginBottom: '10px'}}
+            {/* <RaisedButton style={{margin: 'auto', display: 'block', width:'100px', marginBottom: '10px'}}
                 label='Save'
                 primary={true}
-                type="submit" />
+                onClick={() => {}} /> */}
         </form>
     );
 };
@@ -138,7 +163,7 @@ ProfileForm = reduxForm({
   // a unique name for the form
     form: 'profile',
     destroyOnUnmount: false,
-    initialValues: {calories: 1600, sex: 'female', activity: 'minor', firstName: 'rafa'}
+    initialValues: {sex: 'female', activity: 'minor', firstName: 'rafa', height: '200', weight: '100', age: 30}
 })(ProfileForm);
 
 export default ProfileForm;

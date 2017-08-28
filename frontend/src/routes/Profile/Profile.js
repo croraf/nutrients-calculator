@@ -22,9 +22,7 @@ class Profile extends React.Component {
                             </h2>
                             
                             <div style={{position: 'relative', width: '90%', margin: 'auto'}}>
-
-                                <ProfileForm onSubmit={(values) => {console.log(values);}} />
-
+                                <ProfileForm onSubmit={this.props.calculateCaloriesTarget} caloriesTarget={this.props.caloriesTarget}/>
                             </div>
                         </div>
                     

@@ -12,6 +12,7 @@ import {nutrientsReducer} from './nutrients';
 import {loginReducer} from './login';
 import {dailyDataReducer} from './dailyData';
 import {selectDateReducer} from './dateSelect';
+import {caloriesTargetReducer} from './caloriesTarget';
 
 const createReducer = (asyncReducers) => (
     combineReducers({
@@ -23,6 +24,7 @@ const createReducer = (asyncReducers) => (
         routing: routerReducer,
         dailyData: dailyDataReducer,
         dateSelect: selectDateReducer,
+        caloriesTarget: caloriesTargetReducer,
         ...asyncReducers
     })
 );
