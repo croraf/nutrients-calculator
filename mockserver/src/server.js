@@ -20,6 +20,7 @@ import historyApiFallback from 'koa-history-api-fallback';
 
 import {} from './main';
 import {getFoods} from './fetchFoods/fetchFoods';
+import {loggedInChecker} from './util/koaMiddlewares';
 
 const
     Koa = require('koa'),
@@ -46,6 +47,7 @@ app.use(koaBody({
     jsonLimit: '1kb'
 }));
 
+/* app.use(loggedInChecker); */
 
 app.use(validate(document));
 
@@ -60,11 +62,13 @@ router.get('/api/ingredients/:ingredientId', ingredients.getIngredientById);
 router.delete('/api/ingredients/:ingredientId', ingredients.deleteIngredient);
 router.put('/api/ingredients/:ingredientId', ingredients.updateIngredient);
 
+/* router.use(loggedInChecker); */
+
 app.use(router.routes());
 
 app.use(ui(document, '/swagger'));
 
-app.use(historyApiFallback());
+app.use(historyApiFallback({logger: console.log})); 
 
 app.use(async(ctx) => {
     console.log('serving static resource, incomingPath:', ctx.path);

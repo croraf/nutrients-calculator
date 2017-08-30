@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
     nutrientsIntakeData:  state.dailyData.sort((a, b) => b.x - a.x) ,
-    optimalIntake: state.caloriesTarget || 1600 
+    optimalIntake: state.caloriesTarget
 });
 
 const CaloriesGraphContainer = connect(mapStateToProps, mapDispatchToProps)(CaloriesGraph);

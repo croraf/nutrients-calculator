@@ -4,6 +4,8 @@ let foodsList = [];
 
 const fetchFoods = () => {
 
+    return;
+
     for (let i = 0; i < 90; i++){
         fetch('https://api.nal.usda.gov/ndb/search/?format=json&q=&ds=Standard+Reference&sort=n&max=100&api_key=NYYLHns54La4bh2r7nLLMfLTgkXYLKVY4Icedoum&offset=' 
                 + 100*i)

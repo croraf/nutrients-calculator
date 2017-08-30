@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -73,7 +72,7 @@ class DataSaver extends React.Component {
                 <Snackbar 
                     open={this.state.snackbarOpen}
                     message={snacbarMessage}
-                    autoHideDuration={5000}
+                    autoHideDuration={3000}
                     onRequestClose={() => {this.toggleSnackbar(false);}}
                     contentStyle={{fontSize: 24, color: 'white'}}
                     bodyStyle={{backgroundColor: 'rgb(0, 188, 212)'}}

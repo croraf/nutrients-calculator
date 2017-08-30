@@ -121,7 +121,7 @@ let ProfileForm = props => {
                 <Field name='activity' label='Physical activity' component={MySelectField} />
             </div>
 
-            <div style={{display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
+            <div style={{display: 'flex', justifyContent: 'center', marginTop: '10px', marginBottom: '20px'}}>
                 <RaisedButton 
                     style={{}}
                     label='Calculate Calories Target'
@@ -129,7 +129,7 @@ let ProfileForm = props => {
                     type="submit" />
             </div>
             
-            <div style={{display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
+            <div style={{display: 'flex', justifyContent: 'center', marginBottom: '20px'}}>
                 <div style={{fontSize: 24}}>
                     <span style={{
                         display: 'inline-block',
