@@ -2,9 +2,12 @@ import {combineReducers, createStore, applyMiddleware, compose} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 import thunk from 'redux-thunk';
 
-import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux';
+/* import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'; */
 
 import { browserHistory } from 'react-router';
+
+import createHistory from 'history/createBrowserHistory';
+import { routerReducer, routerMiddleware } from 'react-router-redux';
 
 import {fetchIngredientsReducer, fetchIngredients} from './ingredients';
 import {defineIngredientDialogueReducer} from './defineIngredientDialogue';
@@ -31,15 +34,17 @@ const createReducer = (asyncReducers) => (
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const history = createHistory();
+
 const store = createStore(
     createReducer({}), 
     composeEnhancers(
-        applyMiddleware(routerMiddleware(browserHistory), thunk)
+        applyMiddleware(routerMiddleware(history), thunk)
     )
 );
 store.asyncReducers = {};
 
-const enhancedHistory = syncHistoryWithStore(browserHistory, store);
+/* const enhancedHistory = syncHistoryWithStore(browserHistory, store); */
 
 const injectAsyncReducer = (name, asyncReducer) => {
 
@@ -52,4 +57,4 @@ const injectAsyncReducer = (name, asyncReducer) => {
 
 setTimeout(() => {store.dispatch(fetchIngredients());}, 1000);
 
-export {store, injectAsyncReducer, enhancedHistory};
+export {store, injectAsyncReducer, /* enhancedHistory */ history};

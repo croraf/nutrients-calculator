@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
 
-    activeLink: state.routing.locationBeforeTransitions.pathname,
+    activeLink: state.routing.location && state.routing.location.pathname,
     username: state.login.name
 });
 
