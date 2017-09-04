@@ -22,4 +22,4 @@ const mapStateToProps = (state) => ({
 
 const CalendarContainer = connect(mapStateToProps, mapDispatchToProps)(Calendar);
 
-export {CalendarContainer};
+export default CalendarContainer;

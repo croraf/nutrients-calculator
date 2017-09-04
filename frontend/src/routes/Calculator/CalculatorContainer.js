@@ -14,4 +14,4 @@ const mapStateToProps = (state) => ({
 
 const CalculatorContainer = connect(mapStateToProps, mapDispatchToProps)(Calculator);
 
-export {CalculatorContainer};
+export default CalculatorContainer;

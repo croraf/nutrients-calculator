@@ -8,7 +8,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    authed: state.login.authorized
 });
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);

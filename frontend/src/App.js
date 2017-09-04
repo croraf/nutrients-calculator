@@ -6,7 +6,7 @@ import { history } from 'modules/store';
 
 import {PrivateRoute} from './routes/util/PrivateRoute';
 
-import {CalculatorRoute, LoginRoute, CalendarRoute, ProfileRoute, StatisticsRoute} from './routes/util/DynamicRoutes';
+import {DynamicRouteContainer} from './routes/util/DynamicRouteContainer';
 
 // For material-ui
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -36,15 +36,25 @@ class App extends React.Component {
                         <div>
                             <Route path='/' exact render={() => (<Redirect to='/login' />)} /> 
                             
-                            <Route path="/login" component={LoginRoute}/> 
+                            <Route path="/login" component={
+                                (props) => <DynamicRouteContainer {...props} />
+                            }  />
 
-                            <Route path="/calendar" component={CalendarRoute}/>
+                            <Route path="/calendar" component={
+                                (props) => <DynamicRouteContainer {...props} private/>
+                            }/>
 
-                            <Route path='/calculator' component={CalculatorRoute} />
+                            <Route path="/calculator" component={
+                                (props) => <DynamicRouteContainer {...props} private/>
+                            } />
 
-                            <Route path="/statistics" component={StatisticsRoute}/>
+                            <Route path="/statistics" component={
+                                (props) => <DynamicRouteContainer {...props} private/>
+                            } />
                             
-                            <Route path="/profile" component={ProfileRoute}/>
+                            <Route path="/profile" component={
+                                (props) => <DynamicRouteContainer {...props} private/>
+                            } />
 
                             {/* <Route path="/admin" component={AdminRoute} /> */}
                         </div>

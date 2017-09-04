@@ -30,5 +30,5 @@ class Statistics extends React.Component {
     }
 }
 
-export {Statistics};
+export default Statistics;
 

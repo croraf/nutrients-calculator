@@ -12,4 +12,4 @@ const mapStateToProps = (state) => ({
 
 const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(Login);
 
-export {LoginContainer};
+export default LoginContainer;

@@ -14,4 +14,4 @@ const mapStateToProps = (state) => ({
 
 const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile);
 
-export {ProfileContainer};
+export default ProfileContainer;
