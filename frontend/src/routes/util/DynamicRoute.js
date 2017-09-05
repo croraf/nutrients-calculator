@@ -6,13 +6,20 @@ const checkAuth = (props) => {
 
     if (!props.secure) return true;
     
-    if (typeof props.authorized !== 'undefined') {
+    /* if ( typeof props.authorized !== 'undefined' ) {
 
         console.log('Needs authorization! Is authorized:', props.authorized);
         return props.authorized;
-    } else {
+    } */
 
+    console.log('Needs authorization!');
+
+    console.log(localStorage.getItem('wholeprotein_token'));
+
+    if (localStorage.getItem('wholeprotein_token')) {
         return true;
+    } else {
+        return false;
     }
 };
 
