@@ -19,7 +19,7 @@ const checkAuth = (props) => {
 const getImportingPromise = (pathname) => {
     switch (pathname) {
         case '/statistics':
-            return import(/* webpackChunkName: "chunckStatistics" */  '../Statistics/Statistics');
+            return import(/* webpackChunkName: "chunckStatistics" */  '../Statistics/StatisticsContainer');
         case '/calculator':
             return import(/* webpackChunkName: "chunckCalculator" */  '../Calculator/CalculatorContainer');
         case '/calendar':
@@ -53,7 +53,7 @@ class DynamicRoute extends React.Component {
                     if (Component.WrappedComponent.name === 'Login') {
                         import(/* webpackChunkName: "chunckCalculator" */  '../Calculator/CalculatorContainer');
                         import(/* webpackChunkName: "chunckProfile" */  '../Profile/ProfileContainer');
-                        import(/* webpackChunkName: "chunckStatistics" */  '../Statistics/Statistics');
+                        import(/* webpackChunkName: "chunckStatistics" */  '../Statistics/StatisticsContainer');
                         import(/* webpackChunkName: "chunckCalendar" */  '../Calendar/CalendarContainer');
                     }
                 });
