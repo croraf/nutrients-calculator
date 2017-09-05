@@ -23,8 +23,8 @@ class MyMenu extends React.Component {
 
         const {navigate, activeLink, username, ...props} = this.props;
 
-        /* if (username === '') return <div />; */
-        if (!localStorage.getItem('wholeprotein_token')) return <div />;
+        if (username === '') return <div />; 
+        /* if (!localStorage.getItem('wholeprotein_token')) return <div />; */
 
         return (
             <div>

@@ -25,6 +25,19 @@ const muiTheme = getMuiTheme({
 
 class App extends React.Component {
 
+    // LOAD THINGS FROM LOCAL STORAGE
+    componentWillMount () {
+
+        const token = localStorage.getItem('wholeprotein_token');
+
+        if (token) {
+            const payloadEncoded = token.split('.')[1];
+            const payload = JSON.parse(new Buffer(payloadEncoded, 'base64').toString('ascii'));
+
+            this.props.dispatch({type: 'TOKEN_RECEIVED', name: payload.name});
+        }
+    }
+
     render () {
         
         return (
