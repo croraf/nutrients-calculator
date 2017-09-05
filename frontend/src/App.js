@@ -41,19 +41,19 @@ class App extends React.Component {
                             }  />
 
                             <Route path="/calendar" component={
-                                (props) => <DynamicRouteContainer {...props} private/>
+                                (props) => <DynamicRouteContainer {...props} secure/>
                             }/>
 
                             <Route path="/calculator" component={
-                                (props) => <DynamicRouteContainer {...props} private/>
+                                (props) => <DynamicRouteContainer {...props} secure/>
                             } />
 
                             <Route path="/statistics" component={
-                                (props) => <DynamicRouteContainer {...props} private/>
+                                (props) => <DynamicRouteContainer {...props} secure/>
                             } />
                             
                             <Route path="/profile" component={
-                                (props) => <DynamicRouteContainer {...props} private/>
+                                (props) => <DynamicRouteContainer {...props} secure/>
                             } />
 
                             {/* <Route path="/admin" component={AdminRoute} /> */}

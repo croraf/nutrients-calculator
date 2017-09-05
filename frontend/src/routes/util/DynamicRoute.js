@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const checkAuth = (props) => {
 
-    if (!props.private) return true;
+    if (!props.secure) return true;
     
     if (typeof props.authorized !== 'undefined') {
 
@@ -42,11 +42,20 @@ class DynamicRoute extends React.Component {
         if (checkAuth(this.props)){
             getImportingPromise(this.props.location.pathname)
                 .then((file) => {
+
+                    console.log(file);
                     
                     const Component = file.default;
                     this.setState({
                         component: <Component />
-                    }); 
+                    });
+
+                    if (Component.WrappedComponent.name === 'Login') {
+                        import(/* webpackChunkName: "chunckCalculator" */  '../Calculator/CalculatorContainer');
+                        import(/* webpackChunkName: "chunckProfile" */  '../Profile/ProfileContainer');
+                        import(/* webpackChunkName: "chunckStatistics" */  '../Statistics/Statistics');
+                        import(/* webpackChunkName: "chunckCalendar" */  '../Calendar/CalendarContainer');
+                    }
                 });
         } else {
             this.setState({
