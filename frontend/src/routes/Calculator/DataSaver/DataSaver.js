@@ -48,7 +48,7 @@ class DataSaver extends React.Component {
             foodsAnalyzed.data[3].total + ')';
 
         return (
-            <Row style={{height: '44px'}} end='xs'>
+            <Row style={{height: '38px'}} end='xs'>
                 
                 <Col xs={3} md={2} lg={1}>
                     <RaisedButton
@@ -62,7 +62,7 @@ class DataSaver extends React.Component {
                 </Col>
                 <Col xs={6} md={3} lg={2} style={{minWidth: '250px'}}>
 
-                    <div style={{fontSize: 24, textAlign: 'center', padding: '8px', cursor: 'pointer', border: '1px solid rgb(0, 188, 212)'}}
+                    <div style={{fontSize: '18px', fontWeight: 'bold', textAlign: 'center', padding: '8px', cursor: 'pointer', border: '1px solid rgb(0, 188, 212)'}}
                         onClick={activeDateClickHandler}
                     >
                         {activeDate || '<SELECT DATE>'}

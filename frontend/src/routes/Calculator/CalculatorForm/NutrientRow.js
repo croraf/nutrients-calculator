@@ -25,7 +25,7 @@ class NutrientRow extends React.Component {
                             type='number'
                             label='Serving size [g]' />
                     </Col>
-                    <Col xs={1} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                    <Col xs={1} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '20px'}}>
                         <i
                             className='material-icons'
                             onClick={()=>{fields.remove(index);}}
