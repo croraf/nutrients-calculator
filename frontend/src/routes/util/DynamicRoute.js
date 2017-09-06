@@ -57,7 +57,7 @@ class DynamicRoute extends React.Component {
                         component: <Component />
                     });
 
-                    if (Component.WrappedComponent.name === 'Login') {
+                    if (this.props.location.pathname === '/login'/*   || this.props.location.pathname === '/calculator'  */) {
                         import(/* webpackChunkName: "chunckCalculator" */  '../Calculator/CalculatorContainer');
                         import(/* webpackChunkName: "chunckProfile" */  '../Profile/ProfileContainer');
                         import(/* webpackChunkName: "chunckStatistics" */  '../Statistics/StatisticsContainer');
