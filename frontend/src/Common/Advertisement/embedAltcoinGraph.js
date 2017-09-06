@@ -7,27 +7,30 @@ const embedSingleGraph = (embeddingRoot, currency, secondaryCurrency) => {
     widget.setAttribute('data-currency', currency);
     widget.setAttribute('data-base', 'USD');
     secondaryCurrency && widget.setAttribute('data-secondary', secondaryCurrency); 
-    widget.style.margin = '5px';
+    /* widget.style.margin = '5px'; */
     widget.style.backgroundColor = 'white';
     widget.style.borderRadius = '10px';
+    widget.style.width = '100%';
 
     embeddingRoot.appendChild(widget);
 };
 
 const embedAltcoinGraphs = () => {
 
-    const embeddingRoot = document.getElementsByClassName('embedded-element')[0];
+    const embeddingRoot = document.getElementsByClassName('embedded-element');
 
     const script = document.createElement('script');
 
     script.src = 'https://files.coinmarketcap.com/static/widget/currency.js';
     script.async = true;
 
-    embeddingRoot.appendChild(script);
+    document.body.appendChild(script);
 
-    embedSingleGraph(embeddingRoot, 'bitcoin', null);
-    embedSingleGraph(embeddingRoot, 'ethereum', 'BTC');
-    embedSingleGraph(embeddingRoot, 'adx-net', 'BTC');
+    embedSingleGraph(embeddingRoot[0], 'bitcoin', null);
+    embedSingleGraph(embeddingRoot[1], 'ethereum', 'BTC');
+    embedSingleGraph(embeddingRoot[2], 'adx-net', 'BTC');
+    embedSingleGraph(embeddingRoot[3], 'bitcoin-cash', 'BTC');
+    
 };
 
 export {embedAltcoinGraphs};

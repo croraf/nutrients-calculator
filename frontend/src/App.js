@@ -42,7 +42,7 @@ class App extends React.Component {
         
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
-                <div>
+                <div style={{minWidth: '400px'}}>
                     <Header /> 
                     
                     <ConnectedRouter history={history}>
