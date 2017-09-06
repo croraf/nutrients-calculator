@@ -9,6 +9,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import moment from 'moment';
 import Snackbar from 'material-ui/Snackbar';
 
+import SaveIcon from 'material-ui/svg-icons/content/save';
+import IconButton from 'material-ui/IconButton';
 
 import { Row, Col } from 'react-flexbox-grid';
 
@@ -48,25 +50,30 @@ class DataSaver extends React.Component {
             foodsAnalyzed.data[3].total + ')';
 
         return (
-            <Row style={{height: '38px'}} end='xs'>
+            <Row style={{height: '38px', marginBottom: '-10px'}} end='xs'>
                 
                 <Col xs={3} md={2} lg={1}>
                     <RaisedButton
-                        label='Save'
+                        
                         primary={true}
-                        type='button'
                         disabled={this.state.snackbarOpen}
                         onTouchTap={this.onSaveHandler} 
-                        className='my-data-saver'
-                        style={{height: '100%'}}/>
+                        icon={<SaveIcon/>} 
+                        style={{width: '40px', minWidth: '40px'}} />
                 </Col>
-                <Col xs={6} md={3} lg={2} style={{minWidth: '250px'}}>
+                <Col xs={4} sm={3} lg={2} style={{minWidth: '270px'}}>
 
-                    <div style={{fontSize: '18px', fontWeight: 'bold', textAlign: 'center', padding: '8px', cursor: 'pointer', border: '1px solid rgb(0, 188, 212)'}}
+                    <RaisedButton 
+                        onTouchTap={activeDateClickHandler}
+                        label={activeDate || '<SELECT DATE>'}
+                        style={{width: '100%'}}
+                        labelStyle={{textTransform: 'none', fontSize: '18px'}} />
+
+                    {/* <div style={{fontSize: '18px', fontWeight: 'bold', textAlign: 'center', padding: '8px', cursor: 'pointer', border: '1px solid rgb(0, 188, 212)'}}
                         onClick={activeDateClickHandler}
                     >
                         {activeDate || '<SELECT DATE>'}
-                    </div>
+                    </div> */}
                 </Col>
 
                 <Snackbar 
