@@ -144,7 +144,8 @@ let ProfileForm = props => {
                     <span style={{
                         display: 'inline-block',
                         width: '100px', 
-                        textAlign: 'left'
+                        textAlign: 'left',
+                        marginLeft: '5px'
                     }}>
                         kcal
                     </span>

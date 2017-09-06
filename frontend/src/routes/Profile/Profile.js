@@ -11,7 +11,7 @@ class Profile extends React.Component {
         return (
             <Grid fluid>
                 <Row>
-                    <Col xs={12} xsOffset={0} md={8} mdOffset={2} lg={6} lgOffset={3}>
+                    <Col xs={12} xsOffset={0} sm={10} smOffset={1} md={8} mdOffset={2} lg={6} lgOffset={3}>
                 
                         <div style={{position: 'relative',
                             marginTop: '10px', marginBottom: '10px', border: '2px solid black',
