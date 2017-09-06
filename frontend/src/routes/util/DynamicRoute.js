@@ -42,10 +42,10 @@ const getImportingPromise = (pathname) => {
 
 class DynamicRoute extends React.Component {
     state = {
-        component: <div>Loading</div>
+        component: <div style={{display: 'flex', justifyContent: 'center', marginTop: '7%', marginBottom: '3%'}}>Loading</div>
     }
 
-    componentWillMount() {
+    componentDidMount() {
         if (checkAuth(this.props)){
             getImportingPromise(this.props.location.pathname)
                 .then((file) => {
