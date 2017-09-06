@@ -8,6 +8,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
+    name: state.login.name
 });
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);

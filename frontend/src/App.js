@@ -47,10 +47,10 @@ class App extends React.Component {
                     
                     <ConnectedRouter history={history}>
                         <div>
-                            <Route path='/' exact render={() => (<Redirect to='/login' />)} /> 
+                            <Route path='/' exact render={() => <Redirect to='/login' />} /> 
                             
                             <Route path="/login" component={
-                                (props) => <DynamicRouteContainer {...props} />
+                                (props) => (this.props.name ? <Redirect to='/calculator' /> : <DynamicRouteContainer {...props} />)
                             }  />
 
                             <Route path="/calendar" component={
