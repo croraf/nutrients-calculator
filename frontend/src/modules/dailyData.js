@@ -1,3 +1,6 @@
+import {REHYDRATE} from 'redux-persist/constants';
+
+import moment from 'moment';
 
 const dailyData = new Map([]);
 
@@ -29,6 +32,11 @@ const dailyDataReducer = (state=[], action) => {
         case 'SAVE_DAILY_DATA':
             console.log('SAVE_DAILY_DATA', 'date:', action.data.x.format('YYYY-MM-DD'), 'calories:', action.data.y);
             return [...state, action.data];
+        case REHYDRATE:
+            console.log(action.payload.dailyData);
+            return action.payload.dailyData.map(item => {
+                return {x: moment(item.x), y: item.y};
+            });
         default:
             return state;
     }

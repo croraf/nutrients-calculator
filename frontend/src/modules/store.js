@@ -9,6 +9,8 @@ import { browserHistory } from 'react-router';
 import createHistory from 'history/createBrowserHistory';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 
+import {persistStore, autoRehydrate} from 'redux-persist';
+
 import {fetchIngredientsReducer, fetchIngredients} from './ingredients';
 import {defineIngredientDialogueReducer} from './defineIngredientDialogue';
 import {nutrientsReducer} from './nutrients';
@@ -16,6 +18,7 @@ import {loginReducer} from './login';
 import {dailyDataReducer} from './dailyData';
 import {selectDateReducer} from './dateSelect';
 import {caloriesTargetReducer} from './caloriesTarget';
+
 
 const createReducer = (asyncReducers) => (
     combineReducers({
@@ -39,7 +42,8 @@ const history = createHistory();
 const store = createStore(
     createReducer({}), 
     composeEnhancers(
-        applyMiddleware(routerMiddleware(history), thunk)
+        applyMiddleware(routerMiddleware(history), thunk),
+        autoRehydrate()  
     )
 );
 store.asyncReducers = {};
@@ -56,5 +60,7 @@ const injectAsyncReducer = (name, asyncReducer) => {
 };
 
 setTimeout(() => {store.dispatch(fetchIngredients());}, 1000);
+
+persistStore(store, {whitelist: ['form',  'dailyData', 'dateSelect',  'caloriesTarget']});
 
 export {store, injectAsyncReducer, /* enhancedHistory */ history};
