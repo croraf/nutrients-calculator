@@ -18,7 +18,7 @@ import {
 
 import historyApiFallback from 'koa-history-api-fallback';
 
-import {} from './main';
+import './main';
 import {getFoods} from './fetchFoods/fetchFoods';
 import {loggedInChecker} from './util/koaMiddlewares';
 
