@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import RefreshIcon from 'material-ui/svg-icons/navigation/refresh';
 
 const checkAuth = (props) => {
 
@@ -42,7 +43,12 @@ const getImportingPromise = (pathname) => {
 
 class DynamicRoute extends React.Component {
     state = {
-        component: <div style={{display: 'flex', justifyContent: 'center', marginTop: '7%', marginBottom: '3%'}}>Loading</div>
+        component: (
+            <div style={{display: 'flex', justifyContent: 'center', marginTop: '10%', marginBottom: '10%'}}>
+                {/* <RefreshIcon style={{color: 'cyan', width: '100px', height: '100px'}}/> */}
+                Loading ...
+            </div>
+        )
     }
 
     componentDidMount() {
