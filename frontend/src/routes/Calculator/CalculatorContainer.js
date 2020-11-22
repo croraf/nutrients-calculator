@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 
 import {Calculator} from './Calculator';
 
-import {fetchNutrients} from 'modules/nutrients';
+import {fetchNutrients} from 'src/modules/nutrients';
 
 const mapDispatchToProps = (dispatch) => ({
     calculateHandler: (ingredients, dataSource) => {dispatch(fetchNutrients(ingredients, dataSource));}

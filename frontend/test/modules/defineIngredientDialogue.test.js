@@ -9,7 +9,7 @@ chai.use(chaiAsPromised);
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-import {defineIngredientDialogueReducer, openDialogue, closeDialogue} from 'modules/defineIngredientDialogue';
+import {defineIngredientDialogueReducer, openDialogue, closeDialogue} from 'src/modules/defineIngredientDialogue';
 
 describe('(modules)defineIngredientDialogue', function () {
     describe('#closeDialogue()', function () {

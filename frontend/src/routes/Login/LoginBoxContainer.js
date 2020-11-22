@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {LoginBoxForm} from './LoginBoxForm';
 
-import {sendLoginRequest} from 'modules/login';
+import {sendLoginRequest} from 'src/modules/login';
 
 const mapDispatchToProps = (dispatch) => ({
     onSubmit: (values) => {

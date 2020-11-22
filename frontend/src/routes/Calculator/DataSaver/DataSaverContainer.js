@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
+import {push} from 'connected-react-router';
 
 import {DataSaver} from './DataSaver';
 
-import {saveData} from 'modules/dailyData';
+import {saveData} from 'src/modules/dailyData';
 
 const mapDispatchToProps = (dispatch) => ({
     saveData: (date, calories) => {dispatch(saveData(date, calories));},

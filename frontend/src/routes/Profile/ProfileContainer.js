@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 
 import {Profile} from './Profile';
 
-import {calculateCaloriesTarget} from 'modules/caloriesTarget';
+import {calculateCaloriesTarget} from 'src/modules/caloriesTarget';
 
 const mapDispatchToProps = (dispatch) => ({
     calculateCaloriesTarget: (values) => {dispatch(calculateCaloriesTarget(values));}

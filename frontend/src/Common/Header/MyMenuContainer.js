@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
+import {push} from 'connected-react-router';
 
 import {MyMenu} from './MyMenu';
 
-import {logOut} from 'modules/login';
+import {logOut} from 'src/modules/login';
 
 const mapDispatchToProps = (dispatch) => ({
     navigate: 
@@ -15,8 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-
-    activeLink: state.routing.location && state.routing.location.pathname,
+    activeLink: state.router.location && state.router.location.pathname,
     username: state.login.name
 });
 

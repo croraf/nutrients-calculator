@@ -1,11 +1,11 @@
 
 import {connect} from 'react-redux';
 
-import {push} from 'react-router-redux';
+import {push} from 'connected-react-router';
 
 import {Calendar} from './Calendar';
 
-import {dateSelect} from 'modules/dateSelect';
+import {dateSelect} from 'src/modules/dateSelect';
 
 const markedDates = [
     new Date('2017-08-05'),

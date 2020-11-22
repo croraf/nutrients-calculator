@@ -1,6 +1,6 @@
 import {sendLoginRequestAPI} from './utilities/fetchResourceFromBackend';
 
-import {push} from 'react-router-redux';
+import {push} from 'connected-react-router';
 
 const sendLoginRequest = (credentials) => (dispatch) => {
     

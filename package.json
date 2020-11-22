@@ -12,11 +12,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-  },
-  "devDependencies": {
-  },
-  "cacheDirectories": ["frontend/node_modules", "mockserver/node_modules"],
+  "dependencies": {},
+  "devDependencies": {},
+  "cacheDirectories": [
+    "frontend/node_modules",
+    "mockserver/node_modules"
+  ],
   "engines": {
     "node": "7.10.0"
   },
@@ -24,5 +25,4 @@
     "type": "git",
     "url": " git@github.com:croraf/nutrients-calculator.git"
   }
-
 }

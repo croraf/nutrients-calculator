@@ -66,16 +66,16 @@ class MyAutosuggest extends React.Component {
                 {...input}
                 fullWidth={true}
                 autoComplete="off"
-                
-                style={{position: 'relative'}}
-                /> 
+
+                style={{ position: 'relative' }}
+            />
         );
     }
 
-    renderSuggestionsContainer = ({ containerProps , children, query }) => {
+    renderSuggestionsContainer = ({ containerProps, children, query }) => {
         return (
             children &&
-            <div {... containerProps} style={{
+            <div {...containerProps} style={{
                 border: '1px solid black',
                 position: 'absolute',
                 top: '70px',
@@ -94,12 +94,12 @@ class MyAutosuggest extends React.Component {
         );
     }
 
-    render () {
+    render() {
 
-        const {label, input} = this.props;
+        const { label, input } = this.props;
 
         return (
-            <Autosuggest 
+            <Autosuggest
                 suggestions={this.state.suggestions}
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
@@ -117,4 +117,4 @@ class MyAutosuggest extends React.Component {
     }
 }
 
-export {MyAutosuggest};
+export { MyAutosuggest };
