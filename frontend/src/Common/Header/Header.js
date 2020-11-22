@@ -6,10 +6,12 @@ import { MyMenuContainer } from './MyMenuContainer';
 class Header extends React.Component {
     render() {
         return (
-            <AppBar style={{ padding: '0rem 1rem' }}>
-                <h2>Whole protein calculator</h2>
-                <MyMenuContainer />
-            </AppBar>
+            <>
+                <AppBar position='static' style={{ padding: '0rem 1rem', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <h2>Whole protein calculator</h2>
+                    <MyMenuContainer />
+                </AppBar>
+            </>
         );
     }
 }

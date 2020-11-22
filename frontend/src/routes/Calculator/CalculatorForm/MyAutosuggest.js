@@ -107,7 +107,7 @@ class MyAutosuggest extends React.Component {
                 renderSuggestion={this.renderSuggestion}
                 onSuggestionSelected={this.onSuggestionSelected}
                 inputProps={{
-                    floatingLabelText: label,
+                    label: label,
                     ...input
                 }}
                 renderInputComponent={this.renderInputComponent}

@@ -32,7 +32,7 @@ class MyTextField extends React.Component {
                 <TextField
                     {...input}
                     type={type}
-                    floatingLabelText={label}
+                    label={label}
                     fullWidth={true}
                     errorText={meta.error && 'required'} />
             </div>
@@ -66,7 +66,7 @@ class MySelectField extends React.Component {
 
             <TextField
                 select
-                floatingLabelText={label}
+                label={label}
                 fullWidth={true}
                 {...input}
                 onChange={(event, key, payload) => { input.onChange(payload); }} >
@@ -121,7 +121,7 @@ let ProfileForm = props => {
                     variant='outlined'
                     style={{}}
                     label='Calculate Calories Target'
-                    primary={true}
+                    color='primary'
                     type="submit" />
             </div>
 
@@ -151,7 +151,7 @@ let ProfileForm = props => {
             {/* <Button style={{margin: 'auto', display: 'block', width:'100px', marginBottom: '10px'}}
                     variant='outlined'
                 label='Save'
-                primary={true}
+                color='primary'
                 onClick={() => {}} /> */}
         </form>
     );

@@ -24,7 +24,7 @@ class FormControlWrapper extends React.Component {
                     : <TextField
                         {...input}
                         type={type}
-                        floatingLabelText={label}
+                        label={label}
                         fullWidth={true}
                         autoComplete="off"
                     />

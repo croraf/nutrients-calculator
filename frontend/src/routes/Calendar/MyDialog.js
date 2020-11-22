@@ -12,12 +12,12 @@ class MyDialog extends React.Component {
 
         const actions = [<Button
             label="No"
-            primary={true}
+            color='primary'
             onClick={onClose}
         />,
         <Button
             label="Yes"
-            primary={true}
+            color='primary'
             keyboardFocused={true}
             onClick={onConfirm}
         />,

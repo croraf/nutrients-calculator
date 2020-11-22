@@ -1,40 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Row, Col} from 'react-flexbox-grid';
-import {FieldComponent} from './FieldComponent';
-
+import { Grid } from '@material-ui/core';
+import { FieldComponent } from './FieldComponent';
+import DeleteForever from '@material-ui/icons/DeleteForever'
 
 class NutrientRow extends React.Component {
-    render () {
+    render() {
 
-        const {item, fields, index} = this.props;
+        const { item, fields, index } = this.props;
 
         return (
-            <div>
-                <Row>
-                    <Col xs={8}>
-                        <FieldComponent
-                            controlId={`${item}.name`}
-                            type='text'
-                            label='Ingredient name' />
-                    </Col>
-                    <Col xs={3}>
-                        <FieldComponent
-                            controlId={`${item}.quantity`}
-                            type='number'
-                            label='Serving size [g]' />
-                    </Col>
-                    <Col xs={1} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '20px'}}>
-                        <i
-                            className='material-icons'
-                            onClick={()=>{fields.remove(index);}}
-                            style={{cursor: 'pointer'}}>
-                            delete_forever
-                        </i>
-                    </Col>
-                </Row>
-            </div>
+            <Grid container spacing={2} style={{ alignItems: 'center', margin: '1rem 0rem' }}>
+                <Grid item xs={8}>
+                    <FieldComponent
+                        controlId={`${item}.name`}
+                        type='text'
+                        label='Ingredient name' />
+                </Grid>
+                <Grid item xs={3}>
+                    <FieldComponent
+                        controlId={`${item}.quantity`}
+                        type='number'
+                        label='Serving size [g]' />
+                </Grid>
+                <Grid item xs={1}>
+                    <DeleteForever onClick={() => { fields.remove(index); }} style={{ cursor: 'pointer' }} />
+                </Grid>
+            </Grid>
         );
     }
 }
@@ -43,4 +36,4 @@ NutrientRow.propTypes = {
     item: PropTypes.string.isRequired
 };
 
-export {NutrientRow};
+export { NutrientRow };

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
-import {NutrientRow} from './NutrientRow';
+import { NutrientRow } from './NutrientRow';
 
-import {Row, Col} from 'react-flexbox-grid';
+import { Row, Col } from 'react-flexbox-grid';
 
 const calculateButtonStyle = {
     marginLeft: '5px',
@@ -14,19 +14,24 @@ const calculateButtonStyle = {
 };
 
 class NutrientsListComponent extends React.Component {
-    
+
     render() {
 
-        const {fields, meta: {error, submitFailed}} = this.props;
+        const { fields, meta: { error, submitFailed } } = this.props;
         return (
-            <div style={{paddingLeft: '2%', paddingRight: '0px'}}>
+            <div style={{ paddingLeft: '2%', paddingRight: '0px' }}>
                 {fields.map((item, index) => (
                     <NutrientRow key={index} item={item} index={index} fields={fields} />
                 ))}
-                <Row style={{paddingTop: '10px'}}>
-                    <Col xs={12} style={{display: 'flex', justifyContent: 'center'}}>
-                        <Button variant='outlined' label='+ Add ingredient'  labelColor='white' primary={true} style={calculateButtonStyle} type='button' onTouchTap={() => fields.push({name: undefined, quantity: undefined})} />
-                        <Button variant='outlined' label='Calculate' labelColor='white' secondary={true} style={calculateButtonStyle} type='submit' />
+                <Row style={{ paddingTop: '10px' }}>
+                    <Col xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
+                        <Button variant='outlined' color='primary' style={calculateButtonStyle} type='button' onTouchTap={() => fields.push({ name: undefined, quantity: undefined })}>
+                            + Add ingredient
+                        </Button>
+                        <Button variant='outlined' color='secondary' style={calculateButtonStyle} type='submit'>
+                            Calculate
+                        </Button>
+
                     </Col>
                 </Row>
             </div>
@@ -41,4 +46,4 @@ NutrientsListComponent.propTypes = {
     meta: PropTypes.object
 };
 
-export {NutrientsListComponent};
+export { NutrientsListComponent };

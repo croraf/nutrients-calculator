@@ -6,8 +6,8 @@ import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 import ContentAdd from '@material-ui/icons/Add';
 
-import {NutrientForm} from './NutrientForm/NutrientForm';
-import {IngredientsListContainer} from './IngredientsListContainer';
+import { NutrientForm } from './NutrientForm/NutrientForm';
+import { IngredientsListContainer } from './IngredientsListContainer';
 
 const buttonOuterStyle = {
     position: 'absolute',
@@ -22,27 +22,27 @@ class Admin extends React.Component {
         this.props.saveIngredient(values, this.props.editId);
     }
 
-    render () {
+    render() {
 
-        const {openDialogue, closeDialogue, saveDialogue, open, initialValues} = this.props;
+        const { openDialogue, closeDialogue, saveDialogue, open, initialValues } = this.props;
 
         const actions = [
             <Button
-            label="Save ingredient"
-            primary={true}
-            keyboardFocused={true}
-            onTouchTap={saveDialogue}
+                label="Save ingredient"
+                color='primary'
+                keyboardFocused={true}
+                onTouchTap={saveDialogue}
             />,
             <Button
-            label="Cancel"
-            primary={true}
-            onTouchTap={closeDialogue}
+                label="Cancel"
+                color='primary'
+                onTouchTap={closeDialogue}
             />
         ];
 
         return (
-            <div style={{padding: '10px'}}>
-                
+            <div style={{ padding: '10px' }}>
+
                 <Dialog
                     title="Define ingredient"
                     actions={actions}
@@ -50,21 +50,21 @@ class Admin extends React.Component {
                     open={open}
                     onRequestClose={closeDialogue}
                     autoScrollBodyContent={true}
-                    >
-                    
+                >
+
                     <NutrientForm onSubmit={this.handleSaveSubmit} initialValues={initialValues} />
                 </Dialog>
 
-                <div style={{position: 'relative'}}>
+                <div style={{ position: 'relative' }}>
 
                     <IngredientsListContainer />
-                    
+
                     <FloatingActionButton onTouchTap={openDialogue} style={buttonOuterStyle} zDepth={3}>
                         <ContentAdd />
                     </FloatingActionButton>
                 </div>
             </div>
-            
+
         );
     }
 }
@@ -82,4 +82,4 @@ Admin.propTypes = {
 
 
 
-export {Admin};
+export { Admin };

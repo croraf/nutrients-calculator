@@ -17,14 +17,14 @@ class FormControlWrapper extends React.Component {
                 {/*Enhanced FormControl if it is the name of the ingredient, rather than quantity*/}
                 {input.name.match(/name$/) ?
                     <AutoComplete
-                        floatingLabelText={label}
+                        label={label}
                         fullWidth={true}
                         dataSource={Object.values(dataSource)}
                         searchText={meta.visited === false ? input.value : undefined}
                         {...input}
                         {...props} /> :
                     <TextField
-                        floatingLabelText={label}
+                        label={label}
                         fullWidth={true}
                         {...input}
                         {...props} />
