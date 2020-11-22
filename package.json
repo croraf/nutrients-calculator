@@ -12,7 +12,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "@material-ui/icons": "^4.9.1"
+  },
   "devDependencies": {},
   "cacheDirectories": [
     "frontend/node_modules",

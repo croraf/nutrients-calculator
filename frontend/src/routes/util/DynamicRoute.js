@@ -1,7 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-import RefreshIcon from 'material-ui/svg-icons/navigation/refresh';
 
 const checkAuth = (props) => {
 
@@ -35,9 +32,9 @@ const getImportingPromise = (pathname) => {
         case '/profile':
             return import(/* webpackChunkName: "chunckProfile" */  '../Profile/ProfileContainer');
         case '/login':
-            return import(/* webpackChunkName: "chunckLogin" */  '../Login/LoginContainer');
+            return import(/* webpackChunkName: "chunckLogin" */  '../Login');
         default:
-            return import(/* webpackChunkName: "chunckLogin" */  '../Login/LoginContainer');
+            return import(/* webpackChunkName: "chunckLogin" */  '../Login');
     }
 };
 

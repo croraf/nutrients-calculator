@@ -6,9 +6,9 @@ import BigCalendar from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
 
-import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
-import NavigationArrowForward from 'material-ui/svg-icons/navigation/arrow-forward';
-import Today from 'material-ui/svg-icons/action/all-out';
+import NavigationArrowBack from '@material-ui/icons/ArrowBack';
+import NavigationArrowForward from '@material-ui/icons/ArrowForward';
+import Today from '@material-ui/icons/AllOut';
 
 import './my-calendar-styles.css';
 

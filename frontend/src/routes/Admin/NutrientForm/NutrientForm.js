@@ -3,7 +3,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {reduxForm} from 'redux-form';
-import RaisedButton from 'material-ui/RaisedButton';
 
 import {FieldComponent} from './FieldComponent';
 /*import {DebounceFieldComponent} from './DebounceFieldComponent';*/
@@ -45,12 +44,12 @@ class NutrientForm extends React.Component {
                         
                     {/*<Row>
                         <Col xs={12}  style={{display: 'flex', justifyContent: 'center'}}>
-                            <RaisedButton type='submit' disabled={false && !this.props.dirty}  style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} >
+                            <Button type='submit' disabled={false && !this.props.dirty}  style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} >
                                 Save nutrient
-                            </RaisedButton>
-                            <RaisedButton type='button' disabled={false && !this.props.dirty} onClick={this.props.reset}  style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} >
+                            </Button>
+                            <Button type='button' disabled={false && !this.props.dirty} onClick={this.props.reset}  style={{marginLeft: '5px', marginRight: '5px', paddingLeft: '10px', paddingRight: '10px'}} >
                                 Cancel
-                            </RaisedButton>
+                            </Button>
                         </Col>
                     </Row>*/}
                 </Grid>

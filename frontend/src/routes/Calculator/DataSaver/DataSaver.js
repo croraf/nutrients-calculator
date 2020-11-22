@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 
 import './my-date-picker.css';
 
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from '@material-ui/core/Button';
 import moment from 'moment';
-import Snackbar from 'material-ui/Snackbar';
+import Snackbar from '@material-ui/core/Snackbar';
 
-import SaveIcon from 'material-ui/svg-icons/content/save';
-import IconButton from 'material-ui/IconButton';
+import SaveIcon from '@material-ui/icons/Save';
+import IconButton from '@material-ui/core/IconButton';
 
 import { Row, Col } from 'react-flexbox-grid';
 
@@ -53,8 +53,8 @@ class DataSaver extends React.Component {
             <Row style={{height: '38px', marginBottom: '-10px'}} end='xs'>
                 
                 <Col xs={3} md={2} lg={1}>
-                    <RaisedButton
-                        
+                    <Button
+                        variant='outlined' 
                         primary={true}
                         disabled={this.state.snackbarOpen}
                         onTouchTap={this.onSaveHandler} 
@@ -63,7 +63,8 @@ class DataSaver extends React.Component {
                 </Col>
                 <Col xs={4} sm={3} lg={2} style={{minWidth: '270px'}}>
 
-                    <RaisedButton 
+                    <Button
+                        variant='outlined' 
                         onTouchTap={activeDateClickHandler}
                         label={activeDate || '<SELECT DATE>'}
                         style={{width: '100%'}}

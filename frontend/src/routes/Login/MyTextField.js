@@ -1,38 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TextField from 'material-ui/TextField';
+import TextField from '@material-ui/core/TextField';
 
 class MyTextField extends React.Component {
 
-    render () {
+    render() {
 
-        const {floatingLabelText, type, input, meta} = this.props;
+        const { label, type, input, meta } = this.props;
 
         return (
             <div>
-                <TextField 
+                <TextField
                     {...input}
-                    floatingLabelFixed={true} 
-                    floatingLabelText={floatingLabelText}
+                    InputLabelProps={{ shrink: true }}
+                    label={label}
                     type={type}
                     autoComplete='off'
-                    style={{margin: 'auto'}}
+                    style={{ margin: '0.5rem auto' }}
                 />
-                {input.error && 
-                <span>
-                    Invalid
-                </span>}
+                {input.error && <span>Invalid</span>}
             </div>
         );
     }
 }
 
 MyTextField.propTypes = {
-    floatingLabelText: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     input: PropTypes.object,
     meta: PropTypes.object
 };
 
-export {MyTextField};
+export { MyTextField };

@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-
-import {/*grey400, */darkBlack/*, lightBlack*/} from 'material-ui/styles/colors';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const iconButtonElement = (
     <IconButton
@@ -14,7 +12,7 @@ const iconButtonElement = (
         tooltip="more"
         tooltipPosition="bottom-left"
     >
-        <MoreVertIcon color={darkBlack} />
+        <MoreVertIcon color='black' />
     </IconButton>
 );
 
@@ -34,10 +32,10 @@ class RightIconMenu extends React.Component {
         const {elementKey, deleteIngredient, editIngredient, ...props} = this.props;
 
         return (
-            <IconMenu {...props} iconButtonElement={iconButtonElement}>
+            <Menu {...props} iconButtonElement={iconButtonElement}>
                 <MenuItem onTouchTap={this.editHandler}>Edit</MenuItem>
                 <MenuItem onTouchTap={this.deleteHandler}>Delete</MenuItem>
-            </IconMenu>
+            </Menu>
         );
     }
 }

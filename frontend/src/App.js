@@ -4,23 +4,21 @@ import { Route, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { history } from 'src/modules/store';
 
-import { PrivateRoute } from './routes/util/PrivateRoute';
+/* import { PrivateRoute } from './routes/util/PrivateRoute'; */
 
 import { DynamicRouteContainer } from './routes/util/DynamicRouteContainer';
 
-// For material-ui
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 
 import { Header } from './Common/Header/Header';
 import { AdvertisementFooter } from './Common/Advertisement/AdvertisementFooter';
 
-
-const muiTheme = getMuiTheme({
-    datePicker: {
+const muiTheme = createMuiTheme({
+    /* datePicker: {
         selectColor: 'orange'
-    }
+    } */
 });
 
 class App extends React.Component {
@@ -41,7 +39,7 @@ class App extends React.Component {
     render() {
 
         return (
-            <MuiThemeProvider muiTheme={muiTheme}>
+            <ThemeProvider theme={muiTheme}>
                 <div style={{ minWidth: '400px' }}>
                     <Header />
 
@@ -75,7 +73,7 @@ class App extends React.Component {
 
                     <AdvertisementFooter />
                 </div>
-            </MuiThemeProvider>
+            </ThemeProvider>
         );
     }
 }

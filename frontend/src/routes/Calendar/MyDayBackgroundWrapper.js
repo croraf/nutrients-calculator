@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FlatButton from 'material-ui/FlatButton';
+import Button from '@material-ui/core/Button';
 import {MyDialog} from './MyDialog';
 
 class MyDayBackgroundWrapper extends React.Component {
@@ -55,7 +55,7 @@ class MyDayBackgroundWrapper extends React.Component {
                     maxWidth: '14.285714285714285%'}}
                 className='rbc-day-bg'
                 >
-                <FlatButton 
+                <Button 
                     style={{
                         marginTop: '20px',
                         height: '100%',
@@ -67,7 +67,7 @@ class MyDayBackgroundWrapper extends React.Component {
                     onClick={this.dateSelectHandler}>
                     
                     {this.state.marked ? <div /> : <div />}
-                </FlatButton>
+                </Button>
                 <MyDialog open={this.state.dialogOpen} onClose={this.closeDialog} onConfirm={this.editDateHandler} />
             </div>
         );

@@ -2,13 +2,11 @@ import React from 'react';
 
 /*import {menuItemActive} from './headerStyle.scss';*/
 
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
-/*import ActionLabel from 'material-ui/svg-icons/action/label';*/
-
-import {white} from 'material-ui/styles/colors';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from '@material-ui/core/IconButton';
+import NavigationMenu from '@material-ui/icons/Menu';
+/*import ActionLabel from '@material-ui/icons/action/label';*/
 
 const styleActive = {
     border: '1px solid lightseagreen',
@@ -31,7 +29,7 @@ class MyMenu extends React.Component {
                 {/* TODO verticalAlign hack!*/}
                 <span style={{verticalAlign: 'super', color: 'white'}}>Hi {username}!</span>
 
-                <IconMenu
+                <Menu
                     {...props}
                     onItemTouchTap={navigate}
                     iconButtonElement={
@@ -49,7 +47,7 @@ class MyMenu extends React.Component {
                     {/* <MenuItem primaryText="Admin" value='/admin' style={activeLink === '/admin' ? styleActive: styleInactive}/> */}
                     <MenuItem primaryText="Statistics" value='/statistics' style={activeLink === '/statistics' ? styleActive: styleInactive}/>
                     <MenuItem primaryText="Log out" value='/login' style={activeLink === '/login' ? styleActive: styleInactive}/>
-                </IconMenu>
+                </Menu>
             </div>
         );
     }

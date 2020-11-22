@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
-import {reduxForm, Field} from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 
-import {MyTextField} from './MyTextField';
+import { MyTextField } from './MyTextField';
 
 //planned to show funny image if unauthorized
 //import image from 'resources/401.png';
@@ -14,42 +14,44 @@ import {MyTextField} from './MyTextField';
 const style = {
     maxWidth: '400px',
     width: '100%',
-    padding: '3% 2% 2% 2%',
+    padding: '1.5rem',
     textAlign: 'center',
     borderRadius: '3%'
 };
 
 class LoginBox extends React.Component {
-    render () {
-            
-        const {handleSubmit, rejected} = this.props;
+    render() {
+
+        const { handleSubmit, rejected } = this.props;
 
         return (
-            
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: '7%', marginBottom: '3%'}}>
-                <Paper style={style} zDepth={4}>
-                    <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-                        <Field 
-                            name='username' 
-                            component={MyTextField} 
-                            floatingLabelText="Username"
-                            type="text"
-                            />
-                        <Field 
-                            name='password' 
-                            component={MyTextField} 
-                            floatingLabelText="Password (USE 'admin')"
-                            type="password"/>
 
-                        <div style={{display: 'flex', flexDirection: 'column', position: 'relative'}}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '8rem', marginBottom: '2rem' }}>
+                <Paper style={style} elevation={4}>
+                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Field
+                            name='username'
+                            component={MyTextField}
+                            label="Username"
+                            type="text"
+                        />
+                        <Field
+                            name='password'
+                            component={MyTextField}
+                            label="Password (USE 'admin')"
+                            type="password" />
+
+                        <div style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
                             {
-                                rejected && 
-                                <div style={{color: 'red', position: 'absolute', width: '100%'}}>Invalid username or password</div>
+                                rejected &&
+                                <div style={{ color: 'red', position: 'absolute', width: '100%' }}>Invalid username or password</div>
                             }
-                            <RaisedButton type='submit' label="Log in" primary={true} style={{margin: 'auto', marginTop: '30px'}} />
+                            <Button variant='outlined' type='submit' color='primary' style={{ margin: 'auto', marginTop: '1.8rem' }}>
+                                Log in
+                            </Button>
                         </div>
                     </form>
-                    
+
                     {/*<div>
                         {
                             unauthorized && 
@@ -82,4 +84,4 @@ LoginBoxForm.propTypes = {
     rejected: PropTypes.bool
 };
 
-export {LoginBoxForm};
+export { LoginBoxForm };

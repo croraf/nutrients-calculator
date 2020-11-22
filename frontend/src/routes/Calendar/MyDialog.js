@@ -1,33 +1,32 @@
-import FlatButton from 'material-ui/FlatButton';
+import Button from '@material-ui/core/Button';
 import React from 'react';
-import PropTypes from 'prop-types';
 
 
-import Dialog from 'material-ui/Dialog';
+import Dialog from '@material-ui/core/Dialog';
 
 class MyDialog extends React.Component {
 
-    render () {
+    render() {
 
-        const {open, onClose, onConfirm} = this.props;
+        const { open, onClose, onConfirm } = this.props;
 
-        const actions = [ <FlatButton
+        const actions = [<Button
             label="No"
             primary={true}
             onClick={onClose}
-            />,
-            <FlatButton
+        />,
+        <Button
             label="Yes"
             primary={true}
             keyboardFocused={true}
             onClick={onConfirm}
-            />,
+        />,
         ];
 
         return (
-            
-            <Dialog 
-                open={open} 
+
+            <Dialog
+                open={open}
                 modal={false}
                 actions={actions}
                 title='Existing data!'
@@ -38,4 +37,4 @@ class MyDialog extends React.Component {
     }
 }
 
-export {MyDialog};
+export { MyDialog };

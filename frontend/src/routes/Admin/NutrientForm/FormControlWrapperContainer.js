@@ -2,8 +2,8 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 
-import TextField from 'material-ui/TextField';
-import AutoComplete from 'material-ui/AutoComplete';
+import TextField from '@material-ui/core/TextField';
+import AutoComplete from '@material-ui/core/AutoComplete';
 
 class FormControlWrapper extends React.Component {
 

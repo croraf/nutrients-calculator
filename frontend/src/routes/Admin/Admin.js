@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import FloatingActionButton from '@material-ui/core/FloatingActionButton';
+import Dialog from '@material-ui/core/Dialog';
+import Button from '@material-ui/core/Button';
+import ContentAdd from '@material-ui/icons/Add';
 
 import {NutrientForm} from './NutrientForm/NutrientForm';
 import {IngredientsListContainer} from './IngredientsListContainer';
@@ -27,13 +27,13 @@ class Admin extends React.Component {
         const {openDialogue, closeDialogue, saveDialogue, open, initialValues} = this.props;
 
         const actions = [
-            <FlatButton
+            <Button
             label="Save ingredient"
             primary={true}
             keyboardFocused={true}
             onTouchTap={saveDialogue}
             />,
-            <FlatButton
+            <Button
             label="Cancel"
             primary={true}
             onTouchTap={closeDialogue}

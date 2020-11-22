@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from '@material-ui/core/Button';
 
 import {NutrientRow} from './NutrientRow';
 
@@ -25,8 +25,8 @@ class NutrientsListComponent extends React.Component {
                 ))}
                 <Row style={{paddingTop: '10px'}}>
                     <Col xs={12} style={{display: 'flex', justifyContent: 'center'}}>
-                        <RaisedButton label='+ Add ingredient'  labelColor='white' primary={true} style={calculateButtonStyle} type='button' onTouchTap={() => fields.push({name: undefined, quantity: undefined})} />
-                        <RaisedButton label='Calculate' labelColor='white' secondary={true} style={calculateButtonStyle} type='submit' />
+                        <Button variant='outlined' label='+ Add ingredient'  labelColor='white' primary={true} style={calculateButtonStyle} type='button' onTouchTap={() => fields.push({name: undefined, quantity: undefined})} />
+                        <Button variant='outlined' label='Calculate' labelColor='white' secondary={true} style={calculateButtonStyle} type='submit' />
                     </Col>
                 </Row>
             </div>

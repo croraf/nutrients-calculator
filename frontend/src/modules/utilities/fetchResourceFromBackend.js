@@ -7,7 +7,7 @@ const production = process.env.NODE_ENV === 'production';
 
 let backend = '';
 
-if (process.env.NODE_ENV === 'DEV') backend = window.location.protocol + '//' + window.location.hostname + ':3000';
+if (process.env.NODE_ENV === 'development') backend = window.location.protocol + '//' + window.location.hostname + ':3000';
 
 const fetchResourceFromBackend = (resource, options) => {
 

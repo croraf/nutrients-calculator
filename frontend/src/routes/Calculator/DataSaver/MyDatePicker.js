@@ -6,7 +6,7 @@ import moment from 'moment';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './my-date-picker.css';
-import DatePicker2 from 'material-ui/DatePicker';
+import DatePicker2 from '@material-ui/core/DatePicker';
 
 const text_field_style = {
     height: '90%',
