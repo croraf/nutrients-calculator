@@ -44,15 +44,15 @@ const MyMenu = ({ navigate, activeLink, username, }) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem value='/profile' style={activeLink === '/profile' ? styleActive : styleInactive}>Profile</MenuItem>
-                <MenuItem value='/calendar' style={activeLink === '/calendar' ? styleActive : styleInactive}>Calendar</MenuItem>
-                <MenuItem value='/calculator' style={activeLink === '/calculator' ? styleActive : styleInactive}>Calculator</MenuItem>
-                {/* <MenuItem value='/admin' style={activeLink === '/admin' ? styleActive: styleInactive}>Admin</MenuItem> */}
-                <MenuItem value='/statistics' style={activeLink === '/statistics' ? styleActive : styleInactive}>Statistics</MenuItem>
-                <MenuItem value='/login' style={activeLink === '/login' ? styleActive : styleInactive}>Log out</MenuItem>
+                <MenuItem onClick={() => { handleClose(); navigate('/profile'); }} style={activeLink === '/profile' ? styleActive : styleInactive}>Profile</MenuItem>
+                <MenuItem onClick={() => { handleClose(); navigate('/calendar'); }} style={activeLink === '/calendar' ? styleActive : styleInactive}>Calendar</MenuItem>
+                <MenuItem onClick={() => { handleClose(); navigate('/calculator'); }} style={activeLink === '/calculator' ? styleActive : styleInactive}>Calculator</MenuItem>
+                {/* <MenuItem onClick={() => {handleClose(); navigate('/admin'); }} style={activeLink === '/admin' ? styleActive: styleInactive}>Admin</MenuItem> */}
+                <MenuItem onClick={() => { handleClose(); navigate('/statistics'); }} style={activeLink === '/statistics' ? styleActive : styleInactive}>Statistics</MenuItem>
+                <MenuItem onClick={() => { handleClose(); navigate('/login'); }} style={activeLink === '/login' ? styleActive : styleInactive}>Log out</MenuItem>
             </Menu>
         </div>
     );
 };
 
-export { MyMenu};
+export { MyMenu };

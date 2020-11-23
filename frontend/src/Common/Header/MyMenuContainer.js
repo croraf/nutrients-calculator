@@ -1,17 +1,15 @@
-import {connect} from 'react-redux';
-import {push} from 'connected-react-router';
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
 
-import {MyMenu} from './MyMenu';
+import { MyMenu } from './MyMenu';
 
-import {logOut} from 'src/modules/login';
+import { logOut } from 'src/modules/login';
 
 const mapDispatchToProps = (dispatch) => ({
-    navigate: 
-        (event, child) => {
-            const targetLink = child.props.value;
-            if (targetLink === '/login') dispatch(logOut());
-            console.log('dispatching:', targetLink); dispatch(push(targetLink));
-        }
+    navigate: (targetLink) => {
+        if (targetLink === '/login') dispatch(logOut());
+        console.log('dispatching:', targetLink); dispatch(push(targetLink));
+    }
 });
 
 const mapStateToProps = (state) => ({
@@ -21,4 +19,4 @@ const mapStateToProps = (state) => ({
 
 const MyMenuContainer = connect(mapStateToProps, mapDispatchToProps)(MyMenu);
 
-export {MyMenuContainer};
+export { MyMenuContainer };

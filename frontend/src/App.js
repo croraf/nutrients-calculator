@@ -24,7 +24,7 @@ const muiTheme = createMuiTheme({
 class App extends React.Component {
 
     // LOAD THINGS FROM LOCAL STORAGE
-    componentWillMount() {
+    componentDidMount() {
 
         const token = localStorage.getItem('wholeprotein_token');
 
