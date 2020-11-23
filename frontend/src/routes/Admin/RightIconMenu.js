@@ -33,8 +33,8 @@ class RightIconMenu extends React.Component {
 
         return (
             <Menu {...props} iconButtonElement={iconButtonElement}>
-                <MenuItem onTouchTap={this.editHandler}>Edit</MenuItem>
-                <MenuItem onTouchTap={this.deleteHandler}>Delete</MenuItem>
+                <MenuItem onClick={this.editHandler}>Edit</MenuItem>
+                <MenuItem onClick={this.deleteHandler}>Delete</MenuItem>
             </Menu>
         );
     }

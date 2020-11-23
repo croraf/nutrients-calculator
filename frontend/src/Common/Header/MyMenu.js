@@ -6,51 +6,53 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import NavigationMenu from '@material-ui/icons/Menu';
+import { Link } from 'react-router-dom';
 /*import ActionLabel from '@material-ui/icons/action/label';*/
 
 const styleActive = {
-    border: '1px solid lightseagreen',
+    border: '1px solid #3f51b5',
     textAlign: 'center'
 };
 const styleInactive = {
     textAlign: 'center'
 };
 
-class MyMenu extends React.Component {
-    render() {
+const MyMenu = ({ navigate, activeLink, username, }) => {
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
-        const { navigate, activeLink, username, ...props } = this.props;
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
 
-        if (username === '') return <div />;
-        /* if (!localStorage.getItem('wholeprotein_token')) return <div />; */
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
-        return (
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                {/* TODO verticalAlign hack!*/}
-                <span style={{ verticalAlign: 'super', color: 'white' }}>Hi {username}!</span>
+    if (username === '') return <div />;
 
-                <Menu
-                    {...props}
-                    onItemTouchTap={navigate}
-                    iconButtonElement={
-                        <IconButton iconStyle={{ color: 'white' }}>
-                            <NavigationMenu />
-                        </IconButton>
-                    }
-                    targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-                    anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-                    touchTapCloseDelay={300}
-                >
-                    <MenuItem primaryText="Profile" value='/profile' style={activeLink === '/profile' ? styleActive : styleInactive} />
-                    <MenuItem primaryText="Calendar" value='/calendar' style={activeLink === '/calendar' ? styleActive : styleInactive} />
-                    <MenuItem primaryText="Calculator" value='/calculator' style={activeLink === '/calculator' ? styleActive : styleInactive} />
-                    {/* <MenuItem primaryText="Admin" value='/admin' style={activeLink === '/admin' ? styleActive: styleInactive}/> */}
-                    <MenuItem primaryText="Statistics" value='/statistics' style={activeLink === '/statistics' ? styleActive : styleInactive} />
-                    <MenuItem primaryText="Log out" value='/login' style={activeLink === '/login' ? styleActive : styleInactive} />
-                </Menu>
-            </div>
-        );
-    }
-}
+    return (
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', color: 'white' }}>
+            {/* TODO verticalAlign hack!*/}
+            <span style={{ verticalAlign: 'super', color: 'white' }}>Hi {username}!</span>
 
-export { MyMenu };
+            <IconButton onClick={handleClick}>
+                <NavigationMenu style={{ color: 'white' }} />
+            </IconButton>
+            <Menu
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+            >
+                <MenuItem value='/profile' style={activeLink === '/profile' ? styleActive : styleInactive}>Profile</MenuItem>
+                <MenuItem value='/calendar' style={activeLink === '/calendar' ? styleActive : styleInactive}>Calendar</MenuItem>
+                <MenuItem value='/calculator' style={activeLink === '/calculator' ? styleActive : styleInactive}>Calculator</MenuItem>
+                {/* <MenuItem value='/admin' style={activeLink === '/admin' ? styleActive: styleInactive}>Admin</MenuItem> */}
+                <MenuItem value='/statistics' style={activeLink === '/statistics' ? styleActive : styleInactive}>Statistics</MenuItem>
+                <MenuItem value='/login' style={activeLink === '/login' ? styleActive : styleInactive}>Log out</MenuItem>
+            </Menu>
+        </div>
+    );
+};
+
+export { MyMenu};

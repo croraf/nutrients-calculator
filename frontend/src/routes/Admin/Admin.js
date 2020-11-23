@@ -31,12 +31,12 @@ class Admin extends React.Component {
                 label="Save ingredient"
                 color='primary'
                 keyboardFocused={true}
-                onTouchTap={saveDialogue}
+                onClick={saveDialogue}
             />,
             <Button
                 label="Cancel"
                 color='primary'
-                onTouchTap={closeDialogue}
+                onClick={closeDialogue}
             />
         ];
 
@@ -59,7 +59,7 @@ class Admin extends React.Component {
 
                     <IngredientsListContainer />
 
-                    <FloatingActionButton onTouchTap={openDialogue} style={buttonOuterStyle} zDepth={3}>
+                    <FloatingActionButton onClick={openDialogue} style={buttonOuterStyle} zDepth={3}>
                         <ContentAdd />
                     </FloatingActionButton>
                 </div>

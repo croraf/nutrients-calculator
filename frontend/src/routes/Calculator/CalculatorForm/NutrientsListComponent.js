@@ -25,7 +25,7 @@ class NutrientsListComponent extends React.Component {
                 ))}
                 <Row style={{ paddingTop: '10px' }}>
                     <Col xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                        <Button variant='outlined' color='primary' style={calculateButtonStyle} type='button' onTouchTap={() => fields.push({ name: undefined, quantity: undefined })}>
+                        <Button variant='outlined' color='primary' style={calculateButtonStyle} type='button' onClick={() => fields.push({ name: undefined, quantity: undefined })}>
                             + Add ingredient
                         </Button>
                         <Button variant='outlined' color='secondary' style={calculateButtonStyle} type='submit'>

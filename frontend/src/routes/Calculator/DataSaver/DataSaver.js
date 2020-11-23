@@ -57,7 +57,7 @@ class DataSaver extends React.Component {
                         variant='outlined'
                         color='primary'
                         disabled={this.state.snackbarOpen}
-                        onTouchTap={this.onSaveHandler}
+                        onClick={this.onSaveHandler}
                         style={{ width: '40px', minWidth: '40px' }}
                     >
                         <SaveIcon />
@@ -67,7 +67,7 @@ class DataSaver extends React.Component {
 
                     <Button
                         variant='outlined'
-                        onTouchTap={activeDateClickHandler}
+                        onClick={activeDateClickHandler}
                         style={{ width: '100%', }}
                     >
                         {activeDate || '<SELECT DATE>'}
