@@ -1,11 +1,8 @@
-mockserver/node_modules
+
 frontend/node_modules
 frontend/build
-
-mockserver/dist
 
 npm-debug.log*
 
 frontend/test/report
 
-assets

@@ -2,7 +2,7 @@
 import {checkCredentials} from '../dao/loginDAO';
 import jwt from 'jsonwebtoken';
 
-const loginRequestHandler = async (ctx, next) => {
+const loginRequestHandler = async (ctx,) => {
 
     const body = ctx.request.body;
 

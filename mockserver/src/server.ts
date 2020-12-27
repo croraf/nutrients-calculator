@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import path from 'path';
 
 import { getNutritiveInfo } from './controllers/nutritiveInfo';
@@ -18,7 +17,7 @@ const
     /*koaStatic = require('koa-static'),*/
     send = require('koa-send'),
     router = require('koa-router')(),
-    cors = require('koa-cors'),
+    cors = require('@koa/cors'),
     koaBody = require('koa-body');
 
 const app = new Koa();
@@ -39,10 +38,10 @@ app.use(koaBody({
 
 app.use(validate(document));
 
-router.post('/api/login/', loginRequestHandler);
+router.post('/api/login', loginRequestHandler);
 router.get('/api/nutritiveInfo', getNutritiveInfo);
-router.get('/api/ingredients/', /* ingredients.getIngredients */ foods.getFoods);
-router.post('/api/ingredients/', ingredients.addIngredient);
+router.get('/api/ingredients', /* ingredients.getIngredients */ foods.getFoods);
+router.post('/api/ingredients', ingredients.addIngredient);
 router.get('/api/ingredients/:ingredientId', ingredients.getIngredientById);
 router.delete('/api/ingredients/:ingredientId', ingredients.deleteIngredient);
 router.put('/api/ingredients/:ingredientId', ingredients.updateIngredient);

@@ -4,9 +4,10 @@ let foodsList = [];
 
 const getFoods = () => {
 
+  const promiseList = [];
   // in a loop, fetch first N*200 foods
   for (let i = 1; i < 2; i++) {
-    fetchRelative('foods/list', undefined, '&dataType=Foundation&pageSize=200&pageNumber=' + i)
+    const promise = fetchRelative('foods/list', undefined, '&dataType=Foundation&pageSize=200&pageNumber=' + i)
       .then(response => {
         return response.json();
       })
@@ -15,9 +16,14 @@ const getFoods = () => {
         //console.log(list);
         foodsList.push(...list);
       });
+    promiseList.push(promise);
   }
 
-  setTimeout(() => console.log(foodsList.length), 3000);
+  Promise.all(promiseList).then(() => {
+    console.log(foodsList, foodsList.length)
+  }).catch(() => {
+    console.log('something went wrong');
+  })
 };
 
 
