@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Grid } from '@material-ui/core';
 import { FieldComponent } from './FieldComponent';
-import DeleteForever from '@material-ui/icons/DeleteForever'
+import DeleteForever from '@material-ui/icons/DeleteForever';
 
 class NutrientRow extends React.Component {
     render() {

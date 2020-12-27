@@ -41,6 +41,12 @@ paths:
     get:
       tags: [Ingredients]
       description: Retrieves a list of available ingredients
+      parameters:
+        - name: search
+          in: query
+          required: true
+          default: 'banana'
+          type: string
       responses:
         '200':
           description: Array of ingredients

@@ -10,7 +10,7 @@ import { validate, ui } from 'swagger2-koa';
 
 import historyApiFallback from 'koa-history-api-fallback';
 import './main';
-import { getFoods } from './fetchFoods/fetchFoods';
+import * as foods from './foods/foods';
 //import {loggedInChecker} from './util/koaMiddlewares';
 
 const
@@ -41,11 +41,13 @@ app.use(validate(document));
 
 router.post('/api/login/', loginRequestHandler);
 router.get('/api/nutritiveInfo', getNutritiveInfo);
-router.get('/api/ingredients/', /* ingredients.getIngredients */ getFoods);
+router.get('/api/ingredients/', /* ingredients.getIngredients */ foods.getFoods);
 router.post('/api/ingredients/', ingredients.addIngredient);
 router.get('/api/ingredients/:ingredientId', ingredients.getIngredientById);
 router.delete('/api/ingredients/:ingredientId', ingredients.deleteIngredient);
 router.put('/api/ingredients/:ingredientId', ingredients.updateIngredient);
+
+
 
 app.use(router.routes());
 
