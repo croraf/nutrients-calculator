@@ -10,7 +10,7 @@
     "compile": "babel src -d dist",
     "installAndCompile": "npm install && npm run compile",
     "start-old": "node dist/server.js",
-    "start": "ts-node src/server.ts"
+    "start": "ts-node src/main.ts"
   },
   "keywords": [],
   "author": "",
