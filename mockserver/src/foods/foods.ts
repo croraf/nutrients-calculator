@@ -1,25 +1,27 @@
-import fetch from 'node-fetch';
+import { fetchRelative } from '../util/utils';
 
 let foodsList = [];
 
-const fetchFoods = () => {
+const getFoods = () => {
 
-    for (let i = 0; i < 90; i++) {
-        fetch('https://api.nal.usda.gov/ndb/search/?format=json&q=&ds=Standard+Reference&sort=n&max=100&api_key=NYYLHns54La4bh2r7nLLMfLTgkXYLKVY4Icedoum&offset=' 
-                + 100*i
-        )
-            .then(response => {
-                return response.json();
-            }).then(body => {
-                const list = body.list.item.map(food => ({ ndbno: food.ndbno, name: food.name }));
-                foodsList = foodsList.concat(list);
-            });
-    }
-    setTimeout(() => { console.log('foodsList', foodsList.length/* , foodsList */); }, 3000);
+  // in a loop, fetch first N*200 foods
+  for (let i = 1; i < 2; i++) {
+    fetchRelative('foods/list', undefined, '&dataType=Foundation&pageSize=200&pageNumber=' + i)
+      .then(response => {
+        return response.json();
+      })
+      .then(json => {
+        const list = json.map(foodItem => ({ fdcId: foodItem.fdcId, description: foodItem.description }));
+        //console.log(list);
+        foodsList.push(...list);
+      });
+  }
+
+  setTimeout(() => console.log(foodsList.length), 3000);
 };
 
 
-const getFoods = async (ctx, next) => {
+/* const getFoods = async (ctx, next) => {
     const searchData = ctx.request.query.search;
     console.log(searchData);
     const response = await (await fetch(
@@ -29,7 +31,7 @@ const getFoods = async (ctx, next) => {
     const foodsList = response.foods.map(item => item.description);
     ctx.body = foodsList;
     //ctx.body = Object.values(ingredients).map(ingredient => ingredient.name); //responseBody.map((item) => ctx.params.ingredient + '---' + item);
-};
+}; */
 
 
-export { getFoods };
+export { getFoods, };
