@@ -2,7 +2,7 @@ import {analyzeFoods} from './utilities/analyzeFoods';
 
 const fetchDataNAL = {
     address: 'https://api.nal.usda.gov/ndb/V2/reports?',
-    details: 'type=b&format=json&api_key=NYYLHns54La4bh2r7nLLMfLTgkXYLKVY4Icedoum'
+    details: 'type=b&format=json&api_key=U3ju89Aq0955xn8v1strPn3Q8SI1FYZ7cId0zUom'
 };
 
 
