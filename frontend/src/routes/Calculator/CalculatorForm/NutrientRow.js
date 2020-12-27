@@ -11,7 +11,7 @@ class NutrientRow extends React.Component {
         const { item, fields, index } = this.props;
 
         return (
-            <Grid container spacing={2} style={{ alignItems: 'center', margin: '1rem 0rem' }}>
+            <Grid container spacing={2} style={{ alignItems: 'flex-end', margin: '1rem 0rem' }}>
                 <Grid item xs={8}>
                     <FieldComponent
                         controlId={`${item}.name`}
