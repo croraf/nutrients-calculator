@@ -8,12 +8,12 @@ import { history } from 'src/modules/store';
 
 import DynamicRoute from './routes/util/DynamicRoute';
 
-import { ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 
 import { Header } from './Common/Header/Header';
-import { AdvertisementFooter } from './Common/Advertisement/AdvertisementFooter';
+import AdvertisementFooter from './Common/Advertisement/AdvertisementFooter';
 import { useDispatch, useSelector } from 'react-redux';
 
 const muiTheme = createMuiTheme({
@@ -22,7 +22,16 @@ const muiTheme = createMuiTheme({
     } */
 });
 
+const useStyles = makeStyles({
+    '@global': {
+        html: {
+            backgroundColor: '#fbfbfb',
+        }
+    }
+});
+
 const App = () => {
+    useStyles();
     const dispatch = useDispatch();
     const status = useSelector(state => state.login.status);
 

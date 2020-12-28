@@ -69,7 +69,6 @@ import { connectRouter, routerMiddleware, RouterState } from 'connected-react-ro
 import { AnyAction, configureStore, Reducer } from '@reduxjs/toolkit';
 
 import { fetchIngredientsReducer, } from './ingredients';
-import { defineIngredientDialogueReducer } from './defineIngredientDialogue';
 import { nutrientsReducer } from './nutrients';
 import { loginReducer } from './login';
 import { dailyDataReducer } from './dailyData';
@@ -84,7 +83,6 @@ const reducersArray = {
     login: loginReducer,
     nutrients: nutrientsReducer,
     ingredients: fetchIngredientsReducer,
-    defineIngredientDialogue: defineIngredientDialogueReducer,
     form: formReducer,
     dailyData: dailyDataReducer,
     dateSelect: selectDateReducer,

@@ -6,7 +6,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import NavigationMenu from '@material-ui/icons/Menu';
-import { Link } from 'react-router-dom';
 /*import ActionLabel from '@material-ui/icons/action/label';*/
 
 const styleActive = {

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import { submit } from 'redux-form';
 
-import {openDialogue, closeDialogue/*, saveDialogue*/} from 'src/modules/defineIngredientDialogue';
+import {openDialogue, closeDialogue/*, saveDialogue*/} from 'src/modules/defineIngredientDialogue_OBSOLETE';
 import {saveIngredient, updateIngredient} from 'src/modules/ingredientsAdmin';
 
 import {Admin} from './Admin';

@@ -1,6 +1,6 @@
 import {fetchResourceFromBackend} from './utilities/fetchResourceFromBackend';
 import {fetchIngredients} from './ingredients';
-import {openDialogue} from './defineIngredientDialogue';
+import {openDialogue} from './defineIngredientDialogue_OBSOLETE';
 
 const saveIngredient = (ingredient) => (dispatch) => {
     

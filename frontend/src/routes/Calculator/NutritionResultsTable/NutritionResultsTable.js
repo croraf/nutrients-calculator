@@ -2,6 +2,7 @@ import { useTable } from 'react-table';
 //import 'react-table/react-table.css';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
+import { makeStyles } from '@material-ui/core';
 
 const tableStyleOuter = {
     marginLeft: '-5px',
@@ -10,6 +11,35 @@ const tableStyleOuter = {
     border: '2px solid rgb(0, 188, 212)',
     borderRadius: '5px'
 };
+
+const useStyles = makeStyles({
+    table: {
+        fontSize: '1.2rem',
+        width: '100%',
+        borderCollapse: 'collapse',
+        '& th, & td': {
+            textAlign: 'right',
+            padding: '5px',
+            '&:first-child, &:nth-child(2)': {
+                textAlign: 'left',
+            },
+        },
+        '& th': {
+            border: '2px solid black',
+            borderBottom: '4px solid black',
+            backgroundColor: '#3f51b5',
+            color: 'white',
+        },
+        '& td': {
+            border: '2px solid black',
+        },
+        '& tr': {
+            '&:nth-child(even)': {
+                backgroundColor: '#eee',
+            },
+        },
+    }
+});
 
 const parseNutrient = (nutrientName, item) => {
     const listOfFoodNutrients = item.food.foodNutrients;
@@ -27,12 +57,14 @@ const parseData = (item) => {
         'Protein': parseNutrient('Protein', item),
         'Carbohydrate, by difference': parseNutrient('Carbohydrate, by difference', item),
         'Total lipid (fat)': parseNutrient('Total lipid (fat)', item),
+        'Water': parseNutrient('Water', item),
     };
 
     return parsed;
 };
 
 const NutritionResultsTable = () => {
+    const classes = useStyles();
     const foodsAnalyzed = useSelector(state => state.nutrients.data);
 
     const columns = useMemo(() => [
@@ -45,6 +77,12 @@ const NutritionResultsTable = () => {
         {
             Header: 'Quantity',
             accessor: 'quantity',
+            width: 350,
+            minWidth: 350,
+        },
+        {
+            Header: 'Water',
+            accessor: 'Water',
             width: 350,
             minWidth: 350,
         },
@@ -83,7 +121,7 @@ const NutritionResultsTable = () => {
     } = tableInstance;
 
     return (
-        <table {...getTableProps()}>
+        <table {...getTableProps()} className={classes.table}>
             <thead>
                 {// Loop over the header rows
                     headerGroups.map(headerGroup => (

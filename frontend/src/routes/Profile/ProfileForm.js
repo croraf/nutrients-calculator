@@ -11,18 +11,6 @@ import { Row, Col } from 'react-flexbox-grid';
 
 import MenuItem from '@material-ui/core/MenuItem';
 
-const fieldStyle = {
-    width: '100%',
-    marginBottom: '10px',
-    marginLeft: '2px'
-};
-
-const fieldStyle2 = {
-    width: '100px',
-    marginLeft: '5px',
-    marginBottom: '10px'
-};
-
 class MyTextField extends React.Component {
     render() {
         const { input, meta, type, label } = this.props;
