@@ -37,26 +37,20 @@ paths:
           description: unexpected error
           schema:
             type: object
-  /ingredients:
+  /foods:
     get:
-      tags: [Ingredients]
-      description: Retrieves a list of available ingredients
-      parameters:
-        - name: search
-          in: query
-          required: true
-          default: 'banana'
-          type: string
+      tags: [Foods]
+      description: Retrieves a list of available foods
       responses:
         '200':
-          description: Array of ingredients
+          description: Array of foods
           schema:
             type: array
             example: [{ndbno: 10000, name: "Banana"}, {ndbno: 10010, name: "Apple"}, {ndbno: 10300, name: "Chocolate"}]
     post:
       produces: ["text/plain"]
-      tags: [Ingredients]
-      description: Adds an ingredient to collection of ingredients
+      tags: [Foods]
+      description: Adds an ingredient to collection of foods
       parameters:
         - name: ingredient
           in: body
@@ -70,9 +64,9 @@ paths:
           schema:
             type: string
             example: "==Rafadadawd"
-  /ingredients/{ingredientID}:
+  /foods/{ingredientID}:
     get:
-      tags: [Ingredients]
+      tags: [Foods]
       description: Get an ingredient by ingredient ID
       parameters:
         - name: ingredientID
@@ -86,7 +80,7 @@ paths:
           schema:
             $ref: '#/definitions/IngredientData'      
     delete:
-      tags: [Ingredients]
+      tags: [Foods]
       description: Deletes an ingredient
       parameters:
         - name: ingredientID
@@ -98,7 +92,7 @@ paths:
         '204':
           description: Sucessfully deleted
     put:
-      tags: [Ingredients]
+      tags: [Foods]
       description: Updates an ingredient
       parameters:
         - name: ingredientID

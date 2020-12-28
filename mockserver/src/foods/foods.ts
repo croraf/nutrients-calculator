@@ -1,8 +1,13 @@
 import { fetchRelative } from '../util/utils';
 
-let foodsList = [];
+type FoodItem = {
+  fcdId: number,
+  description: string,
+};
 
-const getFoods = () => {
+let foodsList: FoodItem[] = [];
+
+const preloadFoods = () => {
 
   const promiseList = [];
   // in a loop, fetch first N*200 foods
@@ -27,17 +32,9 @@ const getFoods = () => {
 };
 
 
-/* const getFoods = async (ctx, next) => {
-    const searchData = ctx.request.query.search;
-    console.log(searchData);
-    const response = await (await fetch(
-        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${searchData}&dataType=Foundation&api_key=NYYLHns54La4bh2r7nLLMfLTgkXYLKVY4Icedoum`,
-    )).json();
-
-    const foodsList = response.foods.map(item => item.description);
-    ctx.body = foodsList;
-    //ctx.body = Object.values(ingredients).map(ingredient => ingredient.name); //responseBody.map((item) => ctx.params.ingredient + '---' + item);
-}; */
+const getFoods = async (ctx, next) => {
+  ctx.body = foodsList;
+};
 
 
-export { getFoods, };
+export { preloadFoods, getFoods };

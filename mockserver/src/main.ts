@@ -1,5 +1,5 @@
-import { getFoods } from './foods/foods';
+import { preloadFoods } from './foods/foods';
 
-getFoods();
+preloadFoods();
 
 import './server';
