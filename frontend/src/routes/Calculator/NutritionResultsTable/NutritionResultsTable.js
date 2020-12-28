@@ -4,18 +4,19 @@ import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
 import { makeStyles } from '@material-ui/core';
 
-const tableStyleOuter = {
+/* const tableStyleOuter = {
     marginLeft: '-5px',
     marginRight: '-5px',
     marginTop: '30px',
     border: '2px solid rgb(0, 188, 212)',
     borderRadius: '5px'
-};
+}; */
 
 const useStyles = makeStyles({
     table: {
         fontSize: '1.2rem',
         width: '100%',
+        marginTop: '1rem',
         borderCollapse: 'collapse',
         '& th, & td': {
             textAlign: 'right',
@@ -41,31 +42,11 @@ const useStyles = makeStyles({
     }
 });
 
-const parseNutrient = (nutrientName, item) => {
-    const listOfFoodNutrients = item.food.foodNutrients;
-    for (const foodNutrient of listOfFoodNutrients) {
-        if (foodNutrient.nutrient.name === nutrientName) {
-            return foodNutrient.amount * (item.quantity / 100);
-        }
-    }
-};
-
-const parseData = (item) => {
-    const parsed = {
-        name: item.food.description,
-        quantity: item.quantity,
-        'Protein': parseNutrient('Protein', item),
-        'Carbohydrate, by difference': parseNutrient('Carbohydrate, by difference', item),
-        'Total lipid (fat)': parseNutrient('Total lipid (fat)', item),
-        'Water': parseNutrient('Water', item),
-    };
-
-    return parsed;
-};
 
 const NutritionResultsTable = () => {
     const classes = useStyles();
-    const foodsAnalyzed = useSelector(state => state.nutrients.data);
+    const parsedData = useSelector(state => state.nutrients.data);
+    const nutritionDataFetching = useSelector(state => state.nutrients.fetching);
 
     const columns = useMemo(() => [
         {
@@ -106,9 +87,7 @@ const NutritionResultsTable = () => {
         },
     ], []);
 
-    const data = useMemo(() =>
-        foodsAnalyzed.map(item => parseData(item)), [foodsAnalyzed]
-    );
+    const data = useMemo(() => parsedData, [parsedData]);
 
     const tableInstance = useTable({ columns, data });
 
@@ -119,6 +98,10 @@ const NutritionResultsTable = () => {
         rows,
         prepareRow,
     } = tableInstance;
+
+    if (nutritionDataFetching) {
+        return <div>Processing...</div>;
+    };
 
     return (
         <table {...getTableProps()} className={classes.table}>

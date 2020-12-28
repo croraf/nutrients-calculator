@@ -25,7 +25,7 @@ import CaloriesGraph from './CaloriesGraph';
     }
 ];  */
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = () => ({
     onDataClick: (dataPoint) => {console.log(dataPoint);}
 });
 

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 const getImportingPromise = (pathname) => {
     switch (pathname) {
         case '/statistics':
-            return import(/* webpackChunkName: "chunckStatistics" */  '../Statistics/StatisticsContainer');
+            return import(/* webpackChunkName: "chunckStatistics" */  '../Statistics/Statistics');
         case '/calculator':
             return import(/* webpackChunkName: "chunckCalculator" */  '../Calculator/Calculator');
         case '/calendar':
@@ -42,7 +42,7 @@ const DynamicRoute = ({ secure = false, location }) => {
                     if (location.pathname === '/login' || location.pathname === '/calculator') {
                         import(/* webpackChunkName: "chunckCalculator" */  '../Calculator/Calculator');
                         import(/* webpackChunkName: "chunckProfile" */  '../Profile/ProfileContainer');
-                        import(/* webpackChunkName: "chunckStatistics" */  '../Statistics/StatisticsContainer');
+                        import(/* webpackChunkName: "chunckStatistics" */  '../Statistics/Statistics');
                         import(/* webpackChunkName: "chunckCalendar" */  '../Calendar/CalendarContainer');
                     }
                 });

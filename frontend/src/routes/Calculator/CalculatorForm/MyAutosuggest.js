@@ -3,7 +3,6 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autosuggest from 'react-autosuggest';
 
-import styles from './myAutosuggest.css';
 
 class MyAutosuggest extends React.Component {
 
@@ -74,7 +73,7 @@ class MyAutosuggest extends React.Component {
         );
     }
 
-    renderSuggestionsContainer = ({ containerProps, children, query }) => {
+    renderSuggestionsContainer = ({ containerProps, children, _query }) => {
         return (
             children &&
             <div {...containerProps} style={{

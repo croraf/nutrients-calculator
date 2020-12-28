@@ -8,16 +8,14 @@ import { Row, Col } from 'react-flexbox-grid';
 
 const calculateButtonStyle = {
     marginLeft: '5px',
-    marginRight: '5px',/*
-    paddingLeft: '10px',
-    paddingRight: '10px'*/
+    marginRight: '5px',
 };
 
 class NutrientsListComponent extends React.Component {
 
     render() {
 
-        const { fields, meta: { error, submitFailed } } = this.props;
+        const { fields } = this.props;
         return (
             <div style={{ paddingLeft: '2%', paddingRight: '0px' }}>
                 {fields.map((item, index) => (

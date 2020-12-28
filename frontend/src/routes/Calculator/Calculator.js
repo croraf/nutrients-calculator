@@ -5,7 +5,7 @@ import { Grid } from 'react-flexbox-grid';
 import { CalculatorForm } from './CalculatorForm/CalculatorForm';
 import NutritionResultsTable from './NutritionResultsTable/NutritionResultsTable';
 import { DataSaverContainer } from './DataSaver/DataSaverContainer';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, } from 'react-redux';
 import { fetchNutrients } from 'src/modules/nutrients';
 import { fetchIngredients } from 'src/modules/ingredients';
 
@@ -18,7 +18,7 @@ const Calculator = () => {
         dispatch(fetchIngredients());
     }, [dispatch]);
 
-    const nutritionDataFetching = useSelector(state => state.nutrients.fetching);
+    console.log('CALCULATOR rerender');
 
     return (
         <Grid fluid style={{ padding: '10px' }}>
@@ -30,9 +30,7 @@ const Calculator = () => {
                     calculateHandler(values.nutrients);
                 }} />
 
-            <div style={{ width: '100%', marginTop: '1rem' }}>
-                {nutritionDataFetching ? <div>Processing...</div> : <NutritionResultsTable />}
-            </div>
+            <NutritionResultsTable />
         </Grid>
     );
 };

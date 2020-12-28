@@ -1,23 +1,23 @@
 import React from 'react';
 
 /*import {FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';*/
-import {Field} from 'redux-form';
+import { Field } from 'redux-form';
 
-import {FormControlWrapperContainer} from './FormControlWrapperContainer';
+import { FormControlWrapperContainer } from './FormControlWrapperContainer';
 
 
 class FieldComponent extends React.Component {
 
-    render () {
-        
+    render() {
+
         const { controlId, help, ...props } = this.props;
 
         return (
             <div>
-            {/*<FormGroup controlId={controlId}>
+                {/*<FormGroup controlId={controlId}>
                 <ControlLabel>{label}</ControlLabel>*/}
                 <Field name={controlId} component={FormControlWrapperContainer} {...props} />
-             {/*   {help && <HelpBlock>{help}</HelpBlock>}
+                {/*   {help && <HelpBlock>{help}</HelpBlock>}
             </FormGroup>*/}
             </div>
         );
@@ -25,4 +25,4 @@ class FieldComponent extends React.Component {
 
 }
 
-export {FieldComponent};
+export { FieldComponent };

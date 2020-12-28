@@ -1,34 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { reduxForm, FieldArray } from 'redux-form';
+import { NutrientsListComponent } from './NutrientsListComponent';
 
-import {reduxForm, FieldArray} from 'redux-form';
-
-
-import {NutrientsListComponent} from './NutrientsListComponent';
-
-class CalculatorForm extends React.Component {
-
-    render () {
-
-        const {handleSubmit} = this.props;
-        return (
-            <form onSubmit={handleSubmit}>
-                <FieldArray name='nutrients' component={NutrientsListComponent} />
-            </form>
-        );
-    }
-
-}
-
-CalculatorForm.propTypes = {
-    handleSubmit: PropTypes.func.isRequired
+const CalculatorForm = ({ handleSubmit }) => {
+    return (
+        <form onSubmit={handleSubmit}>
+            <FieldArray name='nutrients' component={NutrientsListComponent} />
+        </form>
+    );
 };
-
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
 const initialValues = {
-    nutrients: [{/*name: 'oat leafs', quantity: 50*/}, {/*name: 'Cornflex', quantity: 100*/}, {/*name: 'chockolate, dark', quantity: 150*/}]
+    nutrients: [{/*name: 'oat leafs', quantity: 50*/ }, {/*name: 'Cornflex', quantity: 100*/ }, {/*name: 'chockolate, dark', quantity: 150*/ }]
 };
 
 const CalculatorFormReduxWrapper = reduxForm({
@@ -37,9 +21,4 @@ const CalculatorFormReduxWrapper = reduxForm({
     initialValues: initialValues
 })(CalculatorForm);
 
-
-CalculatorFormReduxWrapper.propTypes = {
-    onSubmit: PropTypes.func.isRequired
-};
-
-export {CalculatorFormReduxWrapper as CalculatorForm};
+export { CalculatorFormReduxWrapper as CalculatorForm };

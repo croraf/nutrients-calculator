@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Button from '@material-ui/core/Button';
-import {MyDialog} from './MyDialog';
+import { MyDialog } from './MyDialog';
 
 class MyDayBackgroundWrapper extends React.Component {
 
@@ -30,32 +29,33 @@ class MyDayBackgroundWrapper extends React.Component {
     }
 
     editDateHandler = () => {
-        const {value, editDateHandler} = this.props;
+        const { value, editDateHandler } = this.props;
 
         editDateHandler(value.toDateString(), this.state.marked);
     }
 
-    componentWillMount () {
-        
-        const {value, markedDates} = this.props;
+    componentWillMount() {
 
-        if (markedDates.find((date) => (date.toDateString() === value.toDateString()))){
+        const { value, markedDates } = this.props;
+
+        if (markedDates.find((date) => (date.toDateString() === value.toDateString()))) {
             this.setState({
                 marked: true
             });
         }
     }
 
-    render () {
+    render() {
 
         return (
-            <div 
+            <div
                 style={{
                     flexBasis: '14.285714285714285%',
-                    maxWidth: '14.285714285714285%'}}
+                    maxWidth: '14.285714285714285%'
+                }}
                 className='rbc-day-bg'
-                >
-                <Button 
+            >
+                <Button
                     style={{
                         marginTop: '20px',
                         height: '100%',
@@ -65,7 +65,7 @@ class MyDayBackgroundWrapper extends React.Component {
                     backgroundColor={this.state.marked && 'aqua'}
                     hoverColor='lightgray'
                     onClick={this.dateSelectHandler}>
-                    
+
                     {this.state.marked ? <div /> : <div />}
                 </Button>
                 <MyDialog open={this.state.dialogOpen} onClose={this.closeDialog} onConfirm={this.editDateHandler} />
@@ -74,4 +74,4 @@ class MyDayBackgroundWrapper extends React.Component {
     }
 }
 
-export {MyDayBackgroundWrapper};
+export { MyDayBackgroundWrapper };

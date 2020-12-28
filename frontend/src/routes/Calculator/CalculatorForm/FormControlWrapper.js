@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import { MyAutosuggest } from './MyAutosuggest';
 
 
-const FormControlWrapper = ({ input, meta, label, type, }) => {
+const FormControlWrapper = ({ input, _meta, label, type, }) => {
 
     const dataSource = useSelector(state => state.ingredients.ingredients);
 
