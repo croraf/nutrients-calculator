@@ -6,7 +6,7 @@ import { history } from 'src/modules/store';
 
 /* import { PrivateRoute } from './routes/util/PrivateRoute'; */
 
-import { DynamicRouteContainer } from './routes/util/DynamicRouteContainer';
+import DynamicRoute from './routes/util/DynamicRoute';
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -24,7 +24,7 @@ const muiTheme = createMuiTheme({
 
 const App = () => {
     const dispatch = useDispatch();
-    const name = useSelector(state => state.login.name);
+    const status = useSelector(state => state.login.status);
 
     // LOAD THINGS FROM LOCAL STORAGE
     useEffect(() => {
@@ -32,35 +32,47 @@ const App = () => {
         if (token) {
             const payloadEncoded = token.split('.')[1];
             const payload = JSON.parse(Buffer.from(payloadEncoded, 'base64').toString('ascii'));
-            dispatch({ type: 'TOKEN_RECEIVED', name: payload.name });
+            dispatch({ type: 'LOGIN_SUCCESS', name: payload.name });
+        } else {
+            dispatch({ type: 'LOGOUT_SUCCESS' });
         }
     }, [dispatch]);
+
+    const loginStatus = useSelector(state => state.login.status);
+
 
     return (
         <ThemeProvider theme={muiTheme}>
             <div style={{ minWidth: '400px' }}>
                 <Header />
-                <ConnectedRouter history={history}>
-                    <div>
-                        <Route path='/' exact render={() => <Redirect to='/login' />} />
-                        <Route path="/login" component={
-                            (props) => (name ? <Redirect to='/calculator' /> : <DynamicRouteContainer {...props} />)
-                        } />
-                        <Route path="/calendar" component={
-                            (props) => <DynamicRouteContainer {...props} secure />
-                        } />
-                        <Route path="/calculator" component={
-                            (props) => <DynamicRouteContainer {...props} secure />
-                        } />
-                        <Route path="/statistics" component={
-                            (props) => <DynamicRouteContainer {...props} secure />
-                        } />
-                        <Route path="/profile" component={
-                            (props) => <DynamicRouteContainer {...props} secure />
-                        } />
-                        {/* <Route path="/admin" component={AdminRoute} /> */}
-                    </div>
-                </ConnectedRouter>
+                <div>
+                    {loginStatus === 'PENDING' ?
+                        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10%', marginBottom: '10%' }}>
+                            {/* <RefreshIcon style={{color: 'cyan', width: '100px', height: '100px'}}/> */}
+                            Loading ...
+                        </div>
+                        :
+                        <ConnectedRouter history={history}>
+                            <Route path='/' exact render={() => <Redirect to='/login' />} />
+                            <Route path="/login" component={
+                                (props) => (status === 'AUTHENTICATED' ? <Redirect to='/calculator' /> : <DynamicRoute {...props} />)
+                            } />
+                            <Route path="/calendar" component={
+                                (props) => <DynamicRoute {...props} secure />
+                            } />
+                            <Route path="/calculator" component={
+                                (props) => <DynamicRoute {...props} secure />
+                            } />
+                            <Route path="/statistics" component={
+                                (props) => <DynamicRoute {...props} secure />
+                            } />
+                            <Route path="/profile" component={
+                                (props) => <DynamicRoute {...props} secure />
+                            } />
+                            {/* <Route path="/admin" component={AdminRoute} /> */}
+                        </ConnectedRouter>
+                    }
+                </div>
                 <AdvertisementFooter />
             </div>
         </ThemeProvider>
