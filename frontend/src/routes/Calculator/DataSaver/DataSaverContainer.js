@@ -11,7 +11,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    foodsAnalyzed: state.nutrients.foodsAnalyzed,
+    foodsAnalyzed: state.nutrients.data,
     activeDate: state.dateSelect.activeDate,
     isEdit: state.dateSelect.isEdit
 });

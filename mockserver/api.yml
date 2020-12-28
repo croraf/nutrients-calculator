@@ -111,6 +111,22 @@ paths:
           description: Sucessfully updated
           schema:
             $ref: '#/definitions/IngredientData'
+  /nutritiveInfo:
+    get:
+      tags: [NutritiveInfo]
+      description: Retrieves nutritive info
+      parameters:
+        - name: fdcIds
+          in: query
+          required: true
+          default: '534358,373052'
+          type: string
+      responses:
+        '200':
+          description: Nutritive info
+          schema:
+            type: array
+            example: [{}, {}, {}]
 definitions:
   credentials:
     type: object

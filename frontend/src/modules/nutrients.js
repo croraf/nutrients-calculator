@@ -1,55 +1,48 @@
-import {analyzeFoods} from './utilities/analyzeFoods';
-
-const fetchDataNAL = {
-    address: 'https://api.nal.usda.gov/ndb/V2/reports?',
-    details: 'type=b&format=json&api_key=U3ju89Aq0955xn8v1strPn3Q8SI1FYZ7cId0zUom'
-};
+import { fetchResourceFromBackend } from './utilities/fetchResourceFromBackend';
 
 
-const fetchNutrients = (ingredients, dataSource) => (dispatch) => {
-    
-    dispatch({type: 'FETCHING_NUTRIENTS', ingredients: ingredients});
+const fetchNutrients = (foods) => async (dispatch, getState) => {
+    dispatch({ type: 'nutrients/fetching' });
+    console.log('analyzing foods:', foods);
 
-    console.log('rafa', ingredients);
-
-    let queryCodes = '';
-    ingredients.forEach((item, index) => {
-        dataSource.forEach(food => {
-            if (food.name === item.name) {
-                queryCodes += 'ndbno=' + food.ndbno + '&';
+    const foodsDatasource = getState().ingredients.ingredients;
+    let fdcIds = [];
+    foods.forEach((food) => {
+        foodsDatasource.forEach(data => {
+            if (food.name === data.description) {
+                fdcIds.push(data.fdcId);
             }
         });
     });
 
-    console.log('fetching codes:', queryCodes);
-    
-    fetch(fetchDataNAL.address + queryCodes + fetchDataNAL.details)
-        .then((response) => {
-            return response.json();
-        }, (reason) => {
-            console.log(reason);
-        }).then((body) => {
-            const foodsAnalyzed = body.foods.map((item, index) => ({
-                food: item.food, quantity: parseFloat(ingredients[index].quantity)
-            }));
+    console.log('fetching data for foods:', fdcIds);
 
-            dispatch({type: 'NUTRIENTS_DATA_RECEIVED', foodsAnalyzed: analyzeFoods(foodsAnalyzed)});
-        });
-    
+    if (fdcIds.length === 0) {
+        dispatch({ type: 'nutrients/success', data: [] });
+        return;
+    }
+
+    fetchResourceFromBackend('/api/nutritiveInfo?fdcIds=' + fdcIds.join(','))
+        .then(
+            (data) => {
+                const mergedData = data.map((item, index) => ({
+                    food: item, quantity: parseFloat(foods[index].quantity)
+                }));
+                dispatch({ type: 'nutrients/success', data: mergedData });
+            }
+        );
 };
 
-const nutrientsReducer = (state={fetching: false, foodsAnalyzed: analyzeFoods([])}, action) => {
+const nutrientsReducer = (state = { fetching: false, data: [] }, action) => {
     switch (action.type) {
-        case 'FETCHING_NUTRIENTS':
-            console.log('FETCHING_NUTRIENTS: ', action.ingredientsNames);
-            return {fetching: true, foodsAnalyzed: state.foodsAnalyzed};
-        case 'NUTRIENTS_DATA_RECEIVED':
-            console.log('NUTRIENTS_DATA_RECEIVED: ', action.foodsAnalyzed);
-            return {fetching: false, foodsAnalyzed: action.foodsAnalyzed};
+        case 'nutrients/fetching':
+            return { fetching: true, data: [], };
+        case 'nutrients/success':
+            return { fetching: false, data: action.data, };
         default:
             return state;
     }
 };
 
 
-export {nutrientsReducer, fetchNutrients};
+export { nutrientsReducer, fetchNutrients };

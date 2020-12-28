@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 /* import {MyDatePicker} from './MyDatePicker'; */
 
@@ -10,7 +9,6 @@ import moment from 'moment';
 import Snackbar from '@material-ui/core/Snackbar';
 
 import SaveIcon from '@material-ui/icons/Save';
-import IconButton from '@material-ui/core/IconButton';
 
 import { Row, Col } from 'react-flexbox-grid';
 
@@ -47,7 +45,7 @@ class DataSaver extends React.Component {
             + ' (date: ' +
             moment(activeDate).format('YYYY-MM-DD') +
             ', calories: ' +
-            foodsAnalyzed.data[3].total + ')';
+            /* foodsAnalyzed.data[3].total + */ ')';
 
         return (
             <Row style={{ height: '38px', marginBottom: '-10px' }} end='xs'>

@@ -3,28 +3,18 @@ import { nutrientsMap } from './nutrientsMap';
 
 const analyzeFoods = (foodsAnalyzed) => {
 
-    const ingredientColumns = foodsAnalyzed.map((foodWrapper, index) => {
-
-        if (foodWrapper.food.desc === undefined) {
-            return {
-                Header: '---',
-                accessor: 'ingredients[' + index + ']',
-                width: 50,
-                style: {textAlign: 'center'}
-            };
-        } else {
-            return {
-                Header: foodWrapper.food.desc.name + ' [' + (foodWrapper.quantity || '--- ') + 'g]',
-                accessor: 'ingredients[' + index + ']',
-                width: 150,
-                minWidth: 150,
-                style: {textAlign: 'center'}
-            };
-        }
+    const ingredientColumns = foodsAnalyzed.map((food, index) => {
+        return {
+            Header: food.description + ' [' + (food.quantity || '--- ') + 'g]',
+            accessor: 'ingredients[' + index + ']',
+            width: 150,
+            minWidth: 150,
+            style: { textAlign: 'center' }
+        };
     });
 
     const customProps = (state, rowInfo, column) => {
-        
+
         if (rowInfo === undefined || rowInfo.index === 0 || rowInfo.index === 10 || rowInfo.index === 14 || rowInfo.index > 16) {
             return {};
         } else {
@@ -39,10 +29,10 @@ const analyzeFoods = (foodsAnalyzed) => {
         }*/
     };
 
-    const columns = 
-        [{Header: '', accessor: 'component', width: 200, getProps: customProps}]
+    const columns =
+        [{ Header: '', accessor: 'component', width: 200, getProps: customProps }]
             .concat(ingredientColumns)
-            .concat([{Header: 'Total [g]', accessor: 'total', width: 100, style: {textAlign: 'center'}}]);
+            .concat([{ Header: 'Total [g]', accessor: 'total', width: 100, style: { textAlign: 'center' } }]);
 
     /* console.log('name:', foodsAnalyzed.desc.name);
     foodsAnalyzed.nutrients.forEach((nutrient) => {
@@ -62,7 +52,7 @@ const analyzeFoods = (foodsAnalyzed) => {
             if (index > 20) return;
             const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
             if (rowIndex === -1) console.log('no nutrient row');
-            else dataRows[rowIndex].ingredients[0] = nutrient.value * foodsAnalyzed[0].quantity/100;
+            else dataRows[rowIndex].ingredients[0] = nutrient.value * foodsAnalyzed[0].quantity / 100;
         });
     }
 
@@ -71,9 +61,9 @@ const analyzeFoods = (foodsAnalyzed) => {
             if (index > 20) return;
             const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
             if (rowIndex === -1) console.log('no nutrient row');
-            else dataRows[rowIndex].ingredients[1] = nutrient.value * foodsAnalyzed[1].quantity/100;
+            else dataRows[rowIndex].ingredients[1] = nutrient.value * foodsAnalyzed[1].quantity / 100;
         });
-        
+
     }
 
     if (foodsAnalyzed.length > 2) {
@@ -81,9 +71,9 @@ const analyzeFoods = (foodsAnalyzed) => {
             if (index > 20) return;
             const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
             if (rowIndex === -1) console.log('no nutrient row');
-            else dataRows[rowIndex].ingredients[2] = nutrient.value * foodsAnalyzed[2].quantity/100;
+            else dataRows[rowIndex].ingredients[2] = nutrient.value * foodsAnalyzed[2].quantity / 100;
         });
-        
+
     }
 
     if (foodsAnalyzed.length > 3) {
@@ -91,28 +81,28 @@ const analyzeFoods = (foodsAnalyzed) => {
             if (index > 20) return;
             const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
             if (rowIndex === -1) console.log('no nutrient row');
-            else dataRows[rowIndex].ingredients[3] = nutrient.value * foodsAnalyzed[3].quantity/100;
+            else dataRows[rowIndex].ingredients[3] = nutrient.value * foodsAnalyzed[3].quantity / 100;
         });
-    } 
+    }
     if (foodsAnalyzed.length > 4) {
         foodsAnalyzed[4].food.nutrients.forEach((nutrient, index) => {
             if (index > 20) return;
             const rowIndex = Object.keys(nutrientsMap).indexOf(nutrient.nutrient_id);
             if (rowIndex === -1) console.log('no nutrient row');
-            else dataRows[rowIndex].ingredients[4] = nutrient.value * foodsAnalyzed[4].quantity/100;
+            else dataRows[rowIndex].ingredients[4] = nutrient.value * foodsAnalyzed[4].quantity / 100;
         });
     }
 
 
-    const data = dataRows.map((item) => 
+    const data = dataRows.map((item) =>
         Object.assign(
             {},
-            item, 
-            {total: item.ingredients.reduce((x, y) => {return y === '---' ? x : (x + parseFloat(y));}, 0)}
+            item,
+            { total: item.ingredients.reduce((x, y) => { return y === '---' ? x : (x + parseFloat(y)); }, 0) }
         )
     );
 
-    return {columns, data};
+    return { columns, data };
 };
 
-export {analyzeFoods};
+export { analyzeFoods };
