@@ -1,34 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Field } from 'redux-form';
+import FormControlWrapper from './FormControlWrapper';
 
-import {Field} from 'redux-form';
+const FieldComponent = ({ controlId, type, label }) => {
 
-import {FormControlWrapperContainer} from './FormControlWrapperContainer';
-
-class FieldComponent extends React.Component {
-
-    render () {
-        
-        const { controlId, type, label } = this.props;
-
-        return (
-            <div>
-                <Field 
-                    name={controlId}
-                    component={FormControlWrapperContainer}
-                    type={type}
-                    label={label} />
-            </div>
-        );
-    }
-
-}
-
-FieldComponent.propTypes = {
-    controlId: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired
+    return (
+        <div>
+            <Field
+                name={controlId}
+                component={FormControlWrapper}
+                type={type}
+                label={label}
+            />
+        </div>
+    );
 };
 
 
-export {FieldComponent};
+export { FieldComponent };

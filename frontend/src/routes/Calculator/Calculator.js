@@ -1,35 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 
-import {Grid, Row, Column} from 'react-flexbox-grid';
+import { Grid } from 'react-flexbox-grid';
 
-import {CalculatorForm} from './CalculatorForm/CalculatorForm';
-import {NutritionResultsTableContainer} from './NutritionResultsTable/NutritionResultsTableContainer';
-import {DataSaverContainer} from './DataSaver/DataSaverContainer';
+import { CalculatorForm } from './CalculatorForm/CalculatorForm';
+import { NutritionResultsTableContainer } from './NutritionResultsTable/NutritionResultsTableContainer';
+import { DataSaverContainer } from './DataSaver/DataSaverContainer';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchNutrients } from 'src/modules/nutrients';
+import { fetchIngredients } from 'src/modules/ingredients';
 
-class Calculator extends React.Component {
-    render () {
 
-        const {calculateHandler} = this.props;
+const Calculator = () => {
+    const dispatch = useDispatch();
+    const ingredients = useSelector(state => state.ingredients.ingredients);
+    const calculateHandler = (ingredients, dataSource) => { dispatch(fetchNutrients(ingredients, dataSource)); };
 
-        return (
-            <Grid fluid style={{padding: '10px'}}>
+    useEffect(() => {
+        dispatch(fetchIngredients());
+    }, [dispatch]);
 
-                <DataSaverContainer />
+    return (
+        <Grid fluid style={{ padding: '10px' }}>
+            <DataSaverContainer />
 
-                <CalculatorForm 
-                    onSubmit={(values) => {calculateHandler(values.nutrients, this.props.dataSource);}} />
-
-                <NutritionResultsTableContainer />
+            <CalculatorForm
+                onSubmit={(values) => { calculateHandler(values.nutrients, ingredients); }} />
                 
-            </Grid>
-        );
-    }
-}
-
-Calculator.propTypes = {
-    calculateHandler: PropTypes.func.isRequired
+            <NutritionResultsTableContainer />
+        </Grid>
+    );
 };
 
 
-export {Calculator};
+export default Calculator;

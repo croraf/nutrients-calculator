@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import TextField from '@material-ui/core/TextField';
 import Autosuggest from 'react-autosuggest';
@@ -27,9 +26,12 @@ class MyAutosuggest extends React.Component {
         const inputValue = value.trim().toLowerCase();
         const inputLength = inputValue.length;
 
-        return inputLength <= 2 ? [] : this.props.dataSource.map(food => food.name).filter(ingredient =>
-            ingredient.toLowerCase().slice(0, inputLength) === inputValue
-        );
+        return inputLength >= 2 ? 
+            this.props.dataSource
+                .map(food => food.description)
+                .filter(foodDescription => foodDescription.toLowerCase().includes(inputValue))
+            :
+            [];
     }
 
     onSuggestionsFetchRequested = ({ value }) => {
@@ -95,7 +97,6 @@ class MyAutosuggest extends React.Component {
     }
 
     render() {
-
         const { label, input } = this.props;
 
         return (
