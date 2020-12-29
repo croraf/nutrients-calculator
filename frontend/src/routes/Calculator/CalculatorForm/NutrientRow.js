@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { Grid } from '@material-ui/core';
 import { FieldComponent } from './FieldComponent';
 import DeleteForever from '@material-ui/icons/DeleteForever';
 
@@ -11,23 +9,23 @@ class NutrientRow extends React.Component {
         const { item, fields, index } = this.props;
 
         return (
-            <Grid container spacing={2} style={{ alignItems: 'flex-end', margin: '1rem 0rem' }}>
-                <Grid item xs={8}>
+            <div style={{ display: 'flex', alignItems: 'flex-end', margin: '0.5rem 0rem' }}>
+                <div style={{ flexGrow: 2, margin: '0rem 0.5rem' }}>
                     <FieldComponent
                         controlId={`${item}.name`}
                         type='text'
                         label='Ingredient name' />
-                </Grid>
-                <Grid item xs={3}>
+                </div>
+                <div style={{ margin: '0rem 0.5rem' }}>
                     <FieldComponent
                         controlId={`${item}.quantity`}
                         type='number'
                         label='Serving size [g]' />
-                </Grid>
-                <Grid item xs={1}>
+                </div>
+                <div style={{ width: 'fit-content', margin: '0rem 0.5rem' }}>
                     <DeleteForever onClick={() => { fields.remove(index); }} style={{ cursor: 'pointer' }} />
-                </Grid>
-            </Grid>
+                </div>
+            </div>
         );
     }
 }

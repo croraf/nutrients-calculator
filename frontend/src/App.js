@@ -48,36 +48,34 @@ const App = () => {
         <ThemeProvider theme={muiTheme}>
             <div style={{ minWidth: '400px' }}>
                 <Header />
-                <div>
-                    {loginStatus === 'PENDING' ?
-                        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10%', marginBottom: '10%' }}>
-                            {/* <RefreshIcon style={{color: 'cyan', width: '100px', height: '100px'}}/> */}
+                {loginStatus === 'PENDING' ?
+                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10%', marginBottom: '10%' }}>
+                        {/* <RefreshIcon style={{color: 'cyan', width: '100px', height: '100px'}}/> */}
                             Loading ...
-                        </div>
-                        :
-                        <ConnectedRouter history={history}>
-                            <Switch>
-                                <Route path='/' exact render={() => <Redirect to='/login' />} />
-                                <Route path="/login" component={
-                                    (props) => (status === 'AUTHENTICATED' ? <Redirect to='/calculator' /> : <DynamicRoute {...props} />)
-                                } />
-                                <Route path="/calendar" component={
-                                    (props) => <DynamicRoute {...props} secure />
-                                } />
-                                <Route path="/calculator" component={
-                                    (props) => <DynamicRoute {...props} secure />
-                                } />
-                                <Route path="/statistics" component={
-                                    (props) => <DynamicRoute {...props} secure />
-                                } />
-                                <Route path="/profile" component={
-                                    (props) => <DynamicRoute {...props} secure />
-                                } />
-                                {/* <Route path="/admin" component={AdminRoute} /> */}
-                            </Switch>
-                        </ConnectedRouter>
-                    }
-                </div>
+                    </div>
+                    :
+                    <ConnectedRouter history={history}>
+                        <Switch>
+                            <Route path='/' exact render={() => <Redirect to='/login' />} />
+                            <Route path="/login" component={
+                                (props) => (status === 'AUTHENTICATED' ? <Redirect to='/calculator' /> : <DynamicRoute {...props} />)
+                            } />
+                            <Route path="/calendar" component={
+                                (props) => <DynamicRoute {...props} secure />
+                            } />
+                            <Route path="/calculator" component={
+                                (props) => <DynamicRoute {...props} secure />
+                            } />
+                            <Route path="/statistics" component={
+                                (props) => <DynamicRoute {...props} secure />
+                            } />
+                            <Route path="/profile" component={
+                                (props) => <DynamicRoute {...props} secure />
+                            } />
+                            {/* <Route path="/admin" component={AdminRoute} /> */}
+                        </Switch>
+                    </ConnectedRouter>
+                }
                 {/* <AdvertisementFooter /> */}
             </div>
         </ThemeProvider>

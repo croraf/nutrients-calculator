@@ -3,7 +3,7 @@ import { NutrientsListComponent } from './NutrientsListComponent';
 
 const CalculatorForm = ({ handleSubmit }) => {
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{ width: '100%', padding: '0.5rem', boxSizing: 'border-box' }}>
             <FieldArray name='nutrients' component={NutrientsListComponent} />
         </form>
     );

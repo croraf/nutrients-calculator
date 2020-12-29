@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Grid } from 'react-flexbox-grid';
-
 import { CalculatorForm } from './CalculatorForm/CalculatorForm';
 import NutritionResultsTable from './NutritionResultsTable/NutritionResultsTable';
 import DataSaver from './DataSaver/DataSaver';
@@ -16,7 +14,7 @@ const CalculatorContent = () => {
     console.log('CalculatorContent render');
 
     return (
-        <Grid fluid style={{ padding: '10px' }}>
+        <div style={{ padding: '10px' }}>
             <DataSaver />
 
             <CalculatorForm
@@ -26,7 +24,7 @@ const CalculatorContent = () => {
                 }} />
 
             <NutritionResultsTable />
-        </Grid>
+        </div>
     );
 };
 

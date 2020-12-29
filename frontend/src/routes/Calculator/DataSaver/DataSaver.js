@@ -29,7 +29,7 @@ const DataSaver = () => {
     };
 
     return (
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', margin: '0.5rem 0rem' }}>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', margin: '0.2rem 0rem' }}>
             <Button
                 variant='outlined'
                 color='primary'
