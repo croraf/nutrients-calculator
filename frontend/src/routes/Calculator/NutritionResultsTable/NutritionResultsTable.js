@@ -58,8 +58,8 @@ const NutritionResultsTable = () => {
         {
             Header: 'Quantity',
             accessor: 'quantity',
-            width: 350,
-            minWidth: 350,
+            width: 150,
+            minWidth: 100,
         },
         {
             Header: 'Water',

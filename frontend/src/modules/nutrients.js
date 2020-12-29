@@ -4,7 +4,7 @@ const parseNutrient = (nutrientName, item) => {
     const listOfFoodNutrients = item.food.foodNutrients;
     for (const foodNutrient of listOfFoodNutrients) {
         if (foodNutrient.nutrient.name === nutrientName) {
-            return foodNutrient.amount * ((item.quantity || 100) / 100);
+            return (foodNutrient.amount * ((item.quantity || 100) / 100)).toFixed(1);
         }
     }
 };
