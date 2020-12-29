@@ -1,37 +1,26 @@
 import React, { useEffect } from 'react';
-
-import { Grid } from 'react-flexbox-grid';
-
-import { CalculatorForm } from './CalculatorForm/CalculatorForm';
-import NutritionResultsTable from './NutritionResultsTable/NutritionResultsTable';
-import { DataSaverContainer } from './DataSaver/DataSaverContainer';
+import CalculatorContent from './CalculatorContent';
 import { useDispatch, } from 'react-redux';
-import { fetchNutrients } from 'src/modules/nutrients';
 import { fetchIngredients } from 'src/modules/ingredients';
-
+import { Route, Redirect, Switch } from 'react-router-dom';
 
 const Calculator = () => {
     const dispatch = useDispatch();
-    const calculateHandler = (foods) => { dispatch(fetchNutrients(foods)); };
 
     useEffect(() => {
         dispatch(fetchIngredients());
     }, [dispatch]);
 
-    console.log('CALCULATOR rerender');
+    console.log('Calculator rerender');
 
     return (
-        <Grid fluid style={{ padding: '10px' }}>
-            <DataSaverContainer />
+        <Switch>
+            <Route path='/calculator' exact render={() => <Redirect to='/calculator/2020-12-29' />} />
+            <Route path='/calculator/:date' component={
+                (props) => <CalculatorContent {...props} />
+            } />
+        </Switch>
 
-            <CalculatorForm
-                onSubmit={(values) => {
-                    console.log(values);
-                    calculateHandler(values.nutrients);
-                }} />
-
-            <NutritionResultsTable />
-        </Grid>
     );
 };
 

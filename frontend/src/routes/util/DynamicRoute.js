@@ -3,16 +3,16 @@ import { useSelector } from 'react-redux';
 
 
 const getImportingPromise = (pathname) => {
-    switch (pathname) {
-        case '/statistics':
+    switch (pathname.split('/')[1]) {
+        case 'statistics':
             return import(/* webpackChunkName: "chunckStatistics" */  '../Statistics/Statistics');
-        case '/calculator':
+        case 'calculator':
             return import(/* webpackChunkName: "chunckCalculator" */  '../Calculator/Calculator');
-        case '/calendar':
+        case 'calendar':
             return import(/* webpackChunkName: "chunckCalendar" */  '../Calendar/CalendarContainer');
-        case '/profile':
+        case 'profile':
             return import(/* webpackChunkName: "chunckProfile" */  '../Profile/ProfileContainer');
-        case '/login':
+        case 'login':
             return import(/* webpackChunkName: "chunckLogin" */  '../Login');
         default:
             return import(/* webpackChunkName: "chunckLogin" */  '../Login');

@@ -1,94 +1,70 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 /* import {MyDatePicker} from './MyDatePicker'; */
-
+import { saveData } from 'src/modules/dailyData';
+import { push } from 'connected-react-router';
 import './my-date-picker.css';
-
 import Button from '@material-ui/core/Button';
 import moment from 'moment';
 import Snackbar from '@material-ui/core/Snackbar';
-
 import SaveIcon from '@material-ui/icons/Save';
+import { useDispatch, useSelector } from 'react-redux';
+import Alert from '@material-ui/lab/Alert';
+import { useParams } from 'react-router-dom';
 
-import { Row, Col } from 'react-flexbox-grid';
 
-class DataSaver extends React.Component {
+const DataSaver = () => {
+    const params = useParams();
+    const dispatch = useDispatch();
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            snackbarOpen: false
-        };
-    }
+    const analyzedData = useSelector(state => state.nutrients.data);
+    const activeDate = useSelector(state => state.dateSelect.activeDate);
+    const isEdit = useSelector(state => state.dateSelect.isEdit);
 
-    toggleSnackbar = (open) => {
-        this.setState({
-            snackbarOpen: open
-        });
-    }
+    const activeDateClickHandler = () => { dispatch(push('/calendar')); };
 
-    onSaveHandler = () => {
+    const onSaveHandler = () => {
+        dispatch(saveData(moment(activeDate)/* .startOf('day') */.format('YYYY-MM-DD'), analyzedData));
+        setSnackbarOpen(true);
+    };
 
-        const { saveData, foodsAnalyzed } = this.props;
+    return (
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', margin: '0.5rem 0rem' }}>
+            <Button
+                variant='outlined'
+                color='primary'
+                disabled={snackbarOpen}
+                onClick={onSaveHandler}
+                style={{ width: '40px', minWidth: '40px' }}
+            >
+                <SaveIcon />
+            </Button>
 
-        saveData(moment(this.props.activeDate).startOf('day'), foodsAnalyzed);
+            <Button
+                variant='outlined'
+                onClick={activeDateClickHandler}
+                style={{ width: '280px', marginLeft: '15px' }}
+            >
+                {params.date}
+            </Button>
 
-        this.toggleSnackbar(true);
-    }
-
-    render() {
-
-        const { foodsAnalyzed, activeDate, activeDateClickHandler, isEdit } = this.props;
-
-        const snacbarMessage =
-            (isEdit ? 'Edited!' : 'Saved!')
-            + ' (date: ' +
-            moment(activeDate).format('YYYY-MM-DD') +
-            ', calories: ' +
-            /* foodsAnalyzed.data[3].total + */ ')';
-
-        return (
-            <Row style={{ height: '38px', marginBottom: '-10px' }} end='xs'>
-
-                <Col xs={3} md={2} lg={1}>
-                    <Button
-                        variant='outlined'
-                        color='primary'
-                        disabled={this.state.snackbarOpen}
-                        onClick={this.onSaveHandler}
-                        style={{ width: '40px', minWidth: '40px' }}
-                    >
-                        <SaveIcon />
-                    </Button>
-                </Col>
-                <Col xs={4} sm={3} lg={2} style={{ minWidth: '270px' }}>
-
-                    <Button
-                        variant='outlined'
-                        onClick={activeDateClickHandler}
-                        style={{ width: '100%', }}
-                    >
-                        {activeDate || '<SELECT DATE>'}
-                    </Button>
-
-                    {/* <div style={{fontSize: '18px', fontWeight: 'bold', textAlign: 'center', padding: '8px', cursor: 'pointer', border: '1px solid rgb(0, 188, 212)'}}
+            {/* <div style={{fontSize: '18px', fontWeight: 'bold', textAlign: 'center', padding: '8px', cursor: 'pointer', border: '1px solid rgb(0, 188, 212)'}}
                         onClick={activeDateClickHandler}
                     >
                         {activeDate || '<SELECT DATE>'}
                     </div> */}
-                </Col>
 
-                <Snackbar
-                    open={this.state.snackbarOpen}
-                    message={snacbarMessage}
-                    autoHideDuration={3000}
-                    onRequestClose={() => { this.toggleSnackbar(false); }}
-                    contentStyle={{ fontSize: 24, color: 'white' }}
-                    bodyStyle={{ backgroundColor: 'rgb(0, 188, 212)' }}
-                />
-            </Row>
-        );
-    }
-}
+            <Snackbar
+                open={snackbarOpen}
+                /* autoHideDuration={5000} */
+                onClose={() => { setSnackbarOpen(false); }}
+            >
+                <Alert onClose={() => { setSnackbarOpen(false); }} severity="success" elevation={6} variant="filled">
+                    {(isEdit ? 'Edited' : 'Saved') + ' for date: ' + moment(activeDate).format('YYYY-MM-DD')}
+                </Alert>
+            </Snackbar>
+        </div>
+    );
+};
 
-export { DataSaver };
+export default DataSaver;

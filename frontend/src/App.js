@@ -1,19 +1,12 @@
 import React, { useEffect } from 'react';
-
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { history } from 'src/modules/store';
-
 /* import { PrivateRoute } from './routes/util/PrivateRoute'; */
-
 import DynamicRoute from './routes/util/DynamicRoute';
-
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
-
-
 import { Header } from './Common/Header/Header';
-import AdvertisementFooter from './Common/Advertisement/AdvertisementFooter';
 import { useDispatch, useSelector } from 'react-redux';
 
 const muiTheme = createMuiTheme({
@@ -29,6 +22,7 @@ const useStyles = makeStyles({
         }
     }
 });
+
 
 const App = () => {
     useStyles();
@@ -62,27 +56,29 @@ const App = () => {
                         </div>
                         :
                         <ConnectedRouter history={history}>
-                            <Route path='/' exact render={() => <Redirect to='/login' />} />
-                            <Route path="/login" component={
-                                (props) => (status === 'AUTHENTICATED' ? <Redirect to='/calculator' /> : <DynamicRoute {...props} />)
-                            } />
-                            <Route path="/calendar" component={
-                                (props) => <DynamicRoute {...props} secure />
-                            } />
-                            <Route path="/calculator" component={
-                                (props) => <DynamicRoute {...props} secure />
-                            } />
-                            <Route path="/statistics" component={
-                                (props) => <DynamicRoute {...props} secure />
-                            } />
-                            <Route path="/profile" component={
-                                (props) => <DynamicRoute {...props} secure />
-                            } />
-                            {/* <Route path="/admin" component={AdminRoute} /> */}
+                            <Switch>
+                                <Route path='/' exact render={() => <Redirect to='/login' />} />
+                                <Route path="/login" component={
+                                    (props) => (status === 'AUTHENTICATED' ? <Redirect to='/calculator' /> : <DynamicRoute {...props} />)
+                                } />
+                                <Route path="/calendar" component={
+                                    (props) => <DynamicRoute {...props} secure />
+                                } />
+                                <Route path="/calculator" component={
+                                    (props) => <DynamicRoute {...props} secure />
+                                } />
+                                <Route path="/statistics" component={
+                                    (props) => <DynamicRoute {...props} secure />
+                                } />
+                                <Route path="/profile" component={
+                                    (props) => <DynamicRoute {...props} secure />
+                                } />
+                                {/* <Route path="/admin" component={AdminRoute} /> */}
+                            </Switch>
                         </ConnectedRouter>
                     }
                 </div>
-                <AdvertisementFooter />
+                {/* <AdvertisementFooter /> */}
             </div>
         </ThemeProvider>
     );
